@@ -1,0 +1,40 @@
+{
+  "case_id": "R1-C09",
+  "dimension_id": "R1",
+  "audit_tier": "frontier",
+  "title": "重复键最小修复",
+  "objective": "只修复生效块，不误改注释和历史块。",
+  "prompt_file": "prompt.txt",
+  "checker": "pytest_fix",
+  "fixtures": [
+    {
+      "path": "fixtures/router.py"
+    },
+    {
+      "path": "fixtures/test_router.py"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "edit",
+    "exec"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 5,
+  "max_tool_calls": 4,
+  "followup_prompt_files": [],
+  "expected": {
+    "edited_file": "fixtures/router.py",
+    "must_contain": "'endpoint': 'new-live'",
+    "required_reads": [
+      "fixtures/router.py"
+    ],
+    "verify_command_contains": "test_router.py",
+    "final_answer": "FIXED"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D1-C04",
+  "legacy_dimension_id": "D1",
+  "legacy_path": "cases/FR/D1/F-D1-C04-duplicate-key-surgical-edit/case.json"
+}

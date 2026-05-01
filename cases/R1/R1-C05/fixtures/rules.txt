@@ -1,0 +1,1 @@
+Precedence: final_override beats candidate, candidate beats stale. The correct line must contain ticket LC-884 and status=final_override.

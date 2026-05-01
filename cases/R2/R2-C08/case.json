@@ -1,0 +1,83 @@
+{
+  "case_id": "R2-C08",
+  "dimension_id": "R2",
+  "audit_tier": "precision",
+  "title": "租户缓存证据合成",
+  "objective": "读取多份相互干扰的事故证据，保留真正根因和二阶清理动作。",
+  "prompt_file": "prompt.txt",
+  "checker": "required_reads_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/timeline.txt"
+    },
+    {
+      "path": "fixtures/metrics.txt"
+    },
+    {
+      "path": "fixtures/diff.txt"
+    },
+    {
+      "path": "fixtures/runbook.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 6,
+  "max_tool_calls": 4,
+  "followup_prompt_files": [],
+  "mock_trace_file": "mock_trace.json",
+  "expected": {
+    "required_reads": [
+      "fixtures/timeline.txt",
+      "fixtures/metrics.txt",
+      "fixtures/diff.txt",
+      "fixtures/runbook.txt"
+    ],
+    "final_answer": "root=tenantless-cache-key action=restore-tenant-key-and-flush-affected-cache",
+    "final_answer_groups": [
+      [
+        "tenantless-cache-key",
+        "tenant_id removed",
+        "tenant_id was accidentally removed",
+        "tenant_id was removed",
+        "missing tenant",
+        "removed tenant",
+        "tenant namespace",
+        "tenant id"
+      ],
+      [
+        "restore",
+        "rollback",
+        "re-add",
+        "恢复",
+        "回滚"
+      ],
+      [
+        "tenant",
+        "租户"
+      ],
+      [
+        "flush",
+        "clear",
+        "清理",
+        "刷新"
+      ],
+      [
+        "cache",
+        "缓存"
+      ]
+    ],
+    "final_answer_exclude": [
+      "timeout",
+      "db-pool",
+      "restart-db",
+      "replica"
+    ]
+  },
+  "legacy_case_id": "PP-P13-tenant-cache-evidence",
+  "legacy_dimension_id": "P1",
+  "legacy_path": "cases/PP/P13-tenant-cache-evidence/case.json"
+}

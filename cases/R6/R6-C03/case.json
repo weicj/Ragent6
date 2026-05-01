@@ -1,0 +1,63 @@
+{
+  "case_id": "R6-C03",
+  "dimension_id": "R6",
+  "title": "Windowed threshold policy",
+  "objective": "Apply a windowed threshold and reject a stale global-cache explanation.",
+  "checker": "required_reads_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/policy.txt"
+    },
+    {
+      "path": "fixtures/window-1.txt"
+    },
+    {
+      "path": "fixtures/window-2.txt"
+    },
+    {
+      "path": "fixtures/stale.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "max_turns": 6,
+  "max_tool_calls": 4,
+  "expected": {
+    "required_reads": [
+      "fixtures/policy.txt",
+      "fixtures/window-1.txt",
+      "fixtures/window-2.txt",
+      "fixtures/stale.txt"
+    ],
+    "final_answer": "incident=AUTHZ-41 severity=SEV1 owner=authz-core cause=deny-spike-window",
+    "final_answer_groups": [
+      [
+        "AUTHZ-41"
+      ],
+      [
+        "SEV1"
+      ],
+      [
+        "authz-core"
+      ],
+      [
+        "deny-spike-window",
+        "deny spike window"
+      ]
+    ],
+    "final_answer_exclude": [
+      "SEV2",
+      "edge-cache",
+      "owner=web"
+    ]
+  },
+  "audit_tier": "precision",
+  "prompt_file": "prompt.txt",
+  "timeout_seconds": 120,
+  "followup_prompt_files": [],
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "PV10-P03-windowed-threshold-policy",
+  "legacy_dimension_id": "P1",
+  "legacy_path": "cases/PV10/P03-windowed-threshold-policy/case.json"
+}

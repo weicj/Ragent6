@@ -1,0 +1,99 @@
+{
+  "case_id": "R6-C05",
+  "dimension_id": "R6",
+  "audit_tier": "frontier",
+  "title": "反事实缓存事故 RCA",
+  "objective": "在多个诱饵和反事实中识别真正因果链，拒绝表面修复。",
+  "prompt_file": "prompt.txt",
+  "mock_trace_file": "mock_trace.json",
+  "checker": "exact_labeled_lines",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 60,
+  "max_turns": 1,
+  "followup_prompt_files": [],
+  "expected": {
+    "exact_lines": [
+      "CAUSE: tenant locale missing from router cache key",
+      "COUNTERFACTUAL: if locale stayed in the key, queue retries would not matter",
+      "FIX: rollback to v58 and rebuild route-table",
+      "REJECT: increase-retries and restart-workers"
+    ],
+    "relaxed_groups": {
+      "CAUSE": [
+        [
+          "tenant"
+        ],
+        [
+          "locale"
+        ],
+        [
+          "router"
+        ],
+        [
+          "cache key",
+          "cache-key"
+        ]
+      ],
+      "COUNTERFACTUAL": [
+        [
+          "locale"
+        ],
+        [
+          "key"
+        ],
+        [
+          "queue",
+          "retries",
+          "route reuse"
+        ],
+        [
+          "not matter",
+          "irrelevant",
+          "would not have occurred",
+          "would not occur",
+          "不会",
+          "无关"
+        ]
+      ],
+      "FIX": [
+        [
+          "v58"
+        ],
+        [
+          "rebuild"
+        ],
+        [
+          "route-table",
+          "route table"
+        ]
+      ],
+      "REJECT": [
+        [
+          "increase-retries",
+          "increase retries",
+          "increasing retries"
+        ],
+        [
+          "restart-workers",
+          "restart workers",
+          "restarting workers"
+        ]
+      ]
+    },
+    "relaxed_forbidden": {
+      "CAUSE": [
+        "worker saturation",
+        "disk full"
+      ],
+      "FIX": [
+        "increase-retries",
+        "restart-workers"
+      ]
+    }
+  },
+  "legacy_case_id": "B14-R6-C01",
+  "legacy_dimension_id": "D6",
+  "legacy_path": "cases/B14/R6/B14-R6-C01-counterfactual-cache-rca/case.json"
+}

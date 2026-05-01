@@ -1,0 +1,66 @@
+{
+  "case_id": "R1-C05",
+  "dimension_id": "R1",
+  "title": "Long override needle",
+  "objective": "Use all evidence shards and select the authoritative long-context override, not nearby decoys.",
+  "checker": "required_reads_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/rules.txt"
+    },
+    {
+      "path": "fixtures/shard-a.txt"
+    },
+    {
+      "path": "fixtures/shard-b.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "max_turns": 6,
+  "max_tool_calls": 3,
+  "expected": {
+    "required_reads": [
+      "fixtures/rules.txt",
+      "fixtures/shard-a.txt",
+      "fixtures/shard-b.txt"
+    ],
+    "exact_read_count": 3,
+    "final_answer": "ticket=LC-884 owner=runtime-core action=rotate-session-key guard=drain-zone-c reject=restart-workers",
+    "final_answer_groups": [
+      [
+        "LC-884"
+      ],
+      [
+        "runtime-core"
+      ],
+      [
+        "rotate-session-key",
+        "rotate session key"
+      ],
+      [
+        "drain-zone-c",
+        "drain zone c"
+      ],
+      [
+        "restart-workers",
+        "restart workers"
+      ]
+    ],
+    "final_answer_exclude": [
+      "search-platform",
+      "web-edge",
+      "warm-cache",
+      "owner=payments"
+    ]
+  },
+  "audit_tier": "precision",
+  "prompt_file": "prompt.txt",
+  "timeout_seconds": 120,
+  "followup_prompt_files": [],
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "PV10-P01-long-override-needle",
+  "legacy_dimension_id": "P1",
+  "legacy_path": "cases/PV10/P01-long-override-needle/case.json"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["case_id", "dimension_id", "title", "objective", "prompt_file", "checker"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "dimension_id": {"type": "string"},
+    "audit_tier": {"type": "string", "enum": ["foundational", "discriminative", "frontier"]},
+    "title": {"type": "string"},
+    "objective": {"type": "string"},
+    "prompt_file": {"type": "string"},
+    "checker": {"type": "string"},
+    "fixtures": {"type": "array"},
+    "allowed_tools": {"type": "array", "items": {"type": "string"}},
+    "runner_mode": {"type": "string"},
+    "timeout_seconds": {"type": "integer", "minimum": 1},
+    "max_turns": {"type": "integer", "minimum": 1},
+    "max_tool_calls": {"type": ["integer", "null"], "minimum": 1},
+    "followup_prompt_files": {"type": "array", "items": {"type": "string"}},
+    "expected": {"type": "object"},
+    "mock_trace_file": {"type": ["string", "null"]}
+  }
+}

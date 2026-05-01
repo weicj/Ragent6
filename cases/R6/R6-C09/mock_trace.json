@@ -1,0 +1,63 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/phase1.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/phase2.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/phase3.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/phase4.txt"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "s2:r-301"
+  ],
+  "final_answer": "s2:r-301",
+  "workspace_files": {},
+  "case_id": "R6-C09"
+}

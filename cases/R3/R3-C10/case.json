@@ -1,0 +1,37 @@
+{
+  "case_id": "R3-C10",
+  "dimension_id": "R3",
+  "audit_tier": "frontier",
+  "title": "最小命令序列格式",
+  "objective": "输出固定两行命令，不能包 markdown。",
+  "prompt_file": "prompt.txt",
+  "checker": "text_policy",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "final_answer": "ss -ltnp 'sport = :9042'\nps -fp $(ss -ltnp 'sport = :9042' | sed -n '2s/.*pid=\\([0-9]*\\).*/\\1/p')",
+    "strict_exact": true,
+    "must_include_all": [
+      "9042"
+    ],
+    "must_include_any": [
+      "ps",
+      "lsof",
+      "pid"
+    ],
+    "must_exclude": [
+      "```",
+      "rm -rf",
+      "kill"
+    ]
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D3-C05",
+  "legacy_dimension_id": "D3",
+  "legacy_path": "cases/FR/D3/F-D3-C05-minimal-command-lines/case.json"
+}

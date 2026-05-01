@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.DS_Store
+.env
+.env.local
+.env.*.local
+
+# Local benchmark outputs can be large and machine-specific.
+results/*
+!results/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# Model files should never be committed.
+*.gguf
+*.safetensors
+*.bin
+*.pth
+*.pt
+
+# Local scratch/config.
+tmp/
+local/

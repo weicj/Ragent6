@@ -1,0 +1,9 @@
+Output JSON only, with no markdown fence and no extra keys.
+
+Incident notes:
+- probe-2026-04-18 and canary-b both point to router-v42.
+- cache flush and db restart are decoys and must be rejected.
+- the next step must be a dry-run owned by platform.
+
+Required schema:
+decision, target, evidence, reject, next.

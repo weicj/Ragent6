@@ -1,0 +1,3 @@
+最后又到了一份旧快照：请读取 `fixtures/stale_patch.json`。
+如果它的 `revision` 小于你当前结论里的 `revision`，整份补丁都必须忽略。
+请继续输出当前应保留的完整紧凑 JSON，不要解释。

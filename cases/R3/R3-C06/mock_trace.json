@@ -1,0 +1,20 @@
+{
+  "case_id": "R3-C06",
+  "config_path": "mock",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "{\"root\":\"tenantless-cache-key\",\"actions\":[\"restore-tenant-key\",\"flush-affected-cache\",\"verify-tenant-isolation\"],\"reject\":{\"timeout\":true,\"db_restart\":true},\"guards\":{\"dry_run\":true,\"network_allowed\":false}}"
+  ],
+  "events_count": 3,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "{\"root\":\"tenantless-cache-key\",\"actions\":[\"restore-tenant-key\",\"flush-affected-cache\",\"verify-tenant-isolation\"],\"reject\":{\"timeout\":true,\"db_restart\":true},\"guards\":{\"dry_run\":true,\"network_allowed\":false}}",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

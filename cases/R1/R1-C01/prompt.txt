@@ -1,0 +1,5 @@
+Read `fixtures/events.ndjson` and `fixtures/policy.json`.
+
+Create `fixtures/remediation.json` with the incident id, primary root cause, selected action, rejected decoy actions, required guards, and verification steps.
+
+Then run `python3 fixtures/check.py`. Reply only `PASS`.

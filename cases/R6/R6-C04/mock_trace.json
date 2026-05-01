@@ -1,0 +1,13 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "CAUSE: v42 removed tenant from the cache key\nFIX: restore tenant-scoped cache keys and invalidate polluted entries\nWHY: database load was downstream of cross-tenant cache collisions"
+  ],
+  "final_answer": "CAUSE: v42 removed tenant from the cache key\nFIX: restore tenant-scoped cache keys and invalidate polluted entries\nWHY: database load was downstream of cross-tenant cache collisions",
+  "workspace_files": {},
+  "case_id": "R6-C04"
+}

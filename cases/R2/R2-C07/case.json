@@ -1,0 +1,39 @@
+{
+  "case_id": "R2-C07",
+  "dimension_id": "R2",
+  "audit_tier": "foundational",
+  "title": "首读必须命中回滚后的 live 文件",
+  "objective": "只允许一次读取，必须直接打到真正生效的 rollback 文件。",
+  "prompt_file": "prompt.txt",
+  "checker": "first_tool_path_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/current.env"
+    },
+    {
+      "path": "fixtures/current.env.old"
+    },
+    {
+      "path": "fixtures/pointer.txt"
+    },
+    {
+      "path": "fixtures/rollback.env"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 60,
+  "max_turns": 2,
+  "max_tool_calls": 1,
+  "followup_prompt_files": [],
+  "expected": {
+    "first_path": "fixtures/rollback.env",
+    "final_answer": "svc-live-991"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D2-C08-first-read-follow-pointer",
+  "legacy_dimension_id": "D2",
+  "legacy_path": "cases/D2/D2-C08-first-read-follow-pointer/case.json"
+}

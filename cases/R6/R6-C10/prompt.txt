@@ -1,0 +1,1 @@
+错误：上传失败显示 `413 Payload Too Large`，旁注强烈建议重启数据库连接池。限制来自 nginx body size。按 CAUSE/FIX/WHY 三行输出。

@@ -1,0 +1,10 @@
+{
+  "case_id": "R6-C07",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "CAUSE: v42 cache key dropped tenant_id\nFIX: rollback to v41 and invalidate affected tenant cache\nWHY: collisions appeared after v42 reused keys across tenants\nREJECT: db restart and timeout increase are decoys"
+  ],
+  "final_answer": "CAUSE: v42 cache key dropped tenant_id\nFIX: rollback to v41 and invalidate affected tenant cache\nWHY: collisions appeared after v42 reused keys across tenants\nREJECT: db restart and timeout increase are decoys",
+  "workspace_files": {}
+}

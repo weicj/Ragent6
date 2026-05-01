@@ -1,0 +1,10 @@
+[r1] target=tg-100 priority=10 state=live health=ok revoked=false
+[r2] target=tg-200 priority=30 state=live health=fail revoked=false
+[r3] target=tg-300 priority=40 state=shadow health=ok revoked=false
+[r4] target=tg-400 priority=25 state=live health=ok revoked=false
+[rules]
+1. discard rows where state is not live
+2. discard rows where health is not ok
+3. discard rows where revoked is true
+4. among remaining rows choose the one with the highest numeric priority
+5. output only that row target

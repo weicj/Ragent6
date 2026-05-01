@@ -1,0 +1,47 @@
+{
+  "case_id": "R1-C10",
+  "dimension_id": "R1",
+  "audit_tier": "frontier",
+  "title": "传递配置构建",
+  "objective": "根据间接引用构建目标配置，而不是取表面默认值。",
+  "prompt_file": "prompt.txt",
+  "checker": "artifact_verification",
+  "fixtures": [
+    {
+      "path": "fixtures/index.txt"
+    },
+    {
+      "path": "fixtures/env_prod.txt"
+    },
+    {
+      "path": "fixtures/profile_blue.txt"
+    },
+    {
+      "path": "fixtures/profile_default.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "write",
+    "exec"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 5,
+  "max_tool_calls": 8,
+  "followup_prompt_files": [],
+  "expected": {
+    "edited_file": "fixtures/runtime.json",
+    "must_contain": "api-blue.internal",
+    "required_reads": [
+      "fixtures/index.txt",
+      "fixtures/env_prod.txt",
+      "fixtures/profile_blue.txt"
+    ],
+    "final_answer": "BUILT"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D1-C05",
+  "legacy_dimension_id": "D1",
+  "legacy_path": "cases/FR/D1/F-D1-C05-transitive-config-build/case.json"
+}

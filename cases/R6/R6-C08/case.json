@@ -1,0 +1,29 @@
+{
+  "case_id": "R6-C08",
+  "dimension_id": "R6",
+  "audit_tier": "discriminative",
+  "title": "按策略筛选最终 target",
+  "objective": "必须按文件里的策略筛选候选项，而不是取最后出现值。",
+  "prompt_file": "prompt.txt",
+  "checker": "latest_value",
+  "fixtures": [
+    {
+      "path": "fixtures/routes.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 60,
+  "max_turns": 2,
+  "max_tool_calls": 1,
+  "followup_prompt_files": [],
+  "expected": {
+    "final_answer": "tg-400"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D6-C08-policy-select-target",
+  "legacy_dimension_id": "D6",
+  "legacy_path": "cases/D6/D6-C08-policy-select-target/case.json"
+}

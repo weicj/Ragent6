@@ -1,0 +1,47 @@
+{
+  "case_id": "R3-C02",
+  "dimension_id": "R3",
+  "audit_tier": "discriminative",
+  "title": "标签化三行 RCA",
+  "objective": "输出严格三行、固定标签顺序的 RCA 摘要",
+  "prompt_file": "prompt.txt",
+  "checker": "exact_labeled_lines",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 30,
+  "max_turns": 1,
+  "expected": {
+    "exact_lines": [
+      "CAUSE: stale process 95903 still holds port 9060",
+      "FIX: kill 95903 and restart gateway",
+      "WHY: bind failed because the port was already occupied"
+    ],
+    "relaxed_keywords": {
+      "CAUSE": [
+        "9060",
+        "95903",
+        "占用",
+        "python3",
+        "port"
+      ],
+      "FIX": [
+        "kill",
+        "95903",
+        "restart",
+        "重启"
+      ],
+      "WHY": [
+        "9060",
+        "occupied",
+        "占用",
+        "bind",
+        "绑定"
+      ]
+    }
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D3-C04-labelled-rca-three-lines",
+  "legacy_dimension_id": "D3",
+  "legacy_path": "cases/D3/D3-C04-labelled-rca-three-lines/case.json"
+}

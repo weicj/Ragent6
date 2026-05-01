@@ -1,0 +1,73 @@
+{
+  "case_id": "R6-C01",
+  "dimension_id": "R6",
+  "title": "Counterfactual minimal fix",
+  "objective": "Choose the minimal causal namespace fix and reject plausible symptom fixes.",
+  "checker": "exact_labeled_lines",
+  "allowed_tools": [],
+  "expected": {
+    "exact_lines": [
+      "ROOT: tenant id omitted from cache namespace",
+      "MINIMAL_FIX: restore tenant namespace in the cache key",
+      "NOT_FIX: raising timeout does not fix the namespace bug"
+    ],
+    "relaxed_groups": {
+      "ROOT": [
+        [
+          "tenant"
+        ],
+        [
+          "cache"
+        ],
+        [
+          "namespace",
+          "key"
+        ]
+      ],
+      "MINIMAL_FIX": [
+        [
+          "restore",
+          "revert",
+          "add back"
+        ],
+        [
+          "tenant"
+        ],
+        [
+          "cache",
+          "key",
+          "namespace"
+        ]
+      ]
+    },
+    "relaxed_min_groups": {
+      "NOT_FIX": {
+        "min": 1,
+        "groups": [
+          [
+            "database",
+            "db",
+            "restart"
+          ],
+          [
+            "timeout",
+            "retry"
+          ],
+          [
+            "cache size"
+          ]
+        ]
+      }
+    }
+  },
+  "audit_tier": "precision",
+  "prompt_file": "prompt.txt",
+  "timeout_seconds": 120,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "PV10-P18-counterfactual-minimal-fix",
+  "legacy_dimension_id": "P6",
+  "legacy_path": "cases/PV10/P18-counterfactual-minimal-fix/case.json"
+}

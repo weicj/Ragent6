@@ -1,0 +1,40 @@
+{
+  "case_id": "R2-C03",
+  "dimension_id": "R2",
+  "audit_tier": "discriminative",
+  "title": "按策略转换证据后输出",
+  "objective": "最终答案必须是对证据按策略变换后的结果。",
+  "prompt_file": "prompt.txt",
+  "checker": "required_reads_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/channel.txt"
+    },
+    {
+      "path": "fixtures/policy.txt"
+    },
+    {
+      "path": "fixtures/route.json"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 60,
+  "max_turns": 2,
+  "max_tool_calls": 3,
+  "followup_prompt_files": [],
+  "expected": {
+    "required_reads": [
+      "fixtures/policy.txt",
+      "fixtures/route.json",
+      "fixtures/channel.txt"
+    ],
+    "final_answer": "MASKED:1188"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D2-C10-policy-transform-grounded",
+  "legacy_dimension_id": "D2",
+  "legacy_path": "cases/D2/D2-C10-policy-transform-grounded/case.json"
+}

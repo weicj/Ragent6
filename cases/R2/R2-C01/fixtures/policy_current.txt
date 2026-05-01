@@ -1,0 +1,4 @@
+For ticket class P431:
+- owner is ledger-core
+- escalation color is blue
+- archived policies must be ignored

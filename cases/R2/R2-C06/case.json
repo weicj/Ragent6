@@ -1,0 +1,43 @@
+{
+  "case_id": "R2-C06",
+  "dimension_id": "R2",
+  "audit_tier": "frontier",
+  "title": "撤回优先级证据",
+  "objective": "读取三源证据，识别撤回后的最终 owner。",
+  "prompt_file": "prompt.txt",
+  "checker": "required_reads_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/base.txt"
+    },
+    {
+      "path": "fixtures/override.txt"
+    },
+    {
+      "path": "fixtures/retraction.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 5,
+  "max_tool_calls": 3,
+  "followup_prompt_files": [],
+  "expected": {
+    "required_reads": [
+      "fixtures/base.txt",
+      "fixtures/override.txt",
+      "fixtures/retraction.txt"
+    ],
+    "final_answer": "atlas",
+    "final_answer_exclude": [
+      "boron"
+    ]
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D2-C01",
+  "legacy_dimension_id": "D2",
+  "legacy_path": "cases/FR/D2/F-D2-C01-precedence-with-retraction/case.json"
+}

@@ -1,0 +1,59 @@
+{
+  "case_id": "R2-C02",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/channel.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/policy.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/primary.json"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/override.json"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "channel=telegram\n",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "if override.enabled=true then use override.target else use primary.target\n",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "{\"target\":\"tg-110000\"}\n",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "{\"target\":\"tg-220011\",\"enabled\":true}\n",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "telegram:tg-220011"
+  ],
+  "final_answer": "telegram:tg-220011"
+}

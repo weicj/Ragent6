@@ -1,0 +1,45 @@
+{
+  "case_id": "R3-C03",
+  "dimension_id": "R3",
+  "audit_tier": "frontier",
+  "title": "嵌套决策 JSON 抗诱导",
+  "objective": "在带有诱饵修复的描述中输出严格嵌套 JSON，不附加解释字段。",
+  "prompt_file": "prompt.txt",
+  "mock_trace_file": "mock_trace.json",
+  "checker": "canonical_json",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 90,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "allow_markdown_fence": false,
+    "json": {
+      "decision": "rollback",
+      "target": "router-v42",
+      "evidence": [
+        "probe-2026-04-18",
+        "canary-b"
+      ],
+      "reject": {
+        "cache_flush": true,
+        "db_restart": true
+      },
+      "next": {
+        "dry_run": true,
+        "owner": "platform"
+      }
+    },
+    "forbidden_keys": [
+      "note",
+      "comment",
+      "explanation",
+      "markdown"
+    ]
+  },
+  "legacy_case_id": "B6-R3-C01",
+  "legacy_dimension_id": "D3",
+  "legacy_path": "cases/B6/R3/B6-R3-C01-nested-decision-json/case.json"
+}

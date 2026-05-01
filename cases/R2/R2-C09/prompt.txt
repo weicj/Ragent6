@@ -1,0 +1,5 @@
+Use local evidence only.
+
+Read `fixtures/index.md` first. It points to the active evidence map. Then read the active files from that map. Do not read deprecated evidence.
+
+Return one concise sentence containing the owner, rollback version, root cause, and mitigation. Do not include decoy owners or decoy fixes.

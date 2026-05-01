@@ -1,0 +1,73 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/router.py"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/test_router.py"
+      }
+    },
+    {
+      "name": "edit",
+      "arguments": {
+        "path": "fixtures/router.py",
+        "edits": [
+          {
+            "oldText": "'endpoint': 'old-live'",
+            "newText": "'endpoint': 'new-live'"
+          }
+        ]
+      }
+    },
+    {
+      "name": "exec",
+      "arguments": {
+        "command": "python3 fixtures/test_router.py"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "edit",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "exec",
+      "is_error": false,
+      "text": "ok\n",
+      "details": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "assistant_texts": [
+    "FIXED"
+  ],
+  "final_answer": "FIXED",
+  "workspace_files": {
+    "fixtures/router.py": "ARCHIVED = {'endpoint': 'old-a'}\n# endpoint: old-comment\nPROFILE = {'mode': 'active', 'endpoint': 'new-live'}\ndef endpoint():\n    return PROFILE['endpoint']\n"
+  },
+  "case_id": "R1-C09"
+}

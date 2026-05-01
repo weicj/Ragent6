@@ -1,0 +1,13 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "CAUSE: nginx body size limit rejected the upload\nFIX: raise the nginx client body size limit for this route\nWHY: database pool restart is unrelated to HTTP 413"
+  ],
+  "final_answer": "CAUSE: nginx body size limit rejected the upload\nFIX: raise the nginx client body size limit for this route\nWHY: database pool restart is unrelated to HTTP 413",
+  "workspace_files": {},
+  "case_id": "R6-C10"
+}

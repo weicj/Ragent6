@@ -1,0 +1,18 @@
+[project]
+name = "ragent6"
+version = "1.0.0"
+description = "A deterministic local benchmark for agent-capable language models."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "Ragent6 Contributors" }
+]
+keywords = ["agent", "benchmark", "llm", "local-eval", "tool-use"]
+
+[tool.setuptools.packages.find]
+include = ["ragent6*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"

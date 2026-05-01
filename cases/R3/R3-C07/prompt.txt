@@ -1,0 +1,6 @@
+有一个最小改动需要输出为 unified diff：
+- 文件：`app.py`
+- 旧行：`print(\"helo\")`
+- 新行：`print(\"hello\")`
+
+只输出 unified diff，不要 markdown。

@@ -1,0 +1,46 @@
+{
+  "case_id": "R2-C01",
+  "tool_calls": [
+    {
+      "name": "exec",
+      "arguments": {
+        "command": "rg -n \"P431|policy|ticket\" fixtures"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/policy_current.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/ticket_431.txt"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "text": "fixtures/index.txt:policy_current.txt: current policy for ticket class P431\nfixtures/index.txt:ticket_431.txt: incident ticket P431\nfixtures/archive_decoy.txt:ARCHIVE ONLY. ticket P431 owner=ledger-legacy escalation=red",
+      "details": {
+        "exitCode": 0
+      }
+    },
+    {
+      "text": "For ticket class P431:\n- owner is ledger-core\n- escalation color is blue\n- archived policies must be ignored",
+      "details": {}
+    },
+    {
+      "text": "ticket=P431 status=open severity=high class=P431",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "owner=ledger-core escalation=blue"
+  ],
+  "final_answer": "owner=ledger-core escalation=blue",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

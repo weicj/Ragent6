@@ -1,0 +1,4 @@
+10:00 stage=live kind=stable target=blue-1 revoked=false
+10:03 stage=dry-run kind=canary target=green-9 revoked=false
+10:07 stage=live kind=canary target=blue-7 revoked=false
+10:09 stage=live kind=canary target=red-5 revoked=true

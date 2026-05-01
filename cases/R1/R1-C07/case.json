@@ -1,0 +1,42 @@
+{
+  "case_id": "R1-C07",
+  "dimension_id": "R1",
+  "audit_tier": "discriminative",
+  "title": "最小舍入 bug 修复闭环",
+  "objective": "读取实现和测试，定位折扣金额向下取整 bug，只改实现并运行本地校验。",
+  "prompt_file": "prompt.txt",
+  "mock_trace_file": "mock_trace.json",
+  "checker": "pytest_fix",
+  "fixtures": [
+    {
+      "path": "fixtures/project/billing.py"
+    },
+    {
+      "path": "fixtures/project/test_billing.py"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "edit",
+    "exec"
+  ],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 120,
+  "max_turns": 6,
+  "max_tool_calls": 6,
+  "followup_prompt_files": [],
+  "expected": {
+    "edited_file": "fixtures/project/billing.py",
+    "required_reads": [
+      "fixtures/project/billing.py",
+      "fixtures/project/test_billing.py"
+    ],
+    "must_contain": "return int(round(cents * pct / 100))",
+    "verify_command_contains": "test_billing.py",
+    "accept_verified_alternative": true,
+    "final_answer": "PASS"
+  },
+  "legacy_case_id": "B13-R1-C01",
+  "legacy_dimension_id": "D1",
+  "legacy_path": "cases/B13/R1/B13-R1-C01-minimal-rounding-fix/case.json"
+}

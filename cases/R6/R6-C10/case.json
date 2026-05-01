@@ -1,0 +1,79 @@
+{
+  "case_id": "R6-C10",
+  "dimension_id": "R6",
+  "audit_tier": "frontier",
+  "title": "强诱导假修复拒绝",
+  "objective": "拒绝题面强诱导的错误修复。",
+  "prompt_file": "prompt.txt",
+  "checker": "exact_labeled_lines",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "exact_lines": [
+      "CAUSE: nginx body size limit rejected the upload",
+      "FIX: raise the nginx client body size limit for this route",
+      "WHY: database pool restart is unrelated to HTTP 413"
+    ],
+    "relaxed_groups": {
+      "CAUSE": [
+        [
+          "nginx"
+        ],
+        [
+          "body",
+          "size",
+          "请求体"
+        ]
+      ],
+      "FIX": [
+        [
+          "raise",
+          "increase",
+          "调高",
+          "增大",
+          "修改",
+          "添加"
+        ],
+        [
+          "body",
+          "size",
+          "limit",
+          "client_max_body_size"
+        ]
+      ],
+      "WHY": [
+        [
+          "database",
+          "pool",
+          "数据库",
+          "连接池"
+        ],
+        [
+          "unrelated",
+          "无关",
+          "无法解决",
+          "尚未到达",
+          "not reach",
+          "413"
+        ]
+      ]
+    },
+    "relaxed_forbidden": {
+      "FIX": [
+        "database",
+        "pool",
+        "数据库",
+        "连接池"
+      ]
+    }
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D6-C05",
+  "legacy_dimension_id": "D6",
+  "legacy_path": "cases/FR/D6/F-D6-C05-fake-fix-rejection/case.json"
+}

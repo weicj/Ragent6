@@ -1,0 +1,29 @@
+{
+  "case_id": "R5-C01",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/missing.json"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/config.json"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "name": "read",
+      "error_type": "ENOENT",
+      "stderr": "No such file or directory"
+    },
+    {
+      "name": "read",
+      "stdout": "{\"token\":\"token-live-7788\"}\n"
+    }
+  ],
+  "final_answer": "token-live-7788"
+}

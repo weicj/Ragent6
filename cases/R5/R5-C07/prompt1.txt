@@ -1,0 +1,4 @@
+State update 1:
+Current rollout owner is search-runtime. Candidate build is v58. The status says canary is allowed.
+
+Reply with one concise sentence containing owner, build, and action.

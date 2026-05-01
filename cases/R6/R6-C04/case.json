@@ -1,0 +1,89 @@
+{
+  "case_id": "R6-C04",
+  "dimension_id": "R6",
+  "audit_tier": "ceiling",
+  "title": "反事实事故根因链",
+  "objective": "在多重表象和反事实中定位真正必要根因。",
+  "prompt_file": "prompt.txt",
+  "checker": "exact_labeled_lines",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 180,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "exact_lines": [
+      "CAUSE: v42 removed tenant from the cache key",
+      "FIX: restore tenant-scoped cache keys and invalidate polluted entries",
+      "WHY: database load was downstream of cross-tenant cache collisions"
+    ],
+    "relaxed_groups": {
+      "CAUSE": [
+        [
+          "v42"
+        ],
+        [
+          "tenant"
+        ],
+        [
+          "cache",
+          "key"
+        ]
+      ],
+      "FIX": [
+        [
+          "tenant",
+          "回滚",
+          "rollback"
+        ],
+        [
+          "cache",
+          "key",
+          "v42"
+        ],
+        [
+          "invalidate",
+          "清理",
+          "flush",
+          "失效",
+          "restore",
+          "修复",
+          "回滚",
+          "rollback"
+        ]
+      ],
+      "WHY": [
+        [
+          "database",
+          "db",
+          "数据库"
+        ],
+        [
+          "downstream",
+          "secondary",
+          "表象",
+          "症状",
+          "反事实"
+        ],
+        [
+          "collision",
+          "cross-tenant",
+          "污染",
+          "串租户",
+          "缺少",
+          "tenant",
+          "cache hit",
+          "hit rate",
+          "命中率",
+          "雪崩"
+        ]
+      ]
+    }
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D7-C01",
+  "legacy_dimension_id": "D7",
+  "legacy_path": "cases/AX/D7/F-D7-C01-counterfactual-incident-rca/case.json"
+}

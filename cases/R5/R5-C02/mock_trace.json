@@ -1,0 +1,68 @@
+{
+  "case_id": "R5-C02",
+  "config_path": "mock://ragent6-1.0.0",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/project/normalizer.py"
+      }
+    },
+    {
+      "name": "edit",
+      "arguments": {
+        "path": "fixtures/project/normalizer.py",
+        "edits": [
+          {
+            "oldText": "return value.strip(\"0\") or \"0\"",
+            "newText": "return value.lstrip(\"0\") or \"0\""
+          }
+        ]
+      }
+    },
+    {
+      "name": "exec",
+      "arguments": {
+        "command": "sh fixtures/project/check.sh"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "normalizer",
+      "details": {}
+    },
+    {
+      "tool_name": "edit",
+      "is_error": false,
+      "text": "applied",
+      "details": {}
+    },
+    {
+      "tool_name": "exec",
+      "is_error": false,
+      "text": "PASS",
+      "details": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "assistant_texts": [
+    "PASS"
+  ],
+  "events_count": 4,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "PASS",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {
+    "fixtures/project/normalizer.py": "def normalize_id(value):\n    return value.lstrip(\"0\") or \"0\"\n"
+  }
+}

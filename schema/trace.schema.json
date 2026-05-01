@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["case_id", "final_answer"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "config_path": {"type": "string"},
+    "returncode": {"type": ["integer", "null"]},
+    "stdout": {"type": "string"},
+    "stderr": {"type": "string"},
+    "events_count": {"type": "integer"},
+    "assistant_message_count": {"type": "integer"},
+    "user_message_count": {"type": "integer"},
+    "tool_calls": {"type": "array"},
+    "tool_results": {"type": "array"},
+    "assistant_texts": {"type": "array"},
+    "final_answer": {"type": "string"},
+    "session_path": {"type": "string"},
+    "aborted": {"type": "boolean"},
+    "workspace_files": {"type": "object"},
+    "turn_runs": {"type": "array"}
+  }
+}

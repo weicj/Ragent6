@@ -1,0 +1,12 @@
+{
+  "case_id": "R3-C04",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "{\"release\":\"r42\",\"window\":{\"start\":\"02:00\",\"end\":\"02:20\"},\"steps\":[\"snapshot\",\"dry-run\",\"apply\",\"verify\"],\"rollback\":{\"enabled\":true,\"trigger\":\"error_rate>1%\"},\"owners\":[\"api\",\"db\"]}"
+  ],
+  "final_answer": "{\"release\":\"r42\",\"window\":{\"start\":\"02:00\",\"end\":\"02:20\"},\"steps\":[\"snapshot\",\"dry-run\",\"apply\",\"verify\"],\"rollback\":{\"enabled\":true,\"trigger\":\"error_rate>1%\"},\"owners\":[\"api\",\"db\"]}",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

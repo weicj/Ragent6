@@ -1,0 +1,119 @@
+{
+  "case_id": "R5-C03",
+  "dimension_id": "R5",
+  "title": "Five-turn state rollbacks",
+  "objective": "Maintain all state fields through approval, rollback, and partial update turns.",
+  "checker": "state_update_override",
+  "allowed_tools": [],
+  "runner_mode": "multi_turn",
+  "max_turns": 5,
+  "followup_prompt_files": [
+    "followup1.txt",
+    "followup2.txt",
+    "followup3.txt",
+    "followup4.txt"
+  ],
+  "expected": {
+    "answers_by_turn_groups": [
+      [
+        [
+          "route=blue"
+        ],
+        [
+          "limit=20"
+        ],
+        [
+          "mode=observe"
+        ],
+        [
+          "owner=alpha"
+        ],
+        [
+          "reject=none"
+        ]
+      ],
+      [
+        [
+          "route=green"
+        ],
+        [
+          "limit=20"
+        ],
+        [
+          "mode=observe"
+        ],
+        [
+          "owner=alpha"
+        ],
+        [
+          "reject=blue"
+        ]
+      ],
+      [
+        [
+          "route=green"
+        ],
+        [
+          "limit=35"
+        ],
+        [
+          "mode=safe"
+        ],
+        [
+          "owner=beta"
+        ],
+        [
+          "reject=blue"
+        ]
+      ],
+      [
+        [
+          "route=blue"
+        ],
+        [
+          "limit=35"
+        ],
+        [
+          "mode=safe"
+        ],
+        [
+          "owner=beta"
+        ],
+        [
+          "reject=green"
+        ],
+        [
+          "reason=rollback"
+        ]
+      ],
+      [
+        [
+          "route=blue"
+        ],
+        [
+          "limit=40"
+        ],
+        [
+          "mode=safe"
+        ],
+        [
+          "owner=beta"
+        ],
+        [
+          "reject=green"
+        ],
+        [
+          "reason=capacity"
+        ]
+      ]
+    ]
+  },
+  "audit_tier": "precision",
+  "prompt_file": "prompt.txt",
+  "timeout_seconds": 120,
+  "max_tool_calls": null,
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "PV10-P04-five-turn-state-rollbacks",
+  "legacy_dimension_id": "P2",
+  "legacy_path": "cases/PV10/P04-five-turn-state-rollbacks/case.json"
+}

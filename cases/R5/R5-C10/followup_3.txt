@@ -1,0 +1,1 @@
+priority=high seq=4 target=gold，覆盖之前 high。只输出 target。

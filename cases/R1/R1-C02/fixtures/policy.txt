@@ -1,0 +1,7 @@
+Hard constraints:
+- mode must be offline
+- risk must be <= 2
+- latency must be <= 30
+Tie-breakers:
+- lower cost wins
+- if cost ties, lower latency wins

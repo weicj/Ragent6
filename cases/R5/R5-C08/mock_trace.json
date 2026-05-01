@@ -1,0 +1,40 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/initial.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/latest.txt"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "alpha",
+    "omega"
+  ],
+  "final_answer": "omega",
+  "workspace_files": {},
+  "case_id": "R5-C08"
+}

@@ -1,0 +1,84 @@
+{
+  "case_id": "R2-C09",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/index.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/active-map.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/owners.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/build.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/root.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/fix.md"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "index",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "active map",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "owner: search-runtime",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "rollback_version: v58",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "root: tenant locale missing from router cache key",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "mitigation: rebuild route-table",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "Owner search-runtime should roll back to v58 because tenant locale was missing from the router cache key; mitigation is to rebuild the route-table before replay."
+  ],
+  "final_answer": "Owner search-runtime should roll back to v58 because tenant locale was missing from the router cache key; mitigation is to rebuild the route-table before replay.",
+  "workspace_files": {}
+}

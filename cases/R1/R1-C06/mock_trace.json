@@ -1,0 +1,68 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/policy.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/events.log"
+      }
+    },
+    {
+      "name": "write",
+      "arguments": {
+        "path": "fixtures/decision.json",
+        "content": "{\"target\":\"blue-7\",\"reason\":\"newest live canary not revoked\"}\n"
+      }
+    },
+    {
+      "name": "exec",
+      "arguments": {
+        "command": "python3 -m json.tool fixtures/decision.json"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "write",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "exec",
+      "is_error": false,
+      "text": "ok\n",
+      "details": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "assistant_texts": [
+    "OK"
+  ],
+  "final_answer": "OK",
+  "workspace_files": {
+    "fixtures/decision.json": "{\"target\":\"blue-7\",\"reason\":\"newest live canary not revoked\"}\n"
+  },
+  "case_id": "R1-C06"
+}

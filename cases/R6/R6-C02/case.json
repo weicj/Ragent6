@@ -1,0 +1,61 @@
+{
+  "case_id": "R6-C02",
+  "dimension_id": "R6",
+  "audit_tier": "frontier",
+  "title": "真实事故链路 RCA",
+  "objective": "从多条现象和诱饵中识别真正因果链，并给出固定标签结论。",
+  "prompt_file": "prompt.txt",
+  "checker": "exact_labeled_lines",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 90,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "exact_lines": [
+      "CAUSE: config rollout disabled session stickiness before cache warmup",
+      "FIX: restore stickiness and warm cache before rollout",
+      "VERIFY: compare 5xx rate and cache hit rate after rollback"
+    ],
+    "relaxed_groups": {
+      "CAUSE": [
+        [
+          "stickiness",
+          "粘性",
+          "会话保持"
+        ],
+        [
+          "cache",
+          "缓存"
+        ]
+      ],
+      "FIX": [
+        [
+          "restore",
+          "恢复",
+          "开启",
+          "重新开启"
+        ],
+        [
+          "warm",
+          "预热"
+        ]
+      ],
+      "VERIFY": [
+        [
+          "5xx"
+        ],
+        [
+          "cache hit",
+          "命中率"
+        ]
+      ]
+    }
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "RC2-R6-C01",
+  "legacy_dimension_id": "R6",
+  "legacy_path": "cases/RC2/R6/RC2-R6-C01-realistic-incident-rca/case.json"
+}

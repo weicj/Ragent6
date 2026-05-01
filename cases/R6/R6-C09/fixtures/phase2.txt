@@ -1,0 +1,2 @@
+dry-run activate shard=s2
+s2 route=r-222 live=true

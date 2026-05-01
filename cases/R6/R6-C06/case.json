@@ -1,0 +1,69 @@
+{
+  "case_id": "R6-C06",
+  "dimension_id": "R6",
+  "audit_tier": "frontier",
+  "title": "双诱饵因果链",
+  "objective": "识别根因而不是两个表面诱饵。",
+  "prompt_file": "prompt.txt",
+  "checker": "exact_labeled_lines",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "exact_lines": [
+      "CAUSE: token expired before the retry storm",
+      "FIX: refresh the token and then restart the client",
+      "WHY: CPU and timeout symptoms were downstream of authentication failure"
+    ],
+    "relaxed_groups": {
+      "CAUSE": [
+        [
+          "token",
+          "令牌"
+        ],
+        [
+          "expired",
+          "过期"
+        ]
+      ],
+      "FIX": [
+        [
+          "refresh",
+          "刷新",
+          "renew",
+          "重新获取"
+        ],
+        [
+          "token",
+          "令牌"
+        ]
+      ],
+      "WHY": [
+        [
+          "cpu",
+          "timeout",
+          "超时"
+        ],
+        [
+          "downstream",
+          "symptom",
+          "表象",
+          "症状",
+          "无法解决",
+          "根本",
+          "资源消耗",
+          "请求堆积",
+          "重试风暴"
+        ]
+      ]
+    }
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D6-C01",
+  "legacy_dimension_id": "D6",
+  "legacy_path": "cases/FR/D6/F-D6-C01-causal-chain-two-decoys/case.json"
+}

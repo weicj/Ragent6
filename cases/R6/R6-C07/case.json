@@ -1,0 +1,90 @@
+{
+  "case_id": "R6-C07",
+  "dimension_id": "R6",
+  "audit_tier": "frontier",
+  "title": "跨租户缓存事故 RCA",
+  "objective": "从多条诱饵线索中给出根因、修复、原因解释和拒绝项。",
+  "prompt_file": "prompt.txt",
+  "mock_trace_file": "mock_trace.json",
+  "checker": "exact_labeled_lines",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "exact_lines": [
+      "CAUSE: v42 cache key dropped tenant_id",
+      "FIX: rollback to v41 and invalidate affected tenant cache",
+      "WHY: collisions appeared after v42 reused keys across tenants",
+      "REJECT: db restart and timeout increase are decoys"
+    ],
+    "relaxed_groups": {
+      "CAUSE": [
+        [
+          "v42"
+        ],
+        [
+          "cache"
+        ],
+        [
+          "tenant_id",
+          "tenant id",
+          "tenant"
+        ]
+      ],
+      "FIX": [
+        [
+          "rollback",
+          "v41"
+        ],
+        [
+          "invalidate",
+          "flush"
+        ],
+        [
+          "tenant"
+        ]
+      ],
+      "WHY": [
+        [
+          "collision",
+          "collisions",
+          "reused",
+          "same user_id",
+          "same user",
+          "share cached",
+          "shared cached"
+        ],
+        [
+          "tenant",
+          "cross-tenant"
+        ]
+      ],
+      "REJECT": [
+        [
+          "db restart",
+          "restart"
+        ],
+        [
+          "timeout"
+        ]
+      ]
+    },
+    "relaxed_forbidden": {
+      "CAUSE": [
+        "database",
+        "timeout"
+      ],
+      "FIX": [
+        "raise timeout",
+        "restart db"
+      ]
+    }
+  },
+  "legacy_case_id": "B6-R6-C01",
+  "legacy_dimension_id": "D6",
+  "legacy_path": "cases/B6/R6/B6-R6-C01-tenant-cache-rca/case.json"
+}

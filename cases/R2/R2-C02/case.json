@@ -1,0 +1,44 @@
+{
+  "case_id": "R2-C02",
+  "dimension_id": "R2",
+  "audit_tier": "discriminative",
+  "title": "三源证据优先级",
+  "objective": "必须综合 policy、primary、override 三源后得出最终答案。",
+  "prompt_file": "prompt.txt",
+  "checker": "required_reads_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/channel.txt"
+    },
+    {
+      "path": "fixtures/override.json"
+    },
+    {
+      "path": "fixtures/policy.txt"
+    },
+    {
+      "path": "fixtures/primary.json"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 60,
+  "max_turns": 2,
+  "max_tool_calls": 4,
+  "followup_prompt_files": [],
+  "expected": {
+    "required_reads": [
+      "fixtures/channel.txt",
+      "fixtures/policy.txt",
+      "fixtures/primary.json",
+      "fixtures/override.json"
+    ],
+    "final_answer": "telegram:tg-220011"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D2-C06-three-source-precedence",
+  "legacy_dimension_id": "D2",
+  "legacy_path": "cases/D2/D2-C06-three-source-precedence/case.json"
+}

@@ -1,0 +1,1 @@
+请读取 `fixtures/policy.txt`、`fixtures/route.json`、`fixtures/channel.txt`。按策略只回复最终对外可见结果，不要解释。

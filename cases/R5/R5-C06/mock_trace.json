@@ -1,0 +1,15 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "api",
+    "readonly_check_worker",
+    "advise_only_if_stale_process"
+  ],
+  "final_answer": "advise_only_if_stale_process",
+  "workspace_files": {},
+  "case_id": "R5-C06"
+}

@@ -1,0 +1,4 @@
+For tenant isolation cache incidents:
+1. restore the tenant namespace in the key;
+2. flush affected cache entries because polluted entries remain valid until cleared;
+3. verify tenant isolation before ending the incident.

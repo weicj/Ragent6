@@ -1,0 +1,1 @@
+Net amount = settled order amount plus non-reversal adjustments. Any reversal on an id cancels that order.

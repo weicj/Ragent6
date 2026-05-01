@@ -1,0 +1,1 @@
+请读取 `fixtures/input.csv` 和 `fixtures/region.txt`，生成 `fixtures/report.json`。结果必须包含 `region`、`items`、`count` 三个字段，其中 `items` 为 `svc:target` 列表，`count` 为条目数。运行 `python3 fixtures/check.py` 后只回复 `PASS`。

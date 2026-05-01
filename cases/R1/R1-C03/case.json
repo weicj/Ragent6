@@ -1,0 +1,51 @@
+{
+  "case_id": "R1-C03",
+  "dimension_id": "R1",
+  "audit_tier": "discriminative",
+  "title": "把输入表转换成工件",
+  "objective": "读取本地输入并生成派生字段正确的 JSON 工件。",
+  "prompt_file": "prompt.txt",
+  "checker": "artifact_verification",
+  "fixtures": [
+    {
+      "path": "fixtures/check.py"
+    },
+    {
+      "path": "fixtures/input.csv"
+    },
+    {
+      "path": "fixtures/region.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "write",
+    "exec"
+  ],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 120,
+  "max_turns": 4,
+  "max_tool_calls": 5,
+  "followup_prompt_files": [],
+  "expected": {
+    "edited_file": "fixtures/report.json",
+    "required_reads": [
+      "fixtures/input.csv",
+      "fixtures/region.txt"
+    ],
+    "expected_json": {
+      "region": "sh",
+      "items": [
+        "svc-a:tg-1001",
+        "svc-b:tg-1002"
+      ],
+      "count": 2
+    },
+    "verify_command_contains": "fixtures/check.py",
+    "final_answer": "PASS"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D1-C09-transform-csv-to-json",
+  "legacy_dimension_id": "D1",
+  "legacy_path": "cases/D1/D1-C09-transform-csv-to-json/case.json"
+}

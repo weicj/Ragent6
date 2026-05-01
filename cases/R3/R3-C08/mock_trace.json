@@ -1,0 +1,13 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "CAUSE: disk full blocked the writer queue\nFIX: free disk space and restart the writer\nWHY: CPU spike was a downstream symptom"
+  ],
+  "final_answer": "CAUSE: disk full blocked the writer queue\nFIX: free disk space and restart the writer\nWHY: CPU spike was a downstream symptom",
+  "workspace_files": {},
+  "case_id": "R3-C08"
+}

@@ -1,0 +1,10 @@
+{
+  "case_id": "R6-C05",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "CAUSE: tenant locale missing from router cache key\nCOUNTERFACTUAL: if locale stayed in the key, queue retries would not matter\nFIX: rollback to v58 and rebuild route-table\nREJECT: increase-retries and restart-workers"
+  ],
+  "final_answer": "CAUSE: tenant locale missing from router cache key\nCOUNTERFACTUAL: if locale stayed in the key, queue retries would not matter\nFIX: rollback to v58 and rebuild route-table\nREJECT: increase-retries and restart-workers",
+  "workspace_files": {}
+}

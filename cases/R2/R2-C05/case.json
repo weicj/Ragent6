@@ -1,0 +1,43 @@
+{
+  "case_id": "R2-C05",
+  "dimension_id": "R2",
+  "audit_tier": "discriminative",
+  "title": "中文索引定位并忽略过期文档",
+  "objective": "读取中文索引，跟随指针到最终文档，忽略同目录旧方案。",
+  "prompt_file": "prompt.txt",
+  "checker": "required_reads_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/index.md"
+    },
+    {
+      "path": "fixtures/docs/final.md"
+    },
+    {
+      "path": "fixtures/docs/stale.md"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 120,
+  "max_turns": 4,
+  "max_tool_calls": 4,
+  "followup_prompt_files": [],
+  "expected": {
+    "required_reads": [
+      "fixtures/index.md",
+      "fixtures/docs/final.md"
+    ],
+    "final_answer": "结论：采用 delta-17，负责人是林岚",
+    "final_answer_exclude": [
+      "alpha-9",
+      "赵旧"
+    ]
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "RC2-R2-C02",
+  "legacy_dimension_id": "R2",
+  "legacy_path": "cases/RC2/R2/RC2-R2-C02-chinese-index-longdoc/case.json"
+}

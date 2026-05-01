@@ -1,0 +1,23 @@
+{
+  "case_id": "R2-C07",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/rollback.env"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "SERVICE_ID=svc-live-991\nSTATE=rollback-applied\n",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "svc-live-991"
+  ],
+  "final_answer": "svc-live-991"
+}

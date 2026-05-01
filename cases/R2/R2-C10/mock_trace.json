@@ -1,0 +1,51 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/request.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/capabilities.csv"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/denylist.txt"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "ok",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "d"
+  ],
+  "final_answer": "d",
+  "workspace_files": {},
+  "case_id": "R2-C10"
+}

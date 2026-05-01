@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["case_id", "review_state"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "review_state": {"enum": ["draft", "reviewed", "approved", "retired"]},
+    "reviewers": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": "string"}
+  }
+}

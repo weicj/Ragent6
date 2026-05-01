@@ -1,0 +1,47 @@
+{
+  "case_id": "R2-C03",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/policy.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/route.json"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/channel.txt"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "if channel=external then output MASKED:last4(target) else output target\n",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "{\"target\":\"tg-991188\"}\n",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "external\n",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "MASKED:1188"
+  ],
+  "final_answer": "MASKED:1188"
+}

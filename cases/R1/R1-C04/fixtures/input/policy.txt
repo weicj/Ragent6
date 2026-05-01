@@ -1,0 +1,2 @@
+currency=USD
+ship_mode=ground

@@ -1,0 +1,4 @@
+DB pool: normal connections, normal queue, no saturation.
+Network: no packet loss.
+Cache: elevated cross-tenant hits after rollout.
+Latency increase is downstream of auth retries, not the initiating fault.

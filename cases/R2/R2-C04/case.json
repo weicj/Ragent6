@@ -1,0 +1,68 @@
+{
+  "case_id": "R2-C04",
+  "dimension_id": "R2",
+  "audit_tier": "frontier",
+  "title": "指针仲裁证据综合",
+  "objective": "从索引和多份证据中综合 owner、rollback 和 root cause，避开撤回诱饵。",
+  "prompt_file": "prompt.txt",
+  "mock_trace_file": "mock_trace.json",
+  "checker": "required_reads_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/index.md"
+    },
+    {
+      "path": "fixtures/shard-a.md"
+    },
+    {
+      "path": "fixtures/shard-b.md"
+    },
+    {
+      "path": "fixtures/shard-c.md"
+    },
+    {
+      "path": "fixtures/retired-owner.md"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 120,
+  "max_turns": 4,
+  "max_tool_calls": 4,
+  "followup_prompt_files": [],
+  "expected": {
+    "required_reads": [
+      "fixtures/index.md",
+      "fixtures/shard-a.md",
+      "fixtures/shard-b.md",
+      "fixtures/shard-c.md"
+    ],
+    "forbidden_reads": [
+      "fixtures/retired-owner.md"
+    ],
+    "final_answer": "",
+    "final_answer_groups": [
+      [
+        "storage-core"
+      ],
+      [
+        "rollback",
+        "v42"
+      ],
+      [
+        "tenantless",
+        "key"
+      ]
+    ],
+    "final_answer_exclude": [
+      "payments",
+      "network-team",
+      "v39"
+    ]
+  },
+  "legacy_case_id": "B6-R2-C01",
+  "legacy_dimension_id": "D2",
+  "legacy_path": "cases/B6/R2/B6-R2-C01-pointer-quorum-evidence/case.json"
+}

@@ -1,0 +1,3 @@
+activate shard=s1
+s1 route=r-100 live=true
+s2 route=r-200 live=true

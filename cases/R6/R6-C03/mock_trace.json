@@ -1,0 +1,70 @@
+{
+  "case_id": "R6-C03",
+  "config_path": "mock",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/policy.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/window-1.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/window-2.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/stale.txt"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "policy",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "w1",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "w2",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "stale",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "incident=AUTHZ-41 severity=SEV1 owner=authz-core cause=deny-spike-window reject=global-cache"
+  ],
+  "events_count": 10,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "incident=AUTHZ-41 severity=SEV1 owner=authz-core cause=deny-spike-window reject=global-cache",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

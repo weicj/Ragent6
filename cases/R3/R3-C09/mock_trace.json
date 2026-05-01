@@ -1,0 +1,20 @@
+{
+  "case_id": "R3-C09",
+  "config_path": "mock",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "find services/auth/cache -type f -name '*.tmp' -print\nfind services/auth/cache -type f -name '*.tmp' -print | wc -l\necho preview_only"
+  ],
+  "events_count": 2,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "find services/auth/cache -type f -name '*.tmp' -print\nfind services/auth/cache -type f -name '*.tmp' -print | wc -l\necho preview_only",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

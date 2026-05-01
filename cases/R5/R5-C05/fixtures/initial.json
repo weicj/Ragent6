@@ -1,0 +1,1 @@
+{"service":"gateway","revision":3,"route":{"target":"tg-old-1000","region":"sh","priority":1},"flags":{"mode":"drain","safe":true},"legacy":"keep"}

@@ -1,0 +1,4 @@
+{"ts":"10:01","incident":"inc-481","signal":"timeout spike","candidate":"raise-timeout","note":"decoy: hides failures"}
+{"ts":"10:04","incident":"inc-481","signal":"cross-tenant cache hit","candidate":"tenantless-cache-key","tenant":"acme"}
+{"ts":"10:06","incident":"inc-481","signal":"api restart unchanged","candidate":"restart-api","note":"decoy: restart did not change hit rate"}
+{"ts":"10:09","incident":"inc-481","signal":"replay from tenant-scoped key succeeds","candidate":"quarantine-and-replay"}

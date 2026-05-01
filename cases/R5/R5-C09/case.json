@@ -1,0 +1,30 @@
+{
+  "case_id": "R5-C09",
+  "dimension_id": "R5",
+  "audit_tier": "frontier",
+  "title": "修复格式后再更新状态",
+  "objective": "处理坏 JSON 的语义并在后续按 revision 更新。",
+  "prompt_file": "prompt.txt",
+  "checker": "state_update_override",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 5,
+  "max_tool_calls": 0,
+  "followup_prompt_files": [
+    "followup_1.txt",
+    "followup_2.txt"
+  ],
+  "expected": {
+    "answers_by_turn": [
+      "a",
+      "a",
+      "b"
+    ]
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D5-C04",
+  "legacy_dimension_id": "D5",
+  "legacy_path": "cases/FR/D5/F-D5-C04-invalid-json-repair-then-update/case.json"
+}

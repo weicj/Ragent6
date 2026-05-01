@@ -1,0 +1,49 @@
+{
+  "case_id": "R3-C04",
+  "dimension_id": "R3",
+  "audit_tier": "precision",
+  "title": "发布计划 JSON",
+  "objective": "从复杂约束中生成严格结构化发布计划。",
+  "prompt_file": "prompt.txt",
+  "checker": "canonical_json",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 90,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "mock_trace_file": "mock_trace.json",
+  "expected": {
+    "allow_markdown_fence": true,
+    "json": {
+      "release": "r42",
+      "window": {
+        "start": "02:00",
+        "end": "02:20"
+      },
+      "steps": [
+        "snapshot",
+        "dry-run",
+        "apply",
+        "verify"
+      ],
+      "rollback": {
+        "enabled": true,
+        "trigger": "error_rate>1%"
+      },
+      "owners": [
+        "api",
+        "db"
+      ]
+    },
+    "forbidden_keys": [
+      "notes",
+      "markdown",
+      "comment"
+    ]
+  },
+  "legacy_case_id": "PP-P6-release-json",
+  "legacy_dimension_id": "P3",
+  "legacy_path": "cases/PP/P6-release-json/case.json"
+}

@@ -1,0 +1,83 @@
+{
+  "case_id": "R5-C04",
+  "dimension_id": "R5",
+  "title": "Bilingual state priority",
+  "objective": "Track bilingual updates and avoid restoring explicitly removed values.",
+  "checker": "state_update_override",
+  "allowed_tools": [],
+  "runner_mode": "multi_turn",
+  "max_turns": 4,
+  "followup_prompt_files": [
+    "followup1.txt",
+    "followup2.txt",
+    "followup3.txt"
+  ],
+  "expected": {
+    "answers_by_turn_groups": [
+      [
+        [
+          "owner=ops"
+        ],
+        [
+          "region=us"
+        ],
+        [
+          "flags=dark,beta"
+        ],
+        [
+          "note=none"
+        ]
+      ],
+      [
+        [
+          "owner=ops"
+        ],
+        [
+          "region=eu"
+        ],
+        [
+          "flags=beta"
+        ],
+        [
+          "note=中文确认"
+        ]
+      ],
+      [
+        [
+          "owner=core"
+        ],
+        [
+          "region=eu"
+        ],
+        [
+          "flags=beta,canary"
+        ],
+        [
+          "note=中文确认"
+        ]
+      ],
+      [
+        [
+          "owner=core"
+        ],
+        [
+          "region=ap"
+        ],
+        [
+          "flags=canary"
+        ],
+        [
+          "note=final"
+        ]
+      ]
+    ]
+  },
+  "audit_tier": "foundational",
+  "prompt_file": "prompt.txt",
+  "timeout_seconds": 120,
+  "max_tool_calls": null,
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "PV10-P05-bilingual-state-priority",
+  "legacy_dimension_id": "P2",
+  "legacy_path": "cases/PV10/P05-bilingual-state-priority/case.json"
+}

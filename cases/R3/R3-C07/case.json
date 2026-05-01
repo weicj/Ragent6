@@ -1,0 +1,21 @@
+{
+  "case_id": "R3-C07",
+  "dimension_id": "R3",
+  "audit_tier": "foundational",
+  "title": "可应用的 unified diff",
+  "objective": "输出固定 unified diff，不带 markdown fences",
+  "prompt_file": "prompt.txt",
+  "checker": "exact_text",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 30,
+  "max_turns": 1,
+  "expected": {
+    "final_answer": "--- a/app.py\n+++ b/app.py\n@@\n-print(\"helo\")\n+print(\"hello\")"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D3-C02-unified-diff-applyable",
+  "legacy_dimension_id": "D3",
+  "legacy_path": "cases/D3/D3-C02-unified-diff-applyable/case.json"
+}

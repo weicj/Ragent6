@@ -1,0 +1,1 @@
+Final adjustment: only limit changes to 40 and reason becomes capacity. Keep every other latest field.

@@ -1,0 +1,60 @@
+{
+  "case_id": "R1-C01",
+  "dimension_id": "R1",
+  "audit_tier": "frontier",
+  "title": "事故补救 JSON 产物闭环",
+  "objective": "读取事件和策略，生成补救 JSON，拒绝诱饵修复，并运行本地校验。",
+  "prompt_file": "prompt.txt",
+  "mock_trace_file": "mock_trace.json",
+  "checker": "artifact_verification",
+  "fixtures": [
+    {
+      "path": "fixtures/events.ndjson"
+    },
+    {
+      "path": "fixtures/policy.json"
+    },
+    {
+      "path": "fixtures/check.py"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "write",
+    "exec"
+  ],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 120,
+  "max_turns": 5,
+  "max_tool_calls": 6,
+  "followup_prompt_files": [],
+  "expected": {
+    "edited_file": "fixtures/remediation.json",
+    "required_reads": [
+      "fixtures/events.ndjson",
+      "fixtures/policy.json"
+    ],
+    "expected_json": {
+      "incident": "inc-481",
+      "primary_root": "tenantless-cache-key",
+      "selected_action": "quarantine-and-replay",
+      "reject": [
+        "restart-api",
+        "raise-timeout"
+      ],
+      "guards": {
+        "dry_run": true,
+        "tenant_scope": true
+      },
+      "verify": [
+        "tenant-isolation",
+        "replay-window"
+      ]
+    },
+    "verify_command_contains": "fixtures/check.py",
+    "final_answer": "PASS"
+  },
+  "legacy_case_id": "B6-R1-C01",
+  "legacy_dimension_id": "D1",
+  "legacy_path": "cases/B6/R1/B6-R1-C01-incident-remediation-artifact/case.json"
+}

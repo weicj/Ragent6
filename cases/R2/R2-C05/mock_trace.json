@@ -1,0 +1,46 @@
+{
+  "case_id": "R2-C05",
+  "config_path": "mock://ragent6-1.0.0",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/index.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/docs/final.md"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "index",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "final",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "结论：采用 delta-17，负责人是林岚"
+  ],
+  "events_count": 3,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "结论：采用 delta-17，负责人是林岚",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

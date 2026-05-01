@@ -1,0 +1,15 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "a",
+    "a",
+    "b"
+  ],
+  "final_answer": "b",
+  "workspace_files": {},
+  "case_id": "R5-C09"
+}

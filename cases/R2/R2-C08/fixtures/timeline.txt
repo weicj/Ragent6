@@ -1,0 +1,4 @@
+10:00 auth rollout deployed cache-key refactor.
+10:03 permission checks started returning grants from another tenant.
+10:06 retries increased and latency rose after the auth failures.
+10:09 someone suggested increasing timeout and restarting the DB pool.

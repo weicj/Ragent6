@@ -1,0 +1,64 @@
+{
+  "case_id": "R5-C07",
+  "dimension_id": "R5",
+  "audit_tier": "frontier",
+  "title": "撤回发布状态更新",
+  "objective": "多轮对话中先给出当前发布结论，再根据撤回和新证据覆盖旧结论。",
+  "prompt_file": "prompt1.txt",
+  "mock_trace_file": "mock_trace.json",
+  "checker": "state_update_override",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 90,
+  "max_turns": 3,
+  "followup_prompt_files": [
+    "prompt2.txt",
+    "prompt3.txt"
+  ],
+  "expected": {
+    "answers_by_turn_groups": [
+      [
+        [
+          "v58"
+        ],
+        [
+          "canary"
+        ],
+        [
+          "search-runtime"
+        ]
+      ],
+      [
+        [
+          "hold",
+          "cannot deploy",
+          "do not deploy",
+          "不能部署",
+          "停止"
+        ],
+        [
+          "revoked",
+          "撤回"
+        ],
+        [
+          "v58"
+        ]
+      ],
+      [
+        [
+          "v57"
+        ],
+        [
+          "rollback"
+        ],
+        [
+          "route-table"
+        ]
+      ]
+    ]
+  },
+  "legacy_case_id": "B14-R5-C01",
+  "legacy_dimension_id": "D5",
+  "legacy_path": "cases/B14/R5/B14-R5-C01-revoked-rollout-state/case.json"
+}

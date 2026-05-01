@@ -1,0 +1,1 @@
+收到片段 `{"revision":3,"slot":"a",}`，容错识别 slot，只输出 slot。

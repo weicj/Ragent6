@@ -1,0 +1,23 @@
+{
+  "case_id": "R6-C08",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/routes.txt"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "[r1] target=tg-100 priority=10 state=live health=ok revoked=false\n[r2] target=tg-200 priority=30 state=live health=fail revoked=false\n[r3] target=tg-300 priority=40 state=shadow health=ok revoked=false\n[r4] target=tg-400 priority=25 state=live health=ok revoked=false\n[rules]\n1. discard rows where state is not live\n2. discard rows where health is not ok\n3. discard rows where revoked is true\n4. among remaining rows choose the one with the highest numeric priority\n5. output only that row target\n",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "tg-400"
+  ],
+  "final_answer": "tg-400"
+}

@@ -1,0 +1,47 @@
+{
+  "case_id": "R1-C02",
+  "dimension_id": "R1",
+  "audit_tier": "precision",
+  "title": "构建决策产物",
+  "objective": "读取多份事实，写出可消费 JSON 决策文件。",
+  "prompt_file": "prompt.txt",
+  "checker": "artifact_verification",
+  "fixtures": [
+    {
+      "path": "fixtures/options.csv"
+    },
+    {
+      "path": "fixtures/policy.txt"
+    },
+    {
+      "path": "fixtures/check.sh"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "write",
+    "exec"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 150,
+  "max_turns": 7,
+  "max_tool_calls": 8,
+  "mock_trace_file": "mock_trace.json",
+  "followup_prompt_files": [],
+  "expected": {
+    "edited_file": "fixtures/decision.json",
+    "must_contain": "\"winner\": \"delta\"",
+    "required_reads": [
+      "fixtures/options.csv",
+      "fixtures/policy.txt"
+    ],
+    "verify_command_contains": "fixtures/check.sh",
+    "final_answer": "DECISION_READY",
+    "final_answer_alternatives": [
+      "PASS"
+    ]
+  },
+  "legacy_case_id": "PP-P11-build-decision-artifact",
+  "legacy_dimension_id": "P5",
+  "legacy_path": "cases/PP/P11-build-decision-artifact/case.json"
+}

@@ -1,0 +1,54 @@
+{
+  "case_id": "R2-C08",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/timeline.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/metrics.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/diff.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/runbook.txt"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "text": "10:00 auth rollout deployed cache-key refactor.\n10:03 permission checks started returning grants from another tenant.\n10:06 retries increased and latency rose after the auth failures.\n10:09 someone suggested increasing timeout and restarting the DB pool.",
+      "details": {}
+    },
+    {
+      "text": "DB pool: normal connections, normal queue, no saturation.\nNetwork: no packet loss.\nCache: elevated cross-tenant hits after rollout.\nLatency increase is downstream of auth retries, not the initiating fault.",
+      "details": {}
+    },
+    {
+      "text": "before: key = tenant_id + \":\" + user_id + \":\" + scope\nafter:  key = user_id + \":\" + scope\nreview note: tenant_id was accidentally removed from the auth cache key.",
+      "details": {}
+    },
+    {
+      "text": "For tenant isolation cache incidents:\n1. restore the tenant namespace in the key;\n2. flush affected cache entries because polluted entries remain valid until cleared;\n3. verify tenant isolation before ending the incident.",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "root=tenantless-cache-key action=restore-tenant-key-and-flush-affected-cache"
+  ],
+  "final_answer": "root=tenantless-cache-key action=restore-tenant-key-and-flush-affected-cache",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

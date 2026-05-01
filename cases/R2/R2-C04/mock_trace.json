@@ -1,0 +1,60 @@
+{
+  "case_id": "R2-C04",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/index.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/shard-a.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/shard-b.md"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/shard-c.md"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "index",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "owner: storage-core",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "rollback: v42",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "root: tenantless key reuse",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "owner=storage-core; rollback=v42; root=tenantless key reuse"
+  ],
+  "final_answer": "owner=storage-core; rollback=v42; root=tenantless key reuse",
+  "workspace_files": {}
+}

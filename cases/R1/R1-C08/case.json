@@ -1,0 +1,44 @@
+{
+  "case_id": "R1-C08",
+  "dimension_id": "R1",
+  "audit_tier": "frontier",
+  "title": "双账本聚合产物",
+  "objective": "合并两份局部事实，生成最终结算文件并验证。",
+  "prompt_file": "prompt.txt",
+  "checker": "artifact_verification",
+  "fixtures": [
+    {
+      "path": "fixtures/orders.csv"
+    },
+    {
+      "path": "fixtures/adjustments.csv"
+    },
+    {
+      "path": "fixtures/rules.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "write",
+    "exec"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 5,
+  "max_tool_calls": 8,
+  "followup_prompt_files": [],
+  "expected": {
+    "edited_file": "fixtures/settlement.json",
+    "must_contain": "115",
+    "required_reads": [
+      "fixtures/orders.csv",
+      "fixtures/adjustments.csv",
+      "fixtures/rules.txt"
+    ],
+    "final_answer": "SETTLED"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D1-C03",
+  "legacy_dimension_id": "D1",
+  "legacy_path": "cases/FR/D1/F-D1-C03-join-two-ledgers/case.json"
+}

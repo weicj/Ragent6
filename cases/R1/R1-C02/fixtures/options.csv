@@ -1,0 +1,5 @@
+id,cost,risk,mode,latency
+alpha,7,1,network,10
+bravo,3,4,offline,8
+charlie,5,2,offline,40
+delta,6,2,offline,18

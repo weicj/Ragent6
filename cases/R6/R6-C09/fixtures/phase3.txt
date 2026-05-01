@@ -1,0 +1,3 @@
+activate shard=s2
+s2 route=r-300 live=true rollback=true
+s2 route=r-301 live=true rollback=false

@@ -1,0 +1,42 @@
+{
+  "case_id": "R3-C05",
+  "dimension_id": "R3",
+  "title": "Compact JSON policy matrix",
+  "objective": "Return a compact JSON decision with exact nested arrays and no prose.",
+  "checker": "canonical_json",
+  "allowed_tools": [],
+  "expected": {
+    "allow_markdown_fence": false,
+    "json": {
+      "decision": "defer",
+      "owner": "storage-core",
+      "blocked_by": [
+        "missing-backup",
+        "unsafe-window"
+      ],
+      "allow": {
+        "dry_run": true,
+        "read_only": true
+      },
+      "deny": [
+        "apply-patch",
+        "restart-service"
+      ]
+    },
+    "forbidden_keys": [
+      "notes",
+      "summary",
+      "explanation"
+    ]
+  },
+  "audit_tier": "precision",
+  "prompt_file": "prompt.txt",
+  "timeout_seconds": 120,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "PV9-P09-compact-json-policy-matrix",
+  "legacy_dimension_id": "P3",
+  "legacy_path": "cases/PV9/P09-compact-json-policy-matrix/case.json"
+}

@@ -1,0 +1,8 @@
+Return a single JSON object for release r42. No explanation, no extra keys.
+
+Constraints:
+- The key must be exactly `window`; do not use `maintenance_window`.
+- window.start is 02:00 and window.end is 02:20
+- exact steps in order: snapshot, dry-run, apply, verify
+- rollback is enabled and trigger is error_rate>1%
+- owners are api and db, in that order

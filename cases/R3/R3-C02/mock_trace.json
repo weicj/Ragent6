@@ -1,0 +1,6 @@
+{
+  "case_id": "R3-C02",
+  "tool_calls": [],
+  "tool_results": [],
+  "final_answer": "CAUSE: stale process 95903 still holds port 9060\nFIX: kill 95903 and restart gateway\nWHY: bind failed because the port was already occupied"
+}

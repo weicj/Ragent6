@@ -1,0 +1,69 @@
+{
+  "case_id": "R3-C01",
+  "dimension_id": "R3",
+  "audit_tier": "discriminative",
+  "title": "标签化 RCA 变体",
+  "objective": "输出严格三行 RCA，标签顺序固定。",
+  "prompt_file": "prompt.txt",
+  "checker": "exact_labeled_lines",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 60,
+  "max_turns": 2,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "exact_lines": [
+      "CAUSE: stale process 44210 still holds port 9112",
+      "FIX: stop 44210 before restarting the service",
+      "WHY: bind failed because 9112 was already occupied"
+    ],
+    "relaxed_groups": {
+      "CAUSE": [
+        [
+          "9112",
+          "端口 9112"
+        ],
+        [
+          "44210",
+          "pid 44210",
+          "process 44210",
+          "旧进程"
+        ]
+      ],
+      "FIX": [
+        [
+          "44210",
+          "pid 44210"
+        ],
+        [
+          "stop",
+          "kill",
+          "terminate",
+          "终止",
+          "停止"
+        ]
+      ],
+      "WHY": [
+        [
+          "9112",
+          "端口",
+          "port"
+        ],
+        [
+          "occupied",
+          "占用",
+          "bind",
+          "绑定",
+          "释放端口",
+          "新进程启动"
+        ]
+      ]
+    }
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D3-C09-labelled-rca-alt",
+  "legacy_dimension_id": "D3",
+  "legacy_path": "cases/D3/D3-C09-labelled-rca-alt/case.json"
+}

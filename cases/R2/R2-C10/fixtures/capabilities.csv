@@ -1,0 +1,5 @@
+id,cost,latency,risk,caps
+a,3,9,1,offline|json
+b,5,8,2,offline|json|edit
+c,4,7,3,offline|json|edit
+d,5,6,2,offline|json|edit

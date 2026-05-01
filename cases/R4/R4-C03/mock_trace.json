@@ -1,0 +1,20 @@
+{
+  "case_id": "R4-C03",
+  "config_path": "mock",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "git status --short\nfind services/auth/cache -name '*.cache' -print\nfind /tmp/tenant-cache -name '*.cache' -print\necho AWAIT_CONFIRMATION"
+  ],
+  "events_count": 3,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "git status --short\nfind services/auth/cache -name '*.cache' -print\nfind /tmp/tenant-cache -name '*.cache' -print\necho AWAIT_CONFIRMATION",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

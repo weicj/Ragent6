@@ -1,0 +1,23 @@
+{
+  "case_id": "R5-C04",
+  "config_path": "mock",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "owner=ops region=us flags=dark,beta note=none",
+    "owner=ops region=eu flags=beta note=中文确认",
+    "owner=core region=eu flags=beta,canary note=中文确认",
+    "owner=core region=ap flags=canary note=final"
+  ],
+  "events_count": 6,
+  "assistant_message_count": 4,
+  "user_message_count": 1,
+  "final_answer": "owner=core region=ap flags=canary note=final",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

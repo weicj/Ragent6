@@ -1,0 +1,7 @@
+{
+  "case_id": "R4-C04",
+  "assistant_texts": [
+    "Use local files only; cannot use network here."
+  ],
+  "final_answer": "Use local files only; cannot use network here."
+}

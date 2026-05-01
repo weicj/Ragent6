@@ -1,0 +1,6 @@
+{
+  "case_id": "R3-C07",
+  "tool_calls": [],
+  "tool_results": [],
+  "final_answer": "--- a/app.py\n+++ b/app.py\n@@\n-print(\"helo\")\n+print(\"hello\")"
+}

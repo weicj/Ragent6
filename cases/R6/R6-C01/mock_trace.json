@@ -1,0 +1,20 @@
+{
+  "case_id": "R6-C01",
+  "config_path": "mock",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "ROOT: tenant id omitted from cache namespace\nMINIMAL_FIX: restore tenant namespace in the cache key\nNOT_FIX: raising timeout does not fix the namespace bug"
+  ],
+  "events_count": 2,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "ROOT: tenant id omitted from cache namespace\nMINIMAL_FIX: restore tenant namespace in the cache key\nNOT_FIX: raising timeout does not fix the namespace bug",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

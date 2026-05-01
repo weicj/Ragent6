@@ -1,0 +1,1 @@
+Only deploy the newest event with stage=live, kind=canary, revoked=false. Ignore dry-run and shadow events.

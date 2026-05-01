@@ -1,0 +1,58 @@
+{
+  "case_id": "R1-C05",
+  "config_path": "mock",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/rules.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/shard-a.txt"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/shard-b.txt"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "rules",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "a",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "b",
+      "details": {}
+    }
+  ],
+  "assistant_texts": [
+    "ticket=LC-884 owner=runtime-core action=rotate-session-key guard=drain-zone-c reject=restart-workers"
+  ],
+  "events_count": 8,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "ticket=LC-884 owner=runtime-core action=rotate-session-key guard=drain-zone-c reject=restart-workers",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

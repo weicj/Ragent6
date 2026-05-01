@@ -1,0 +1,10 @@
+{
+  "case_id": "R3-C03",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "{\"decision\":\"rollback\",\"target\":\"router-v42\",\"evidence\":[\"probe-2026-04-18\",\"canary-b\"],\"reject\":{\"cache_flush\":true,\"db_restart\":true},\"next\":{\"dry_run\":true,\"owner\":\"platform\"}}"
+  ],
+  "final_answer": "{\"decision\":\"rollback\",\"target\":\"router-v42\",\"evidence\":[\"probe-2026-04-18\",\"canary-b\"],\"reject\":{\"cache_flush\":true,\"db_restart\":true},\"next\":{\"dry_run\":true,\"owner\":\"platform\"}}",
+  "workspace_files": {}
+}

@@ -1,0 +1,75 @@
+{
+  "case_id": "R1-C04",
+  "config_path": "mock://ragent6-1.0.0",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/input/orders.csv"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/input/policy.txt"
+      }
+    },
+    {
+      "name": "write",
+      "arguments": {
+        "path": "fixtures/out/report.json",
+        "content": "{\n  \"currency\": \"USD\",\n  \"total_due\": 42,\n  \"vip_count\": 2,\n  \"ship_mode\": \"ground\"\n}\n"
+      }
+    },
+    {
+      "name": "exec",
+      "arguments": {
+        "command": "sh fixtures/check.sh"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "orders",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "policy",
+      "details": {}
+    },
+    {
+      "tool_name": "write",
+      "is_error": false,
+      "text": "written",
+      "details": {}
+    },
+    {
+      "tool_name": "exec",
+      "is_error": false,
+      "text": "PASS",
+      "details": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "assistant_texts": [
+    "PASS"
+  ],
+  "events_count": 5,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "PASS",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {
+    "fixtures/out/report.json": "{\n  \"currency\": \"USD\",\n  \"total_due\": 42,\n  \"vip_count\": 2,\n  \"ship_mode\": \"ground\"\n}\n"
+  }
+}

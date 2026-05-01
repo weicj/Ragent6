@@ -1,0 +1,41 @@
+{
+  "case_id": "R5-C02",
+  "dimension_id": "R5",
+  "audit_tier": "discriminative",
+  "title": "测试失败后的修复恢复",
+  "objective": "读取失败代码，修复后重新运行校验脚本通过。",
+  "prompt_file": "prompt.txt",
+  "checker": "pytest_fix",
+  "fixtures": [
+    {
+      "path": "fixtures/project/normalizer.py"
+    },
+    {
+      "path": "fixtures/project/check.sh"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "edit",
+    "exec"
+  ],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 120,
+  "max_turns": 8,
+  "max_tool_calls": 8,
+  "followup_prompt_files": [],
+  "expected": {
+    "edited_file": "fixtures/project/normalizer.py",
+    "required_reads": [
+      "fixtures/project/normalizer.py"
+    ],
+    "must_contain": "return value.lstrip(\"0\") or \"0\"",
+    "verify_command_contains": "fixtures/project/check.sh",
+    "final_answer": "PASS",
+    "accept_verified_alternative": true
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "RC2-R5-C01",
+  "legacy_dimension_id": "R5",
+  "legacy_path": "cases/RC2/R5/RC2-R5-C01-test-failure-repair/case.json"
+}

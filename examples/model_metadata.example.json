@@ -1,0 +1,17 @@
+{
+  "models": [
+    {
+      "name": "Mock Golden Trace",
+      "result_dir": "results/mock-1.0.0",
+      "audit_group": "ragent6-1.0.0-smoke",
+      "family": "mock",
+      "generation": "golden",
+      "generation_rank": 1,
+      "arch": "dense",
+      "original": true,
+      "size_rank": 0,
+      "precision_group": "mock",
+      "precision_rank": 0
+    }
+  ]
+}

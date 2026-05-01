@@ -1,0 +1,16 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "red",
+    "blue",
+    "blue",
+    "gold"
+  ],
+  "final_answer": "gold",
+  "workspace_files": {},
+  "case_id": "R5-C10"
+}

@@ -1,0 +1,60 @@
+{
+  "case_id": "R5-C05",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/initial.json"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/new_evidence.json"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/final_patch.json"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/stale_patch.json"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "name": "read",
+      "stdout": "{\"service\":\"gateway\",\"revision\":3,\"route\":{\"target\":\"tg-old-1000\",\"region\":\"sh\",\"priority\":1},\"flags\":{\"mode\":\"drain\",\"safe\":true},\"legacy\":\"keep\"}\n"
+    },
+    {
+      "name": "read",
+      "stdout": "{\"revision\":4,\"route\":{\"target\":\"tg-live-7788\",\"priority\":2},\"flags\":{\"mode\":\"live\"}}\n"
+    },
+    {
+      "name": "read",
+      "stdout": "{\"revision\":5,\"route\":{\"target\":\"tg-live-9900\",\"region\":\"hz\"},\"unset\":[\"legacy\"],\"only_if_mode\":\"live\"}\n"
+    },
+    {
+      "name": "read",
+      "stdout": "{\"revision\":2,\"route\":{\"target\":\"tg-stale-0001\",\"region\":\"bj\"},\"flags\":{\"mode\":\"drain\"}}\n"
+    }
+  ],
+  "assistant_texts": [
+    "{\"service\":\"gateway\",\"revision\":3,\"route\":{\"target\":\"tg-old-1000\",\"region\":\"sh\",\"priority\":1},\"flags\":{\"mode\":\"drain\",\"safe\":true},\"legacy\":\"keep\"}",
+    "{\"service\":\"gateway\",\"revision\":4,\"route\":{\"target\":\"tg-live-7788\",\"region\":\"sh\",\"priority\":2},\"flags\":{\"mode\":\"live\",\"safe\":true},\"legacy\":\"keep\"}",
+    "{\"service\":\"gateway\",\"revision\":5,\"route\":{\"target\":\"tg-live-9900\",\"region\":\"hz\",\"priority\":2},\"flags\":{\"mode\":\"live\",\"safe\":true}}",
+    "{\"service\":\"gateway\",\"revision\":5,\"route\":{\"target\":\"tg-live-9900\",\"region\":\"hz\",\"priority\":2},\"flags\":{\"mode\":\"live\",\"safe\":true}}"
+  ],
+  "final_answer": "{\"service\":\"gateway\",\"revision\":5,\"route\":{\"target\":\"tg-live-9900\",\"region\":\"hz\",\"priority\":2},\"flags\":{\"mode\":\"live\",\"safe\":true}}",
+  "workspace_files": {
+    "fixtures/initial.json": "{\"service\":\"gateway\",\"revision\":3,\"route\":{\"target\":\"tg-old-1000\",\"region\":\"sh\",\"priority\":1},\"flags\":{\"mode\":\"drain\",\"safe\":true},\"legacy\":\"keep\"}\n",
+    "fixtures/new_evidence.json": "{\"revision\":4,\"route\":{\"target\":\"tg-live-7788\",\"priority\":2},\"flags\":{\"mode\":\"live\"}}\n",
+    "fixtures/final_patch.json": "{\"revision\":5,\"route\":{\"target\":\"tg-live-9900\",\"region\":\"hz\"},\"unset\":[\"legacy\"],\"only_if_mode\":\"live\"}\n",
+    "fixtures/stale_patch.json": "{\"revision\":2,\"route\":{\"target\":\"tg-stale-0001\",\"region\":\"bj\"},\"flags\":{\"mode\":\"drain\"}}\n"
+  }
+}

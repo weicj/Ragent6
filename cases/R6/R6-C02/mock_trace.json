@@ -1,0 +1,20 @@
+{
+  "case_id": "R6-C02",
+  "config_path": "mock://ragent6-1.0.0",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "CAUSE: config rollout disabled session stickiness before cache warmup\nFIX: restore stickiness and warm cache before rollout\nVERIFY: compare 5xx rate and cache hit rate after rollback"
+  ],
+  "events_count": 1,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "CAUSE: config rollout disabled session stickiness before cache warmup\nFIX: restore stickiness and warm cache before rollout\nVERIFY: compare 5xx rate and cache hit rate after rollback",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

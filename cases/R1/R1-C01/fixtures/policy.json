@@ -1,0 +1,8 @@
+{
+  "incident": "inc-481",
+  "root_priority": ["tenantless-cache-key", "timeout spike", "api restart"],
+  "allowed_actions": ["quarantine-and-replay"],
+  "reject_actions": ["restart-api", "raise-timeout"],
+  "guards": {"dry_run": true, "tenant_scope": true},
+  "verify": ["tenant-isolation", "replay-window"]
+}

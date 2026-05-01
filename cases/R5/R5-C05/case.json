@@ -1,0 +1,53 @@
+{
+  "case_id": "R5-C05",
+  "dimension_id": "R5",
+  "audit_tier": "discriminative",
+  "title": "新证据覆盖旧结论并保留未变字段",
+  "objective": "在同一 session 中，后续新证据必须逐轮覆盖嵌套字段、保留未变字段、执行条件补丁与 unset 语义，并忽略 revision 回退的旧补丁",
+  "prompt_file": "prompt.txt",
+  "checker": "state_update_override",
+  "fixtures": [
+    {
+      "path": "fixtures/initial.json"
+    },
+    {
+      "path": "fixtures/new_evidence.json"
+    },
+    {
+      "path": "fixtures/final_patch.json"
+    },
+    {
+      "path": "fixtures/stale_patch.json"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 90,
+  "max_turns": 4,
+  "max_tool_calls": 4,
+  "followup_prompt_files": [
+    "followup_1.txt",
+    "followup_2.txt",
+    "followup_3.txt"
+  ],
+  "expected": {
+    "required_reads": [
+      "fixtures/initial.json",
+      "fixtures/new_evidence.json",
+      "fixtures/final_patch.json",
+      "fixtures/stale_patch.json"
+    ],
+    "answers_by_turn": [
+      "{\"service\":\"gateway\",\"revision\":3,\"route\":{\"target\":\"tg-old-1000\",\"region\":\"sh\",\"priority\":1},\"flags\":{\"mode\":\"drain\",\"safe\":true},\"legacy\":\"keep\"}",
+      "{\"service\":\"gateway\",\"revision\":4,\"route\":{\"target\":\"tg-live-7788\",\"region\":\"sh\",\"priority\":2},\"flags\":{\"mode\":\"live\",\"safe\":true},\"legacy\":\"keep\"}",
+      "{\"service\":\"gateway\",\"revision\":5,\"route\":{\"target\":\"tg-live-9900\",\"region\":\"hz\",\"priority\":2},\"flags\":{\"mode\":\"live\",\"safe\":true}}",
+      "{\"service\":\"gateway\",\"revision\":5,\"route\":{\"target\":\"tg-live-9900\",\"region\":\"hz\",\"priority\":2},\"flags\":{\"mode\":\"live\",\"safe\":true}}"
+    ]
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D5-C04-new-evidence-overrides-old",
+  "legacy_dimension_id": "D5",
+  "legacy_path": "cases/D5/D5-C04-new-evidence-overrides-old/case.json"
+}

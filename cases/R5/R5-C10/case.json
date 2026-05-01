@@ -1,0 +1,32 @@
+{
+  "case_id": "R5-C10",
+  "dimension_id": "R5",
+  "audit_tier": "frontier",
+  "title": "冲突 follow-up 优先级",
+  "objective": "最新高优先级消息覆盖低优先级消息，低优先级不能反向覆盖。",
+  "prompt_file": "prompt.txt",
+  "checker": "state_update_override",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 5,
+  "max_tool_calls": 0,
+  "followup_prompt_files": [
+    "followup_1.txt",
+    "followup_2.txt",
+    "followup_3.txt"
+  ],
+  "expected": {
+    "answers_by_turn": [
+      "red",
+      "blue",
+      "blue",
+      "gold"
+    ]
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D5-C05",
+  "legacy_dimension_id": "D5",
+  "legacy_path": "cases/FR/D5/F-D5-C05-conflicting-followup-priority/case.json"
+}

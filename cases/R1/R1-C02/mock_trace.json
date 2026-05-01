@@ -1,0 +1,75 @@
+{
+  "case_id": "R1-C02",
+  "config_path": "mock",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/options.csv"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/policy.txt"
+      }
+    },
+    {
+      "name": "write",
+      "arguments": {
+        "path": "fixtures/decision.json",
+        "content": "{\n  \"winner\": \"delta\",\n  \"reason\": \"delta is offline, risk is 2, and latency is within the policy limit\"\n}\n"
+      }
+    },
+    {
+      "name": "exec",
+      "arguments": {
+        "command": "sh fixtures/check.sh"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "id,cost,risk,mode,latency\nalpha,7,1,network,10\nbravo,3,4,offline,8\ncharlie,5,2,offline,40\ndelta,6,2,offline,18\n",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "Hard constraints:\n- mode must be offline\n- risk must be <= 2\n- latency must be <= 30\nTie-breakers:\n- lower cost wins\n- if cost ties, lower latency wins\n",
+      "details": {}
+    },
+    {
+      "tool_name": "write",
+      "is_error": false,
+      "text": "written",
+      "details": {}
+    },
+    {
+      "tool_name": "exec",
+      "is_error": false,
+      "text": "",
+      "details": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "assistant_texts": [
+    "DECISION_READY"
+  ],
+  "events_count": 9,
+  "assistant_message_count": 1,
+  "user_message_count": 1,
+  "final_answer": "DECISION_READY",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {
+    "fixtures/decision.json": "{\n  \"winner\": \"delta\",\n  \"reason\": \"delta is offline, risk is 2, and latency is within the policy limit\"\n}\n"
+  }
+}

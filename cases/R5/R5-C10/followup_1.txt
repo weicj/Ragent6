@@ -1,0 +1,1 @@
+priority=high seq=2 target=blue。只输出 target。

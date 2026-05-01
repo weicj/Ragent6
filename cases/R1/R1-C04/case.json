@@ -1,0 +1,50 @@
+{
+  "case_id": "R1-C04",
+  "dimension_id": "R1",
+  "audit_tier": "discriminative",
+  "title": "读取表格生成报告并验证",
+  "objective": "读取 CSV 与策略文件，生成 JSON 工件并运行校验脚本。",
+  "prompt_file": "prompt.txt",
+  "checker": "artifact_verification",
+  "fixtures": [
+    {
+      "path": "fixtures/input/orders.csv"
+    },
+    {
+      "path": "fixtures/input/policy.txt"
+    },
+    {
+      "path": "fixtures/check.sh"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "write",
+    "exec"
+  ],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 120,
+  "max_turns": 8,
+  "max_tool_calls": 8,
+  "followup_prompt_files": [],
+  "expected": {
+    "edited_file": "fixtures/out/report.json",
+    "required_reads": [
+      "fixtures/input/orders.csv",
+      "fixtures/input/policy.txt"
+    ],
+    "must_contain": "\"total_due\": 42",
+    "verify_command_contains": "fixtures/check.sh",
+    "expected_json": {
+      "currency": "USD",
+      "total_due": 42,
+      "vip_count": 2,
+      "ship_mode": "ground"
+    },
+    "final_answer": "PASS"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "RC2-R1-C02",
+  "legacy_dimension_id": "R1",
+  "legacy_path": "cases/RC2/R1/RC2-R1-C02-generate-report-and-test/case.json"
+}

@@ -1,0 +1,45 @@
+{
+  "case_id": "R3-C06",
+  "dimension_id": "R3",
+  "audit_tier": "precision",
+  "title": "补救方案 JSON 结构",
+  "objective": "在诱导性事故描述中输出严格 JSON，并保留完整修复链路。",
+  "prompt_file": "prompt.txt",
+  "mock_trace_file": "mock_trace.json",
+  "checker": "canonical_json",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 90,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "allow_markdown_fence": true,
+    "json": {
+      "root": "tenantless-cache-key",
+      "actions": [
+        "restore-tenant-key",
+        "flush-affected-cache",
+        "verify-tenant-isolation"
+      ],
+      "reject": {
+        "timeout": true,
+        "db_restart": true
+      },
+      "guards": {
+        "dry_run": true,
+        "network_allowed": false
+      }
+    },
+    "forbidden_keys": [
+      "note",
+      "comment",
+      "explanation",
+      "markdown"
+    ]
+  },
+  "legacy_case_id": "PP-P15-remediation-json",
+  "legacy_dimension_id": "P3",
+  "legacy_path": "cases/PP/P15-remediation-json/case.json"
+}

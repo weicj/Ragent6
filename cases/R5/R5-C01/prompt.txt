@@ -1,0 +1,2 @@
+请先尝试读取 `fixtures/missing.json` 里的 token。
+如果文件不存在，请自行切换到正确文件，再只回复 token，不要解释。

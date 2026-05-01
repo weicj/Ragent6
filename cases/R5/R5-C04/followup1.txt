@@ -1,0 +1,1 @@
+中文修正：region 改成 eu，删除 dark，保留 beta，note=中文确认。不要丢字段。

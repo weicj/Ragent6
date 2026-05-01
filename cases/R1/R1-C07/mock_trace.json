@@ -1,0 +1,65 @@
+{
+  "case_id": "R1-C07",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/project/billing.py"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/project/test_billing.py"
+      }
+    },
+    {
+      "name": "edit",
+      "arguments": {
+        "path": "fixtures/project/billing.py",
+        "old": "return int(cents * pct / 100)",
+        "new": "return int(round(cents * pct / 100))"
+      }
+    },
+    {
+      "name": "exec",
+      "arguments": {
+        "command": "python3 fixtures/project/test_billing.py"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "def discount_cents(cents, pct):\n    return int(cents * pct / 100)\n\n\ndef final_total(cents, pct):\n    return cents - discount_cents(cents, pct)\n"
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "from billing import discount_cents, final_total\n\nassert discount_cents(101, 10) == 10\nassert discount_cents(105, 10) == 10\nassert discount_cents(106, 10) == 11\nassert final_total(106, 10) == 95\nprint(\"PASS\")\n"
+    },
+    {
+      "tool_name": "edit",
+      "is_error": false,
+      "text": "applied"
+    },
+    {
+      "tool_name": "exec",
+      "is_error": false,
+      "text": "PASS\n",
+      "details": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "assistant_texts": [
+    "PASS"
+  ],
+  "final_answer": "PASS",
+  "workspace_files": {
+    "fixtures/project/billing.py": "def discount_cents(cents, pct):\n    return int(round(cents * pct / 100))\n\n\ndef final_total(cents, pct):\n    return cents - discount_cents(cents, pct)\n"
+  },
+  "aborted": false,
+  "adapter_error": null
+}

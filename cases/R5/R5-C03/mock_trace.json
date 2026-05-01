@@ -1,0 +1,24 @@
+{
+  "case_id": "R5-C03",
+  "config_path": "mock",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "route=blue limit=20 mode=observe owner=alpha reject=none",
+    "route=green limit=20 mode=observe owner=alpha reject=blue",
+    "route=green limit=35 mode=safe owner=beta reject=blue",
+    "route=blue limit=35 mode=safe owner=beta reject=green reason=rollback",
+    "route=blue limit=40 mode=safe owner=beta reject=green reason=capacity"
+  ],
+  "events_count": 7,
+  "assistant_message_count": 5,
+  "user_message_count": 1,
+  "final_answer": "route=blue limit=40 mode=safe owner=beta reject=green reason=capacity",
+  "session_path": "",
+  "aborted": false,
+  "turn_runs": [],
+  "workspace_files": {}
+}

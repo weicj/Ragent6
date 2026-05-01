@@ -1,0 +1,65 @@
+{
+  "case_id": "R1-C01",
+  "tool_calls": [
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/events.ndjson"
+      }
+    },
+    {
+      "name": "read",
+      "arguments": {
+        "path": "fixtures/policy.json"
+      }
+    },
+    {
+      "name": "write",
+      "arguments": {
+        "path": "fixtures/remediation.json",
+        "content": "{\"incident\":\"inc-481\",\"primary_root\":\"tenantless-cache-key\",\"selected_action\":\"quarantine-and-replay\",\"reject\":[\"restart-api\",\"raise-timeout\"],\"guards\":{\"dry_run\":true,\"tenant_scope\":true},\"verify\":[\"tenant-isolation\",\"replay-window\"]}\n"
+      }
+    },
+    {
+      "name": "exec",
+      "arguments": {
+        "command": "python3 fixtures/check.py"
+      }
+    }
+  ],
+  "tool_results": [
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "events",
+      "details": {}
+    },
+    {
+      "tool_name": "read",
+      "is_error": false,
+      "text": "policy",
+      "details": {}
+    },
+    {
+      "tool_name": "write",
+      "is_error": false,
+      "text": "written",
+      "details": {}
+    },
+    {
+      "tool_name": "exec",
+      "is_error": false,
+      "text": "OK",
+      "details": {
+        "exitCode": 0
+      }
+    }
+  ],
+  "assistant_texts": [
+    "PASS"
+  ],
+  "final_answer": "PASS",
+  "workspace_files": {
+    "fixtures/remediation.json": "{\"incident\":\"inc-481\",\"primary_root\":\"tenantless-cache-key\",\"selected_action\":\"quarantine-and-replay\",\"reject\":[\"restart-api\",\"raise-timeout\"],\"guards\":{\"dry_run\":true,\"tenant_scope\":true},\"verify\":[\"tenant-isolation\",\"replay-window\"]}\n"
+  }
+}

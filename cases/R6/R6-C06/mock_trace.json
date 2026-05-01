@@ -1,0 +1,13 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tool_calls": [],
+  "tool_results": [],
+  "assistant_texts": [
+    "CAUSE: token expired before the retry storm\nFIX: refresh the token and then restart the client\nWHY: CPU and timeout symptoms were downstream of authentication failure"
+  ],
+  "final_answer": "CAUSE: token expired before the retry storm\nFIX: refresh the token and then restart the client\nWHY: CPU and timeout symptoms were downstream of authentication failure",
+  "workspace_files": {},
+  "case_id": "R6-C06"
+}

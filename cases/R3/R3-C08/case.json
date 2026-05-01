@@ -1,0 +1,76 @@
+{
+  "case_id": "R3-C08",
+  "dimension_id": "R3",
+  "audit_tier": "frontier",
+  "title": "固定标签 RCA 抗表象",
+  "objective": "用固定三行标签命中因果，不写多余行。",
+  "prompt_file": "prompt.txt",
+  "checker": "exact_labeled_lines",
+  "fixtures": [],
+  "allowed_tools": [],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 1,
+  "max_tool_calls": null,
+  "followup_prompt_files": [],
+  "expected": {
+    "exact_lines": [
+      "CAUSE: disk full blocked the writer queue",
+      "FIX: free disk space and restart the writer",
+      "WHY: CPU spike was a downstream symptom"
+    ],
+    "relaxed_groups": {
+      "CAUSE": [
+        [
+          "disk",
+          "磁盘"
+        ],
+        [
+          "full",
+          "满"
+        ],
+        [
+          "queue",
+          "队列",
+          "process blocked",
+          "writer process",
+          "进程阻塞",
+          "writer 进程"
+        ]
+      ],
+      "FIX": [
+        [
+          "free",
+          "释放",
+          "清理",
+          "扩容"
+        ],
+        [
+          "disk",
+          "磁盘"
+        ]
+      ],
+      "WHY": [
+        [
+          "cpu"
+        ],
+        [
+          "symptom",
+          "表象",
+          "症状",
+          "downstream",
+          "i/o",
+          "io",
+          "瓶颈",
+          "阻塞",
+          "无法解决",
+          "not a lack"
+        ]
+      ]
+    }
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D3-C03",
+  "legacy_dimension_id": "D3",
+  "legacy_path": "cases/FR/D3/F-D3-C03-rca-labelled-decoy/case.json"
+}

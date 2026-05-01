@@ -1,0 +1,53 @@
+{
+  "case_id": "R2-C01",
+  "dimension_id": "R2",
+  "audit_tier": "precision",
+  "title": "本地搜索后定位最终 owner",
+  "objective": "先搜索索引，再读取真实证据，避免被 decoy 文档干扰。",
+  "prompt_file": "prompt.txt",
+  "checker": "search_grounded_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/index.txt"
+    },
+    {
+      "path": "fixtures/archive_decoy.txt"
+    },
+    {
+      "path": "fixtures/policy_current.txt"
+    },
+    {
+      "path": "fixtures/ticket_431.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "exec"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 6,
+  "max_tool_calls": 5,
+  "followup_prompt_files": [],
+  "mock_trace_file": "mock_trace.json",
+  "expected": {
+    "search_command_any": [
+      "rg",
+      "grep",
+      "find"
+    ],
+    "required_reads": [
+      "fixtures/policy_current.txt",
+      "fixtures/ticket_431.txt"
+    ],
+    "final_answer": "owner=ledger-core escalation=blue",
+    "final_answer_exclude": [
+      "archive",
+      "ledger-legacy",
+      "red"
+    ]
+  },
+  "legacy_case_id": "PP-P2-search-policy-owner",
+  "legacy_dimension_id": "P1",
+  "legacy_path": "cases/PP/P2-search-policy-owner/case.json"
+}

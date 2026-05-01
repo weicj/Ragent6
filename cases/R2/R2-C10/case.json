@@ -1,0 +1,44 @@
+{
+  "case_id": "R2-C10",
+  "dimension_id": "R2",
+  "audit_tier": "frontier",
+  "title": "能力矩阵选择",
+  "objective": "按约束筛选候选工具组合。",
+  "prompt_file": "prompt.txt",
+  "checker": "required_reads_answer",
+  "fixtures": [
+    {
+      "path": "fixtures/request.txt"
+    },
+    {
+      "path": "fixtures/capabilities.csv"
+    },
+    {
+      "path": "fixtures/denylist.txt"
+    }
+  ],
+  "allowed_tools": [
+    "read"
+  ],
+  "runner_mode": "single_turn",
+  "timeout_seconds": 120,
+  "max_turns": 5,
+  "max_tool_calls": 3,
+  "followup_prompt_files": [],
+  "expected": {
+    "required_reads": [
+      "fixtures/request.txt",
+      "fixtures/capabilities.csv",
+      "fixtures/denylist.txt"
+    ],
+    "final_answer": "d",
+    "final_answer_exclude": [
+      "b",
+      "c"
+    ]
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "F-D2-C05",
+  "legacy_dimension_id": "D2",
+  "legacy_path": "cases/FR/D2/F-D2-C05-capability-matrix-selection/case.json"
+}

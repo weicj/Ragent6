@@ -1,0 +1,29 @@
+{
+  "case_id": "R5-C01",
+  "dimension_id": "R5",
+  "audit_tier": "foundational",
+  "title": "ENOENT 自救",
+  "objective": "读错路径后，能够切换到正确路径并完成任务",
+  "prompt_file": "prompt.txt",
+  "checker": "enoent_recovery",
+  "fixtures": [
+    {
+      "path": "fixtures/config.json"
+    }
+  ],
+  "allowed_tools": [
+    "read",
+    "exec"
+  ],
+  "runner_mode": "multi_turn",
+  "timeout_seconds": 60,
+  "max_turns": 3,
+  "max_tool_calls": 4,
+  "expected": {
+    "final_answer": "token-live-7788"
+  },
+  "mock_trace_file": "mock_trace.json",
+  "legacy_case_id": "D5-C01-enoent-recover",
+  "legacy_dimension_id": "D5",
+  "legacy_path": "cases/D5/D5-C01-enoent-recover/case.json"
+}

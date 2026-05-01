@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["case_id", "dimension_id", "status", "checker", "reason_code", "message"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "dimension_id": {"type": "string"},
+    "status": {"enum": ["pass", "fail", "invalid"]},
+    "score": {"type": ["integer", "null"]},
+    "checker": {"type": "string"},
+    "reason_code": {"type": "string"},
+    "message": {"type": "string"},
+    "evidence": {"type": "object"},
+    "trace_file": {"type": ["string", "null"]}
+  }
+}
+

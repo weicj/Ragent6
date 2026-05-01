@@ -1,0 +1,3 @@
+before: key = tenant_id + ":" + user_id + ":" + scope
+after:  key = user_id + ":" + scope
+review note: tenant_id was accidentally removed from the auth cache key.
