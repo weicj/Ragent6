@@ -2,6 +2,8 @@
 
 Ragent6 is a deterministic, local benchmark for agent-capable language models. It tests whether a model can operate inside a weak tool harness, read evidence, write or edit files, run local checks, obey safety boundaries, recover from errors, and solve multi-constraint reasoning tasks.
 
+Chinese overview: `README.zh-CN.md`.
+
 Current stable version: `1.1.0`.
 
 ## What It Measures
