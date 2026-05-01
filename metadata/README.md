@@ -25,3 +25,19 @@ running `make mock`.
 ```
 
 The audit fields are optional for simple scoring, but recommended for consistency checks.
+
+For local model archives, prefer storing raw runs under:
+
+```text
+results/by-model/<model-slug>/<suite-version>/<run-id>/
+```
+
+`result_dir` may point to either the flat mock path shown above or the nested
+per-model path, for example:
+
+```json
+{
+  "name": "Example Local Model",
+  "result_dir": "results/by-model/example-local-model/1.1.0/run-001"
+}
+```

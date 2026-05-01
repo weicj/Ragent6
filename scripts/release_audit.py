@@ -258,19 +258,24 @@ def scan_results(
     summary_mismatches: list[dict[str, Any]] = []
     exclusions = result_exclusions or {}
 
-    for summary_path in sorted(results_root.glob("*/summary.json")):
+    for summary_path in sorted(results_root.rglob("summary.json")):
         result_dir = summary_path.parent
         name = result_dir.name
+        try:
+            rel_name = result_dir.relative_to(results_root).as_posix()
+        except ValueError:
+            rel_name = name
         try:
             summary = load_json(summary_path)
         except Exception as exc:
             errors.append({"result_dir": str(result_dir), "error": f"invalid summary JSON: {exc}"})
             continue
-        if EXCLUDE_RESULT_NAME_RE.search(name):
+        if EXCLUDE_RESULT_NAME_RE.search(name) or EXCLUDE_RESULT_NAME_RE.search(rel_name):
             excluded.append({"result_dir": str(result_dir), "reason": "excluded by result directory name"})
             continue
-        if name in exclusions:
-            excluded.append({"result_dir": str(result_dir), "reason": exclusions[name]})
+        exclusion_reason = exclusions.get(rel_name) or exclusions.get(name) or exclusions.get(str(result_dir))
+        if exclusion_reason:
+            excluded.append({"result_dir": str(result_dir), "reason": exclusion_reason})
             continue
         if not eligible_summary(summary, expected_suite_name, expected_suite_version, expected_case_count):
             excluded.append({"result_dir": str(result_dir), "reason": f"not an eligible {expected_suite_name} {expected_suite_version} full run"})

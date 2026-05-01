@@ -8,6 +8,7 @@ Use this checklist before publishing a Ragent6 release or leaderboard.
 - `docs/CASES.md` matches the manifest case order.
 - `README.md`, `METHODOLOGY.md`, and `docs/VERSIONING.md` describe the same scoring policy.
 - Generated `results/`, generated `reports/`, model files, and local credentials are not committed.
+- Raw model traces may be archived locally under `results/by-model/<model-slug>/<suite-version>/<run-id>/`; these run outputs are intentionally ignored by git.
 
 ## Validation
 

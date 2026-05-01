@@ -70,7 +70,7 @@ export RAGENT6_AGENT_TIMEOUT=180
 python3 scripts/run_eval.py \
   --manifest manifests/ragent6.json \
   --adapter native_local \
-  --out results/local-model-ragent6
+  --out results/by-model/local-model/1.1.0/run-001
 ```
 
 The native harness exposes four tools to the model when a case allows them:
@@ -83,6 +83,7 @@ The native harness exposes four tools to the model when a case allows them:
 ## Compute Partial Scores
 
 Create a metadata file listing result directories. See `examples/model_metadata.example.json`.
+For local archives, the recommended layout is `results/by-model/<model-slug>/<suite-version>/<run-id>/`.
 
 ```bash
 python3 scripts/score_results.py \
@@ -105,6 +106,7 @@ python3 scripts/release_audit.py \
 - `docs/CASES.md`: public 60-case catalog.
 - `docs/VERSIONING.md`: compatibility and version bump rules.
 - `docs/RELEASE_CHECKLIST.md`: validation checklist before publishing results.
+- `results/by-model/README.md`: recommended local layout for per-model result archives.
 
 ## Versioning
 

@@ -32,15 +32,24 @@ def dimension_string(dimensions: dict[str, dict[str, int]], dim_order: list[str]
     return ", ".join(f"{dim} {dimensions.get(dim, {}).get('pass', 0)}/10" for dim in dim_order)
 
 
-def leaderboard_rows(included_runs: list[dict[str, Any]], metadata: dict[str, dict[str, Any]], dim_order: list[str]) -> list[dict[str, Any]]:
+def leaderboard_rows(
+    included_runs: list[dict[str, Any]],
+    metadata: dict[str, dict[str, Any]],
+    dim_order: list[str],
+    results_root: Path,
+) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for run in included_runs:
         result_dir = Path(run["result_dir"])
-        meta = metadata.get(result_dir.name, {})
-        model = meta.get("model") or meta.get("name") or result_dir.name
+        try:
+            run_key = result_dir.relative_to(results_root).as_posix()
+        except ValueError:
+            run_key = result_dir.name
+        meta = metadata.get(run_key) or metadata.get(result_dir.name) or metadata.get(str(result_dir)) or {}
+        model = meta.get("model") or meta.get("name") or run_key
         rows.append(
             {
-                "run_id": result_dir.name,
+                "run_id": run_key,
                 "result_dir": str(result_dir),
                 "model": model,
                 "params": meta.get("params", ""),
@@ -153,7 +162,7 @@ def main() -> int:
 
     dim_order = list((manifest.get("dimension_labels") or {}).keys())
     metadata = load_run_metadata(args.metadata)
-    rows = leaderboard_rows(result_payload["included_runs"], metadata, dim_order)
+    rows = leaderboard_rows(result_payload["included_runs"], metadata, dim_order, args.results_root.resolve())
     quality_payload = case_quality(result_payload["included_runs"], public_cases)
     json_payload = {
         "suite_name": manifest.get("suite_name"),

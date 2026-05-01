@@ -11,6 +11,10 @@ __pycache__/
 # Local benchmark outputs can be large and machine-specific.
 results/*
 !results/.gitkeep
+!results/by-model/
+results/by-model/*
+!results/by-model/.gitkeep
+!results/by-model/README.md
 reports/*
 !reports/.gitkeep
 

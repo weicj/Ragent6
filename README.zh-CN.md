@@ -76,7 +76,7 @@ export RAGENT6_AGENT_TIMEOUT=180
 python3 scripts/run_eval.py \
   --manifest manifests/ragent6.json \
   --adapter native_local \
-  --out results/local-model-ragent6
+  --out results/by-model/local-model/1.1.0/run-001
 ```
 
 native harness 在题目允许时只暴露四个极简工具：
@@ -89,6 +89,7 @@ native harness 在题目允许时只暴露四个极简工具：
 ## 计算成绩
 
 创建一个 metadata 文件列出结果目录，可参考 `examples/model_metadata.example.json`。
+本地归档推荐使用 `results/by-model/<model-slug>/<suite-version>/<run-id>/`。
 
 ```bash
 python3 scripts/score_results.py \
@@ -129,3 +130,4 @@ python3 scripts/release_audit.py \
 - `docs/CASES.md`：60 题公开目录。
 - `docs/VERSIONING.md`：版本兼容规则。
 - `docs/RELEASE_CHECKLIST.md`：发布检查清单。
+- `results/by-model/README.md`：按模型归档本地测试结果的推荐目录规范。
