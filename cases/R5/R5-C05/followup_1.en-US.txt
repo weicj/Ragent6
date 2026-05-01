@@ -1,0 +1,3 @@
+New evidence arrived: read `fixtures/new_evidence.json`.
+It overrides only part of the fields.
+Output the updated complete compact JSON; unchanged fields must be preserved. Do not explain.

@@ -1,0 +1,1 @@
+读取 `fixtures/request.txt`、`fixtures/capabilities.csv`、`fixtures/denylist.txt`。选择满足 request、未被 deny、risk<=2 的最低 cost candidate；如 cost 相同，选 latency 更低者。最终只输出 candidate id。

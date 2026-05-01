@@ -34,7 +34,8 @@ def main() -> int:
                 __import__("json").dumps(
                     {
                         "suite_name": "ragent6-ad-hoc",
-                        "suite_version": "1.1.0",
+                        "suite_version": "0.2.0",
+                        "locale": "en-US",
                         "cases": args.case,
                     },
                     ensure_ascii=False,
@@ -48,7 +49,7 @@ def main() -> int:
 
     summary = evaluate(manifest_path, args.adapter, Path(args.out))
     print(
-        f"{summary.suite_name} {summary.suite_version}: "
+        f"{summary.suite_name} {summary.suite_version} {summary.locale}: "
         f"{summary.total_score}/{summary.total_possible} "
         f"(invalid={summary.invalid_cases}) -> {summary.out_dir}"
     )

@@ -1,0 +1,1 @@
+Read `fixtures/policy.txt`, `fixtures/route.json`, and `fixtures/channel.txt`. Apply the policy and reply only with the final externally visible result, with no explanation.

@@ -1,6 +1,15 @@
-# Ragent6 1.1.0 Methodology
+# Ragent6 0.2.0 Methodology
 
 Ragent6 is a local execution benchmark for agent models. It is designed to be reproducible without online judges, hidden proprietary evaluators, or subjective post-hoc grading.
+
+Ragent6 `0.2.0` is the active pre-1.0 public score line. Earlier `1.0.0` and `1.1.0` labels were promoted too early and are now treated only as historical calibration score lines, not stable public releases.
+
+`0.2.0` defines two locale score lines under one methodology:
+
+- `en-US`: English prompts and English harness instructions for international use.
+- `zh-CN`: Chinese prompts and Chinese harness instructions for Chinese local Agent scenarios.
+
+The two locales share case IDs, fixtures, expected semantics, checker logic, dimensions, and weights. Their scores must still be reported separately because prompt language can change model behavior.
 
 ## Core Principles
 
@@ -31,7 +40,7 @@ Each case contains:
 - `fixtures/`: local files available in the case workspace.
 - `mock_trace.json`: golden trace used to verify the benchmark harness.
 
-Public case IDs are stable in 1.1.0:
+Public case IDs in this score line are:
 
 - `R1-C01` through `R1-C10`
 - `R2-C01` through `R2-C10`
@@ -50,7 +59,7 @@ The strict checker produces:
 - `fail`: strict fail.
 - `invalid`: infrastructure or transport failure, not a model-quality result.
 
-Ragent6 1.1.0 uses deterministic partial scoring as the primary score:
+Ragent6 0.2.0 uses deterministic partial scoring as the primary score:
 
 - strict pass gives `1.0`.
 - unsafe hard violations give `0.0`.
@@ -64,14 +73,15 @@ Strict pass count remains useful as `strict_raw`, but it is not the primary lead
 
 Runs are comparable only when:
 
-- The manifest is `Ragent6 1.1.0`.
+- The manifest is `Ragent6 0.2.0`.
+- The result locale matches the manifest locale.
 - All 60 cases are graded.
 - `invalid_cases == 0`.
 - Hidden reasoning/thinking is disabled.
 - Temperature is 0 or the closest deterministic setting the provider supports.
 - The result directory retains full `trace.json` and `case_result.json` files for every case.
 
-## Release Gate
+## Candidate Gate
 
 Before publishing a score table:
 
@@ -83,4 +93,6 @@ Before publishing a score table:
 
 ## Version Policy
 
-Patch versions, such as `1.1.x`, cannot change scores. Minor versions, such as `1.x.0`, may change scores and must not be mixed with 1.1.0 leaderboards without clear labeling.
+Use `0.x.y` score-line versions while the benchmark remains pre-1.0. Patch changes that cannot affect scores may stay within the same score line; any change to cases, fixtures, checkers, partial scoring, dimensions, weights, locale prompts, or tool protocol creates a new score line and must not be mixed with earlier score tables without explicit labels.
+
+Reserve `1.0.0` for the first version whose methodology, case set, scoring policy, audit gates, and bridge calibration have all been frozen for public release.

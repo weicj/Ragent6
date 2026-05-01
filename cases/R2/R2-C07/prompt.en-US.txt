@@ -1,0 +1,1 @@
+The directory contains `fixtures/current.env`, `fixtures/current.env.old`, `fixtures/rollback.env`, and `fixtures/pointer.txt`. Production has already rolled back, and the prompt identifies the actual live config. You may read exactly one file, then reply only with `SERVICE_ID`.

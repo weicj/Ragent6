@@ -1,0 +1,8 @@
+`fixtures/project/billing.py` has a rounding bug in discount calculation.
+
+First read `fixtures/project/billing.py` and `fixtures/project/test_billing.py`.
+Make the smallest implementation-only fix. Do not edit the test.
+Run `python3 fixtures/project/test_billing.py`.
+
+Final answer must be exactly:
+PASS

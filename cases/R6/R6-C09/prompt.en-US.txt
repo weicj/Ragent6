@@ -1,0 +1,1 @@
+Read the four phase files: `fixtures/phase1.txt`, `fixtures/phase2.txt`, `fixtures/phase3.txt`, and `fixtures/phase4.txt`. Rules: dry-run and shadow entries do not take effect; only the last live route for the current active shard with rollback=false is valid. Output only `<shard>:<route>`.

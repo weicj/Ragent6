@@ -1,0 +1,1 @@
+Read `fixtures/policy.txt` and `fixtures/events.log`. Select the unique live canary target under the policy and write `fixtures/decision.json` as JSON with exactly the keys `target` and `reason`. Then verify locally that the JSON is parseable. Reply only `OK`.

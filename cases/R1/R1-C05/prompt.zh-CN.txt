@@ -1,0 +1,1 @@
+Read only `fixtures/rules.txt`, `fixtures/shard-a.txt`, and `fixtures/shard-b.txt`. Apply the precedence rule and return exactly `ticket=<ID> owner=<OWNER> action=<ACTION> guard=<GUARD> reject=<REJECT>`.

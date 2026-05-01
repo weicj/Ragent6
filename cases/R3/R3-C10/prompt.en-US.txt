@@ -1,0 +1,1 @@
+Output exactly two command lines: first check port 9042, then inspect the command line for the corresponding pid.

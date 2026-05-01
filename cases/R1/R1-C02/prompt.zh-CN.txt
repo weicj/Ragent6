@@ -1,0 +1,2 @@
+Read the option table and policy. Write `fixtures/decision.json`, then run `sh fixtures/check.sh`.
+The JSON must include the selected winner and reason. Final answer must be exactly `DECISION_READY`.

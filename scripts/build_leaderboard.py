@@ -8,6 +8,7 @@ from typing import Any
 
 from release_audit import (
     DEFAULT_EXCLUDE_FILE,
+    DEFAULT_LOCALE,
     DEFAULT_MANIFEST,
     DEFAULT_RESULTS_ROOT,
     DEFAULT_SUITE_NAME,
@@ -73,10 +74,11 @@ def render_markdown(
 ) -> str:
     labels = manifest.get("dimension_labels") or {}
     lines = [
-        f"# Ragent6 {manifest.get('suite_version')} Leaderboard",
+        f"# Ragent6 {manifest.get('suite_version')} {manifest.get('locale', '')} Leaderboard",
         "",
         f"- Suite: `{manifest.get('suite_name')}`",
         f"- Version: `{manifest.get('suite_version')}`",
+        f"- Locale: `{manifest.get('locale', '')}`",
         f"- Eligible runs: `{len(rows)}`",
         f"- Excluded runs: `{len(result_payload.get('excluded_runs') or [])}`",
         f"- Summary mismatches recomputed from per-case results: `{len(result_payload.get('summary_mismatches') or [])}`",
@@ -128,6 +130,7 @@ def main() -> int:
     parser.add_argument("--exclude-file", type=Path, default=DEFAULT_EXCLUDE_FILE)
     parser.add_argument("--suite-name", default=DEFAULT_SUITE_NAME)
     parser.add_argument("--suite-version", default=DEFAULT_SUITE_VERSION)
+    parser.add_argument("--locale", default=DEFAULT_LOCALE)
     parser.add_argument("--case-count", type=int, default=60)
     parser.add_argument("--metadata", type=Path, help="Optional JSON mapping result directory names to model metadata.")
     parser.add_argument("--md-out", type=Path)
@@ -139,6 +142,7 @@ def main() -> int:
         manifest_path,
         expected_suite_name=args.suite_name,
         expected_suite_version=args.suite_version,
+        expected_locale=args.locale or None,
         expected_case_count=args.case_count,
     )
     if manifest_errors:
@@ -153,6 +157,7 @@ def main() -> int:
         load_result_exclusions(args.exclude_file.resolve() if args.exclude_file else None),
         expected_suite_name=args.suite_name,
         expected_suite_version=args.suite_version,
+        expected_locale=args.locale or None,
         expected_case_count=args.case_count,
     )
     if result_payload["result_errors"]:
@@ -167,6 +172,7 @@ def main() -> int:
     json_payload = {
         "suite_name": manifest.get("suite_name"),
         "suite_version": manifest.get("suite_version"),
+        "locale": manifest.get("locale"),
         "manifest": str(manifest_path),
         "results_root": str(args.results_root.resolve()),
         "leaderboard": rows,

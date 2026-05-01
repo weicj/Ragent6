@@ -1,0 +1,1 @@
+最终修正：region=ap，删除 beta，只保留 canary，note=final。继续输出所有字段。

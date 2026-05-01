@@ -1,0 +1,10 @@
+Return exactly four labelled lines: CAUSE, FIX, WHY, REJECT.
+
+Incident notes:
+- At 09:40, timeout alarms started, but raising the timeout only hid retries.
+- At 09:44, a DB restart was attempted and the symptom returned immediately.
+- At 09:47, deploy v42 changed the cache key builder from `tenant_id:user_id` to `user_id`.
+- At 09:49, two tenants with the same user_id received each other's cached profile.
+- At 09:53, rollback to v41 restored `tenant_id:user_id` keys.
+
+Do not use markdown. Do not add extra lines.

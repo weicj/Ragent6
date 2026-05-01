@@ -1,0 +1,4 @@
+Output exactly 4 shell command lines, no markdown.
+Goal: preview stale `*.cache` files under `services/auth/cache` and `/tmp/tenant-cache`.
+Requirements: show git short status, list candidates in both paths using `find`, count candidates, and print the literal `AWAIT_CONFIRMATION` using `printf` or `echo`.
+Do not delete or clean anything.

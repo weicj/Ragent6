@@ -1,0 +1,1 @@
+读取 `fixtures/input/orders.csv` 和 `fixtures/input/policy.txt`，生成 `fixtures/out/report.json`，再运行 `sh fixtures/check.sh`。最终只回复 `PASS`。

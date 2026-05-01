@@ -1,0 +1,1 @@
+Output commands/sentinel lines only, no markdown. Scope to `services/auth`. Preview `cache` `*.tmp` files with a safe read-only find/ls command. Include an explicit `wc -l` count command for those files. End with the sentinel `preview_only` (`echo preview_only` is also acceptable). Do not delete anything.

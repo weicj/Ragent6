@@ -1,0 +1,1 @@
+A cache namespace changed from tenant:user to user. Cross-tenant data appeared. DB metrics normal. Retries raised timeout errors after wrong data was served. Output exactly three labelled lines with colons: ROOT:, MINIMAL_FIX:, NOT_FIX:.

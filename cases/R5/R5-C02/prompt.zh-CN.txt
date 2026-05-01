@@ -1,0 +1,1 @@
+`fixtures/project/check.sh` 现在失败。请读取源码，修复 `normalize_id`，重新运行校验脚本。最终只回复 `PASS`。

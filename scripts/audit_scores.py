@@ -300,7 +300,7 @@ def score_distribution(runs: list[ModelRun]) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Ragent6 audit over deterministic partial scores.")
     parser.add_argument("--partial-json", type=Path, default=ROOT / "results" / "ragent6_scores.json")
-    parser.add_argument("--suite", default="ragent6_1_1_0")
+    parser.add_argument("--suite", default="ragent6_0_2_0_en_US")
     parser.add_argument("--manifest", type=Path, default=ROOT / "manifests" / "ragent6.json")
     parser.add_argument("--score-tolerance", type=float, default=1.0)
     parser.add_argument("--case-epsilon", type=float, default=0.05)

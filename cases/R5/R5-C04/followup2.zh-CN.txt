@@ -1,0 +1,1 @@
+English update: owner becomes core, add canary flag, keep region and note. Do not restore dark.

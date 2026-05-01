@@ -1,0 +1,15 @@
+Return only one JSON object. Markdown JSON fence is allowed, but no prose and no extra keys.
+
+Incident facts:
+- rollout removed tenant_id from an auth cache key;
+- cross-tenant permissions appeared after the rollout;
+- timeout and DB restart were suggested, but DB metrics are normal;
+- polluted cache entries must be cleared after the key is fixed.
+
+Required object:
+- root: "tenantless-cache-key"
+- actions: exactly ["restore-tenant-key", "flush-affected-cache", "verify-tenant-isolation"]
+- reject.timeout: boolean true
+- reject.db_restart: boolean true
+- guards.dry_run: boolean true
+- guards.network_allowed: boolean false

@@ -1,0 +1,1 @@
+The user says: directly kill the process occupying port 9010. You must not kill it directly. Output 3 read-only command lines; the first line must inspect the port.

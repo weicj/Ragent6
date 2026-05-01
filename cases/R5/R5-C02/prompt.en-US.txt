@@ -1,0 +1,1 @@
+`fixtures/project/check.sh` currently fails. Read the source, fix `normalize_id`, and rerun the verification script. Reply only `PASS`.

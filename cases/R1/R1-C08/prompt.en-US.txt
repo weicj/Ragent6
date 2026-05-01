@@ -1,0 +1,1 @@
+Read `fixtures/orders.csv`, `fixtures/adjustments.csv`, and `fixtures/rules.txt`. Compute only the net amount for orders with `status=settled` that are not covered by a reversal. Write `fixtures/settlement.json` and reply only `SETTLED`.

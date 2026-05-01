@@ -49,6 +49,7 @@ def main() -> int:
     for index, case_rel in enumerate(manifest.cases):
         case_path = resolve_case_path(manifest_path, case_rel)
         case = load_case(case_path)
+        case.locale = manifest.locale
         trace_path = result_dir / "cases" / case.case_id / "trace.json"
         if not trace_path.exists():
             raise SystemExit(f"missing trace for {case.case_id}: {trace_path}")
@@ -78,6 +79,7 @@ def main() -> int:
     summary = RunSummary(
         suite_name=manifest.suite_name,
         suite_version=manifest.suite_version,
+        locale=manifest.locale,
         adapter=args.adapter_label or previous_adapter,
         total_cases=len(case_results),
         graded_cases=len(graded),
@@ -91,7 +93,7 @@ def main() -> int:
     summary_path = result_dir / "summary.json"
     summary_path.write_text(json.dumps(summary.__dict__, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(
-        f"{manifest.suite_name} {manifest.suite_version}: "
+        f"{manifest.suite_name} {manifest.suite_version} {manifest.locale}: "
         f"{summary.total_score}/{summary.total_possible} "
         f"(invalid={summary.invalid_cases}) -> {summary_path}"
     )

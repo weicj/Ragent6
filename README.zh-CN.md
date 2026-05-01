@@ -6,13 +6,15 @@
 
 Ragent6 是一个面向 Agent 模型的本地确定性测评基准。它测试模型在弱工具环境中是否能够读证据、写文件、修改代码、执行本地检查、遵守安全边界、从错误中恢复，并完成多约束推理任务。
 
-当前稳定版本：`1.1.0`。
+当前发布版本：`0.2.0`。
 
-说明：本文件只是中文说明文档。Ragent6 的默认公开题库、模型可见 prompt、manifest、checker 和运行输出均保持英文，以便作为国际通用版本发布。
+状态：`0.2.0` 是当前可发布的 pre-1.0 公开 score line。此前 `1.0.0` 和 `1.1.0` 进入正式版本过早，现在只作为历史校准 score line 保留，不作为稳定公开版本。
+
+说明：Ragent6 现在同时维护两个语言口径：`en-US` 面向国际通用用户，`zh-CN` 面向中文本地 Agent 场景。两个口径共享同一方法论、case ID、fixtures 和 checker，但 prompt 与 harness 指令按语言分开，成绩不能混榜。
 
 ## 测什么
 
-Ragent6 1.1.0 一共 60 题，分为 6 个公开维度，每个维度 10 题。
+Ragent6 `0.2.0` 一共 60 题，分为 6 个公开维度，每个维度 10 题。
 
 | 维度 | 英文名称 | 中文说明 | 权重 | 测试重点 |
 | --- | --- | --- | ---: | --- |
@@ -34,7 +36,7 @@ Ragent6 输出两个核心指标：
 
 ## 为什么不是纯 0/1
 
-纯 0/1 会把“任务核心做对但有小瑕疵”和“完全没完成”混在一起。Ragent6 1.1.0 采用确定性 partial scoring：严格通过给满分；严格失败时，只对 trace 中可验证的子目标给部分分；危险行为可以封顶或归零。
+纯 0/1 会把“任务核心做对但有小瑕疵”和“完全没完成”混在一起。Ragent6 `0.2.0` 采用确定性 partial scoring：严格通过给满分；严格失败时，只对 trace 中可验证的子目标给部分分；危险行为可以封顶或归零。
 
 这使榜单更能区分模型在真实 Agent 场景下的能力差异。
 
@@ -43,15 +45,15 @@ Ragent6 输出两个核心指标：
 ```bash
 cd Ragent6
 python3 scripts/run_eval.py \
-  --manifest manifests/ragent6.json \
+  --manifest manifests/ragent6_0_2_0_zh_CN.json \
   --adapter mock \
-  --out results/mock-1.1.0
+  --out results/mock-0.2.0-zh-CN
 ```
 
 预期输出：
 
 ```text
-Ragent6 1.1.0: 60/60 (invalid=0)
+Ragent6 0.2.0 zh-CN: 60/60 (invalid=0)
 ```
 
 ## 测本地模型
@@ -74,9 +76,9 @@ export RAGENT6_MAX_TOKENS=2048
 export RAGENT6_AGENT_TIMEOUT=180
 
 python3 scripts/run_eval.py \
-  --manifest manifests/ragent6.json \
+  --manifest manifests/ragent6_0_2_0_zh_CN.json \
   --adapter native_local \
-  --out results/by-model/local-model/1.1.0/run-001
+  --out results/by-model/local-model/0.2.0/zh-CN/run-001
 ```
 
 native harness 在题目允许时只暴露四个极简工具：
@@ -89,7 +91,7 @@ native harness 在题目允许时只暴露四个极简工具：
 ## 计算成绩
 
 创建一个 metadata 文件列出结果目录，可参考 `examples/model_metadata.example.json`。
-本地归档推荐使用 `results/by-model/<model-slug>/<suite-version>/<run-id>/`。
+本地归档推荐使用 `results/by-model/<model-slug>/<suite-version>/<locale>/<run-id>/`。
 
 ```bash
 python3 scripts/score_results.py \
@@ -102,13 +104,14 @@ python3 scripts/score_results.py \
 
 ```bash
 python3 scripts/release_audit.py \
-  --manifest manifests/ragent6.json \
-  --suite-version 1.1.0
+  --manifest manifests/ragent6_0_2_0_zh_CN.json \
+  --suite-version 0.2.0 \
+  --locale zh-CN
 ```
 
 发布榜单前应确认：
 
-- 使用 `Ragent6 1.1.0` manifest。
+- 使用 `Ragent6 0.2.0` manifest，并明确 `locale`。
 - 每个模型都完成 60 题。
 - `invalid_cases == 0`。
 - 关闭 hidden thinking/reasoning。
@@ -117,17 +120,19 @@ python3 scripts/release_audit.py \
 
 ## 版本规则
 
-- Patch 版本，例如 `1.1.x`：只允许文档、报告格式、非评分 CLI 修复，不改变分数。
-- Minor 版本，例如 `1.x.0`：题目、checker、scorer、权重、维度或工具协议变更，可能改变分数。
-- `2.0.0`：方法论级重构。
+- Patch 版本：只允许文档、报告格式、非评分 CLI 修复，不改变分数。
+- 新 score line：题目、checker、scorer、权重、维度、locale prompt 或工具协议变更，可能改变分数。
+- 语言口径：`en-US` 和 `zh-CN` 是同版本下的不同 locale score line，不能直接混榜。
+- `1.0.0`：预留给第一个真正冻结的公开稳定版本。
 
-不同 minor 版本的分数不应混在同一榜单中，除非明确标注版本。
+不同 score line 或不同 locale 的分数不应混在同一榜单中。
 
 ## 文档入口
 
 - `README.md`：英文主说明。
 - `METHODOLOGY.md`：英文方法论和复现规则。
 - `docs/CASES.md`：60 题公开目录。
+- `docs/LOCALES.md`：语言口径和分榜规则。
 - `docs/VERSIONING.md`：版本兼容规则。
 - `docs/RELEASE_CHECKLIST.md`：发布检查清单。
 - `results/by-model/README.md`：按模型归档本地测试结果的推荐目录规范。

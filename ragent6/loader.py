@@ -16,6 +16,7 @@ def load_manifest(path: Path) -> Manifest:
     return Manifest(
         suite_name=data["suite_name"],
         suite_version=data["suite_version"],
+        locale=str(data.get("locale") or "en-US"),
         cases=data["cases"],
         dimension_weights={str(k): float(v) for k, v in data.get("dimension_weights", {}).items()},
         dimension_labels={str(k): str(v) for k, v in data.get("dimension_labels", {}).items()},

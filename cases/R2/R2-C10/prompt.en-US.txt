@@ -1,0 +1,1 @@
+Read `fixtures/request.txt`, `fixtures/capabilities.csv`, and `fixtures/denylist.txt`. Choose the lowest-cost candidate that satisfies the request, is not denied, and has risk <= 2; if cost ties, choose the lower-latency candidate. Output only the candidate id.

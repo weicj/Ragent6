@@ -1,0 +1,7 @@
+Read exactly these four fixture files:
+- `fixtures/timeline.txt`
+- `fixtures/metrics.txt`
+- `fixtures/diff.txt`
+- `fixtures/runbook.txt`
+Identify the real root cause and the complete required remediation.
+Output exactly: `root=<ROOT> action=<ACTION>`.

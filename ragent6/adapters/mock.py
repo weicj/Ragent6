@@ -11,4 +11,6 @@ def run_case(case: CaseSpec, case_dir: Path) -> dict[str, Any]:
     if not case.mock_trace_file:
         raise RuntimeError(f"{case.case_id} missing mock_trace_file")
     trace_path = case_dir / case.mock_trace_file
-    return json.loads(trace_path.read_text(encoding="utf-8"))
+    trace = json.loads(trace_path.read_text(encoding="utf-8"))
+    trace["locale"] = case.locale
+    return trace

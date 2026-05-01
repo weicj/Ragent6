@@ -1,0 +1,1 @@
+Received fragment `{"revision":3,"slot":"a",}`. Recover the slot despite malformed JSON and output only the slot.

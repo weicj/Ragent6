@@ -1,0 +1,1 @@
+Read `fixtures/routes.txt`, strictly apply the 5 listed rules, and reply only with the final target, with no explanation.

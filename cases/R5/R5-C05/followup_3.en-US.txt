@@ -1,0 +1,3 @@
+A final old snapshot arrived: read `fixtures/stale_patch.json`.
+If its `revision` is lower than the `revision` in your current conclusion, ignore the entire patch.
+Continue outputting the complete compact JSON that should be retained. Do not explain.

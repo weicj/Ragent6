@@ -1,0 +1,1 @@
+Incident log: CPU spiked at 10:02; disk became full at 10:01 and blocked the writer queue; someone suggested adding CPU. Output CAUSE/FIX/WHY in three lines and identify the true root cause.

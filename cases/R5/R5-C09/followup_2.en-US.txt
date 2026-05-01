@@ -1,0 +1,1 @@
+New fragment `{"revision":4,"slot":"b"}` overrides the previous result. Output only the slot.

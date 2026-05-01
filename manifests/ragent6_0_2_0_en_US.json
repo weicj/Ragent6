@@ -1,6 +1,6 @@
 {
   "suite_name": "Ragent6",
-  "suite_version": "1.1.0",
+  "suite_version": "0.2.0",
   "dimension_labels": {
     "R1": "Task Closure",
     "R2": "Evidence Use",
@@ -78,5 +78,6 @@
     "cases/R6/R6-C08/case.json",
     "cases/R6/R6-C09/case.json",
     "cases/R6/R6-C10/case.json"
-  ]
+  ],
+  "locale": "en-US"
 }

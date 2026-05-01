@@ -11,7 +11,8 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = ROOT / "manifests" / "ragent6.json"
 DEFAULT_SUITE_NAME = "Ragent6"
-DEFAULT_SUITE_VERSION = "1.1.0"
+DEFAULT_SUITE_VERSION = "0.2.0"
+DEFAULT_LOCALE = "en-US"
 DEFAULT_RESULTS_ROOT = ROOT / "results"
 DEFAULT_EXCLUDE_FILE = ROOT / "metadata" / "ragent6_result_exclusions.json"
 
@@ -82,6 +83,7 @@ def validate_manifest(
     manifest_path: Path,
     expected_suite_name: str = DEFAULT_SUITE_NAME,
     expected_suite_version: str = DEFAULT_SUITE_VERSION,
+    expected_locale: str | None = DEFAULT_LOCALE,
     expected_case_count: int = 60,
 ) -> tuple[dict[str, Any], list[dict[str, Any]], list[str]]:
     errors: list[str] = []
@@ -95,6 +97,11 @@ def validate_manifest(
         errors.append(f"manifest suite_name must be {expected_suite_name}")
     if manifest.get("suite_version") != expected_suite_version:
         errors.append(f"manifest suite_version must be {expected_suite_version}")
+    locale = str(manifest.get("locale") or "")
+    if expected_locale is not None and locale != expected_locale:
+        errors.append(f"manifest locale must be {expected_locale}")
+    if locale not in {"en-US", "zh-CN"}:
+        errors.append("manifest locale must be one of: en-US, zh-CN")
     if len(cases) != expected_case_count:
         errors.append(f"manifest must contain {expected_case_count} cases, got {len(cases)}")
     if len(public_dims) != 6:
@@ -135,6 +142,20 @@ def validate_manifest(
         prompt_file = case_path.parent / str(case.get("prompt_file") or "")
         if case.get("prompt_file") and not prompt_file.is_file():
             errors.append(f"{case_id} prompt file not found: {case.get('prompt_file')}")
+        if locale and case.get("prompt_file"):
+            localized_prompt = prompt_file.with_name(f"{prompt_file.stem}.{locale}{prompt_file.suffix}")
+            if not localized_prompt.is_file():
+                errors.append(f"{case_id} localized prompt file not found for {locale}: {localized_prompt.name}")
+
+        for followup in case.get("followup_prompt_files") or []:
+            followup_file = case_path.parent / str(followup)
+            if not followup_file.is_file():
+                errors.append(f"{case_id} followup prompt file not found: {followup}")
+                continue
+            if locale:
+                localized_followup = followup_file.with_name(f"{followup_file.stem}.{locale}{followup_file.suffix}")
+                if not localized_followup.is_file():
+                    errors.append(f"{case_id} localized followup file not found for {locale}: {localized_followup.name}")
 
         mock_trace_file = case.get("mock_trace_file")
         if mock_trace_file and not (case_path.parent / str(mock_trace_file)).is_file():
@@ -165,15 +186,19 @@ def eligible_summary(
     summary: dict[str, Any],
     expected_suite_name: str = DEFAULT_SUITE_NAME,
     expected_suite_version: str = DEFAULT_SUITE_VERSION,
+    expected_locale: str | None = DEFAULT_LOCALE,
     expected_case_count: int = 60,
 ) -> bool:
-    return (
+    base_ok = (
         summary.get("suite_name") == expected_suite_name
         and summary.get("suite_version") == expected_suite_version
         and summary.get("total_cases") == expected_case_count
         and summary.get("graded_cases") == expected_case_count
         and summary.get("invalid_cases") == 0
     )
+    if not base_ok:
+        return False
+    return expected_locale is None or summary.get("locale") == expected_locale
 
 
 def recompute_result(
@@ -250,6 +275,7 @@ def scan_results(
     result_exclusions: dict[str, str] | None = None,
     expected_suite_name: str = DEFAULT_SUITE_NAME,
     expected_suite_version: str = DEFAULT_SUITE_VERSION,
+    expected_locale: str | None = DEFAULT_LOCALE,
     expected_case_count: int = 60,
 ) -> dict[str, Any]:
     included: list[dict[str, Any]] = []
@@ -277,8 +303,9 @@ def scan_results(
         if exclusion_reason:
             excluded.append({"result_dir": str(result_dir), "reason": exclusion_reason})
             continue
-        if not eligible_summary(summary, expected_suite_name, expected_suite_version, expected_case_count):
-            excluded.append({"result_dir": str(result_dir), "reason": f"not an eligible {expected_suite_name} {expected_suite_version} full run"})
+        if not eligible_summary(summary, expected_suite_name, expected_suite_version, expected_locale, expected_case_count):
+            locale_label = f" {expected_locale}" if expected_locale else ""
+            excluded.append({"result_dir": str(result_dir), "reason": f"not an eligible {expected_suite_name} {expected_suite_version}{locale_label} full run"})
             continue
 
         recomputed, recompute_errors = recompute_result(result_dir, public_cases, weights)
@@ -368,6 +395,7 @@ def main() -> int:
     parser.add_argument("--exclude-file", type=Path, default=DEFAULT_EXCLUDE_FILE)
     parser.add_argument("--suite-name", default=DEFAULT_SUITE_NAME)
     parser.add_argument("--suite-version", default=DEFAULT_SUITE_VERSION)
+    parser.add_argument("--locale", default=DEFAULT_LOCALE, help="Expected locale. Pass an empty string to disable locale filtering.")
     parser.add_argument("--case-count", type=int, default=60)
     parser.add_argument("--json-out", type=Path)
     parser.add_argument("--fail-on-summary-mismatch", action="store_true")
@@ -394,6 +422,7 @@ def main() -> int:
         manifest_path,
         expected_suite_name=args.suite_name,
         expected_suite_version=args.suite_version,
+        expected_locale=args.locale or None,
         expected_case_count=args.case_count,
     )
     result_payload: dict[str, Any] | None = None
@@ -408,6 +437,7 @@ def main() -> int:
             load_result_exclusions(args.exclude_file.resolve() if args.exclude_file else None),
             expected_suite_name=args.suite_name,
             expected_suite_version=args.suite_version,
+            expected_locale=args.locale or None,
             expected_case_count=args.case_count,
         )
         if result_payload["result_errors"]:
@@ -443,12 +473,14 @@ def main() -> int:
         "status": "pass" if not release_errors else "fail",
         "suite_name": manifest.get("suite_name"),
         "suite_version": manifest.get("suite_version"),
+        "locale": manifest.get("locale"),
         "manifest_path": str(manifest_path),
         "release_errors": release_errors,
         "manifest_info": {
             "case_count": len(public_cases),
             "public_dimensions": manifest.get("dimension_labels") or {},
             "dimension_weights": manifest.get("dimension_weights") or {},
+            "locale": manifest.get("locale"),
             "errors": manifest_errors,
         },
         "results": result_payload,

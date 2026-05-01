@@ -1,0 +1,1 @@
+`fixtures/index.txt` 指向当前环境，环境文件再指向 profile。按链路读取并写出 `fixtures/runtime.json`，必须包含最终 `endpoint`。不要使用 default profile。最终只回答 `BUILT`。

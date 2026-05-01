@@ -1,0 +1,1 @@
+`fixtures/index.txt` points to the current environment, and the environment file points to a profile. Follow the chain and write `fixtures/runtime.json`; it must contain the final `endpoint`. Do not use the default profile. Reply only `BUILT`.

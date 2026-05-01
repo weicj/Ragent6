@@ -1,0 +1,1 @@
+Read three files: `fixtures/base.txt`, `fixtures/override.txt`, and `fixtures/retraction.txt`. Rule: a retraction can cancel an override. Output only the final owner value; do not output the retracted owner.

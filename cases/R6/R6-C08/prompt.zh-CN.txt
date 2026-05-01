@@ -1,0 +1,1 @@
+请读取 `fixtures/routes.txt`，严格按其中列出的 5 条规则筛选，只回复最终 target，不要解释。

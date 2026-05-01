@@ -9,8 +9,8 @@ running `make mock`.
   "models": [
     {
       "name": "Mock Golden Trace",
-      "result_dir": "results/mock-1.1.0",
-      "audit_group": "ragent6-1.1.0-smoke",
+      "result_dir": "results/mock-0.2.0-en-US",
+      "audit_group": "ragent6-0.2.0-en-US-smoke",
       "family": "mock",
       "generation": "golden",
       "generation_rank": 1,
@@ -38,6 +38,6 @@ per-model path, for example:
 ```json
 {
   "name": "Example Local Model",
-  "result_dir": "results/by-model/example-local-model/1.1.0/run-001"
+  "result_dir": "results/by-model/example-local-model/0.2.0/en-US/run-001"
 }
 ```

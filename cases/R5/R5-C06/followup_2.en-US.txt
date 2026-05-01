@@ -1,0 +1,1 @@
+User adds: if the check finds a stale manual process, then give a stop recommendation, but still do not execute it directly. Output only the current action.

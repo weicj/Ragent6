@@ -1,0 +1,5 @@
+Use local evidence only.
+
+Read the active index and the shards it points to. Do not use retired evidence.
+
+Return one concise sentence containing the owner, rollback version, and root cause.

@@ -23,6 +23,7 @@ class CaseSpec:
     followup_prompt_files: list[str] = field(default_factory=list)
     expected: dict[str, Any] = field(default_factory=dict)
     mock_trace_file: str | None = None
+    locale: str = "en-US"
 
 
 @dataclass
@@ -30,6 +31,7 @@ class Manifest:
     suite_name: str
     suite_version: str
     cases: list[str]
+    locale: str = "en-US"
     dimension_weights: dict[str, float] = field(default_factory=dict)
     dimension_labels: dict[str, str] = field(default_factory=dict)
 
@@ -51,6 +53,7 @@ class CaseResult:
 class RunSummary:
     suite_name: str
     suite_version: str
+    locale: str
     adapter: str
     total_cases: int
     graded_cases: int

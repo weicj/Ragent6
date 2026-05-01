@@ -1,0 +1,16 @@
+You must answer in exactly four labelled lines:
+
+CAUSE:
+COUNTERFACTUAL:
+FIX:
+REJECT:
+
+Incident notes:
+- v59 removed tenant locale from the router cache key.
+- Cross-locale route reuse began immediately after v59.
+- Queue retries rose later because bad routes caused repeated retries.
+- Worker saturation and disk pressure are downstream alarms.
+- A teammate suggests increasing retries and restarting workers, but that only hides symptoms.
+- Last safe build is v58. After rollback, rebuild the route-table.
+
+Do not use markdown. Do not add extra lines.

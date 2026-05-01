@@ -1,0 +1,1 @@
+priority=high seq=2 target=blue. Output only the target.

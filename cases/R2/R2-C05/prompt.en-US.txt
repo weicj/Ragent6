@@ -1,0 +1,1 @@
+Use `fixtures/index.md` to find the currently active plan. There is a stale document in the same directory. Output exactly one sentence in this form: `Decision: use ..., owner is ...`.

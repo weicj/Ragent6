@@ -52,7 +52,7 @@ def resolve_case_path(manifest_path: Path, case_rel: str) -> Path:
 def build_summary_dimension_ids(manifest: Any, manifest_path: Path) -> list[str]:
     """Map case results onto the public summary dimensions.
 
-    Ragent6 1.1.0 reports a stable R1-R6 surface where each block contains
+    Ragent6 reports an R1-R6 surface where each block contains
     10 cases. If a custom manifest omits public dimension labels, fall back to
     the case-level dimension IDs.
     """
@@ -116,6 +116,7 @@ def evaluate(manifest_path: Path, adapter_name: str, out_dir: Path) -> RunSummar
             total_score=sum(item.score or 0 for item in graded),
             total_possible=len(graded),
             weighted_score=weighted_score,
+            locale=manifest.locale,
             dimensions=dimension_counts,
             out_dir=str(out_dir),
         )
@@ -127,6 +128,7 @@ def evaluate(manifest_path: Path, adapter_name: str, out_dir: Path) -> RunSummar
             case_path = resolve_case_path(manifest_path, case_rel)
             case_dir = case_path.parent
             case = load_case(case_path)
+            case.locale = manifest.locale
             if hasattr(adapter, "run_case"):
                 trace = adapter.run_case(case, case_dir, suite_context)
             else:
@@ -168,6 +170,7 @@ def evaluate(manifest_path: Path, adapter_name: str, out_dir: Path) -> RunSummar
     summary = RunSummary(
         suite_name=manifest.suite_name,
         suite_version=manifest.suite_version,
+        locale=manifest.locale,
         adapter=adapter_name,
         total_cases=len(case_results),
         graded_cases=len(graded),

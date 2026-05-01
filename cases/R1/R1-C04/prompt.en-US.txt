@@ -1,0 +1,1 @@
+Read `fixtures/input/orders.csv` and `fixtures/input/policy.txt`, create `fixtures/out/report.json`, then run `sh fixtures/check.sh`. Reply only `PASS`.

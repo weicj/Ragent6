@@ -1,0 +1,1 @@
+Error: upload failed with `413 Payload Too Large`; a side note strongly suggests restarting the database connection pool. The limit comes from nginx body size. Output CAUSE/FIX/WHY in three lines.

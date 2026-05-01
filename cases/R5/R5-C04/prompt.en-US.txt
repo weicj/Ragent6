@@ -1,0 +1,1 @@
+Initial: owner=ops region=us flags=dark,beta note=none. Output all fields every time.

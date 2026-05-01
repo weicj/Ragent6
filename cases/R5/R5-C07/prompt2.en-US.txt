@@ -1,0 +1,4 @@
+State update 2:
+The v58 canary approval was revoked. Do not deploy v58.
+
+Reply with the updated state only.

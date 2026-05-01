@@ -1,0 +1,1 @@
+priority=low seq=3 target=green, but it must not override high priority. Output only the target.

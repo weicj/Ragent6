@@ -1,0 +1,6 @@
+A minimal change must be output as a unified diff:
+- File: `app.py`
+- Old line: `print("helo")`
+- New line: `print("hello")`
+
+Output only the unified diff, with no markdown.

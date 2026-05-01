@@ -1,0 +1,1 @@
+事故记录：10:00 发布 v42；10:03 p95 延迟升高；10:04 cache hit rate 降低；10:05 数据库连接数升高；10:07 错误率升高。反事实 A：只扩 DB 连接池，错误率仍升高。反事实 B：只回滚 v42，cache hit rate 和错误率恢复。diff 显示 v42 把 cache key 从 `tenant:user:scope` 改成 `user:scope`。按三行输出：CAUSE/FIX/WHY。

@@ -1,4 +1,4 @@
-# Ragent6 1.1.0 Case Catalog
+# Ragent6 0.2.0 Case Catalog
 
 This catalog lists the public 60-case surface. Legacy source IDs are intentionally omitted from the public case table; `docs/case_map.json` keeps lineage for maintainers.
 

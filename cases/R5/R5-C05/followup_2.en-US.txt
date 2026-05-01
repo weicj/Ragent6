@@ -1,0 +1,4 @@
+Another patch arrived: read `fixtures/final_patch.json`.
+Apply it only if `only_if_mode` matches the current `flags.mode` in your conclusion.
+If the patch contains `unset`, remove those fields from the final JSON after applying it.
+Output the final complete compact JSON; unchanged fields must be preserved. Do not explain.

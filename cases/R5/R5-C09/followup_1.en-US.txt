@@ -1,0 +1,1 @@
+New fragment `{"revision":2,"slot":"c"}` has an older revision and must not override. Output only the slot.

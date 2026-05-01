@@ -1,0 +1,2 @@
+Use local tools to find the current policy and ticket evidence. Do not use archived decoys.
+Return exactly: `owner=<OWNER> escalation=<COLOR>`.

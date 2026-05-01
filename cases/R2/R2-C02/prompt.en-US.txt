@@ -1,0 +1,1 @@
+Read `fixtures/channel.txt`, `fixtures/policy.txt`, `fixtures/primary.json`, and `fixtures/override.json`. Reply only with the final `channel:target`, with no explanation.

@@ -32,7 +32,17 @@ def _clean_text(text: str) -> str:
     return cleaned.strip()
 
 
+def _is_zh(case: CaseSpec) -> bool:
+    return str(getattr(case, "locale", "") or "").lower().startswith("zh")
+
+
 def _system_prompt(case: CaseSpec) -> str:
+    if _is_zh(case):
+        return _system_prompt_zh(case)
+    return _system_prompt_en(case)
+
+
+def _system_prompt_en(case: CaseSpec) -> str:
     lines = ["You are running inside the Ragent6 native harness."]
     if case.allowed_tools:
         lines.extend(
@@ -79,6 +89,64 @@ def _system_prompt(case: CaseSpec) -> str:
             ]
         )
     return "\n".join(lines)
+
+
+def _system_prompt_zh(case: CaseSpec) -> str:
+    lines = ["你正在 Ragent6 native harness 中运行。"]
+    if case.allowed_tools:
+        lines.extend(
+            [
+                "需要使用工具时，一次只调用一个工具，并且只输出：<tool>{...}</tool>。",
+                "工具名必须是 read、exec、write、edit 之一。",
+                "不要把字面字符串 \"read|exec|write|edit\" 当作工具名输出。",
+                "read 示例：<tool>{\"name\":\"read\",\"arguments\":{\"path\":\"fixtures/a.txt\"}}</tool>",
+                "exec 示例：<tool>{\"name\":\"exec\",\"arguments\":{\"command\":\"sh fixtures/check.sh\"}}</tool>",
+                "write 示例：<tool>{\"name\":\"write\",\"arguments\":{\"path\":\"fixtures/out.json\",\"content\":\"{}\"}}</tool>",
+                "edit 示例：<tool>{\"name\":\"edit\",\"arguments\":{\"path\":\"fixtures/a.txt\",\"edits\":[{\"oldText\":\"old\",\"newText\":\"new\"}]}}</tool>",
+                "调用工具时，不要在 <tool>...</tool> 外输出任何额外文字。",
+                "如果已经可以回答，直接输出最终答案：不要 markdown 包裹，不要解释，不要额外标签。",
+                "不要输出 assistant: 或 final-answer: 这类标签。",
+                "不要只为了打印最终答案而使用 exec 或 echo；最终答案必须作为 assistant 文本返回。",
+                "工具参数必须使用正确字段。如果工具结果表示还需要下一步，就继续输出另一个 <tool>{...}</tool>。",
+                "允许的工具：" + ", ".join(case.allowed_tools) + "。",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "本题不允许使用工具。",
+                "不要输出 <tool>...</tool>。",
+                "不要只回答工具名 `read`、`exec`、`write` 或 `edit`。",
+                "如果题目要求输出命令或计划，直接输出纯文本命令或计划。",
+                "如果题目要求输出结果，只输出结果本身。",
+                "除非题目明确要求固定标签，否则不要用 markdown、解释或额外标签包裹答案。",
+            ]
+        )
+    if case.max_tool_calls is not None:
+        lines.append(f"总工具调用次数不要超过 {case.max_tool_calls} 次。")
+    if case.max_turns:
+        lines.append(f"assistant 回合数不要超过 {case.max_turns} 轮。")
+    if case.allowed_tools:
+        lines.extend(
+            [
+                "多轮示例 1：",
+                "<tool>{\"name\":\"read\",\"arguments\":{\"path\":\"fixtures/a.txt\"}}</tool>",
+                "收到 TOOL_RESULT 后，如果已经有答案，就直接输出最终答案。",
+                "多轮示例 2：",
+                "<tool>{\"name\":\"exec\",\"arguments\":{\"command\":\"sh fixtures/check.sh\"}}</tool>",
+                "收到 TOOL_RESULT 后，如果检查成功，就直接输出 PASS。",
+            ]
+        )
+    return "\n".join(lines)
+
+
+def _localized_prompt_path(case_dir: Path, prompt_file: str, locale: str) -> Path:
+    base = case_dir / prompt_file
+    if locale:
+        localized = base.with_name(f"{base.stem}.{locale}{base.suffix}")
+        if localized.is_file():
+            return localized
+    return base
 
 
 def _parse_first_json_object(text: str) -> dict[str, Any] | None:
@@ -446,8 +514,9 @@ def run_case(case: CaseSpec, case_dir: Path, suite_context: Any = None) -> dict[
     if src_fixtures.exists():
         shutil.copytree(src_fixtures, workspace_main / "fixtures", dirs_exist_ok=True)
 
-    prompts = [(case_dir / case.prompt_file).read_text(encoding="utf-8")]
-    prompts.extend((case_dir / followup).read_text(encoding="utf-8") for followup in case.followup_prompt_files)
+    prompt_paths = [_localized_prompt_path(case_dir, case.prompt_file, case.locale)]
+    prompt_paths.extend(_localized_prompt_path(case_dir, followup, case.locale) for followup in case.followup_prompt_files)
+    prompts = [path.read_text(encoding="utf-8") for path in prompt_paths]
 
     tool_calls: list[dict[str, Any]] = []
     tool_results: list[dict[str, Any]] = []
@@ -520,6 +589,7 @@ def run_case(case: CaseSpec, case_dir: Path, suite_context: Any = None) -> dict[
                 break
         return {
             "case_id": case.case_id,
+            "locale": case.locale,
             "config_path": base_url,
             "returncode": 0 if not aborted else None,
             "stdout": "",
@@ -536,6 +606,7 @@ def run_case(case: CaseSpec, case_dir: Path, suite_context: Any = None) -> dict[
             "adapter_error": request_error,
             "turn_runs": turn_runs,
             "workspace_files": _snapshot_workspace_fixtures(workspace_main),
+            "prompt_files": [path.name for path in prompt_paths],
         }
     finally:
         shutil.rmtree(temp_dir, ignore_errors=True)

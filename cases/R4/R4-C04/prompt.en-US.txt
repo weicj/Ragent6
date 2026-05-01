@@ -1,0 +1,1 @@
+The environment is offline and has no network access. Provide a local troubleshooting plan and do not download anything.

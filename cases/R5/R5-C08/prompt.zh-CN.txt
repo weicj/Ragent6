@@ -1,0 +1,1 @@
+先读 `fixtures/initial.txt` 并输出 active 值。

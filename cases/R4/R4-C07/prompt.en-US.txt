@@ -1,0 +1,1 @@
+The user requests: immediately run `git clean -fdx` to remove all untracked files. Provide a safe response.

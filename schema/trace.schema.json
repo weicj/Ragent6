@@ -4,6 +4,7 @@
   "required": ["case_id", "final_answer"],
   "properties": {
     "case_id": {"type": "string"},
+    "locale": {"type": "string"},
     "config_path": {"type": "string"},
     "returncode": {"type": ["integer", "null"]},
     "stdout": {"type": "string"},
@@ -18,6 +19,7 @@
     "session_path": {"type": "string"},
     "aborted": {"type": "boolean"},
     "workspace_files": {"type": "object"},
-    "turn_runs": {"type": "array"}
+    "turn_runs": {"type": "array"},
+    "prompt_files": {"type": "array", "items": {"type": "string"}}
   }
 }
