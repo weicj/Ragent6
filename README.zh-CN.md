@@ -100,6 +100,47 @@ python3 scripts/score_results.py \
   --report reports/ragent6_scores.md
 ```
 
+## 中文口径实测参考成绩
+
+下面是当前已完成的中文口径本地实测面板，使用 no-thinking native harness；总分为 deterministic partial 加权分，满分 100；通过项为 strict `x/60`。这些结果只代表中文测试口径，不能和 `en-US` 国际口径混榜。后续正式公开榜单应按 `0.2.0 zh-CN` manifest 重新归档或复算。
+
+| 排名 | 底座 | 参数量 | 变体 | 量化 | 总分 | 通过项 |
+| ---: | --- | --- | --- | --- | ---: | --- |
+| 1 | Qwen3.6 | 27B | Qwopus Abliterated | Q4_K_M | 92.3 | 51/60 |
+| 2 | Qwen3.6 | 27B | Qwopus Preview | Q4_K_M | 89.4 | 48/60 |
+| 3 | Qwen3.6 | 27B | Unsloth IT | Q4_K_M | 87.4 | 49/60 |
+| 4 | Qwen3.6 | 27B | Carnice V2 | Q4_K_M | 86.4 | 43/60 |
+| 5 | Qwen3.6 | 35B A3B | Unsloth IT | Q4_K_M | 79.9 | 38/60 |
+| 6 | Qwen3.5 | 27B | Unsloth IT | Q4_K_M | 76.7 | 37/60 |
+| 7 | Qwen3.6 | 35B A3B | Hauhau | IQ4_XS | 76.6 | 37/60 |
+| 8 | Gemma 4 | 31B | Unsloth IT | Q4_K_M | 74.7 | 37/60 |
+| 9 | Gemma 4 | 26B A4B | Gemopus Preview | Q4_K_M | 72.1 | 34/60 |
+| 10 | Qwen3.5 | 9B | CoPaw Flash | Q4_K_M | 67.7 | 30/60 |
+| 11 | Gemma 4 | 26B A4B | Unsloth IT | Q4_K_M | 67.2 | 30/60 |
+| 12 | Qwen3.5 | 35B A3B | Unsloth IT | Q4_K_M | 63.2 | 28/60 |
+| 13 | Gemma 4 | E4B | Hauhau | Q5_K_M | 61.8 | 27/60 |
+| 14 | Gemma 4 | E4B | Unsloth IT | Q5_K_M | 61.5 | 28/60 |
+| 15 | Qwen3.5 | 9B | Carnice | Q4_K_M | 58.6 | 23/60 |
+| 16 | Qwen3.5 | 13B | Heretic | IQ4_XS | 58.4 | 23/60 |
+| 17 | Qwen3.5 | 18B | Qwopus GLM | Q4_K_M | 57.2 | 27/60 |
+| 18 | Qwen3.5 | 9B | Unsloth IT | Q4_K_M | 56.8 | 24/60 |
+| 19 | Qwen3.5 | 9B | Qwopus v3 | Q4_K_M | 56.6 | 25/60 |
+| 20 | Qwen3.5 | 9B | A3 i1 | IQ4_NL | 54.7 | 19/60 |
+| 21 | Qwen3.5 | 4B | OpenResearchTools | Q4_K_M | 52.1 | 19/60 |
+| 22 | Gemma 4 | E2B | Unsloth IT | Q4_K_M | 49.6 | 18/60 |
+| 23 | OpenNemo Cascade2 | 30B A3B | i1 | Q5_K_M | 46.3 | 15/60 |
+| 24 | Qwen3 | 8B | Unsloth IT | Q4_K_M | 45.6 | 18/60 |
+| 25 | Gemma 3n | E4B | Unsloth IT | Q4_K_M | 43.7 | 14/60 |
+| 26 | Qwen3 | 4B | Unsloth IT | Q4_K_M | 40.3 | 14/60 |
+| 27 | Nemotron Cascade2 | 30B A3B | base | Q5_K_M | 39.9 | 14/60 |
+| 28 | Gemma 4 | E4B | Gemopus Preview | IQ4_XS | 39.2 | 11/60 |
+| 29 | Qwen3.5 | 2B | Unsloth IT | Q4_K_M | 36.6 | 10/60 |
+| 30 | Gemma 3n | E2B | Unsloth IT | Q4_K_M | 35.7 | 8/60 |
+| 31 | Qwen3.5 | 2B | AaryanK | Q4_K_M | 34.2 | 8/60 |
+| 32 | Squeez | 2B | i1 | Q4_K_M | 30.5 | 7/60 |
+| 33 | LFM2.5 | 350M | base | Q5_K_M | 20.7 | 2/60 |
+| 34 | LFM2.5 | 1.2B | Instruct | Q4_K_M | 18.5 | 4/60 |
+
 ## 发布前审计
 
 ```bash
