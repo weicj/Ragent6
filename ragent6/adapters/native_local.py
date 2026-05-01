@@ -33,48 +33,49 @@ def _clean_text(text: str) -> str:
 
 
 def _system_prompt(case: CaseSpec) -> str:
-    lines = ["你运行在 Ragent6 native harness 中。"]
+    lines = ["You are running inside the Ragent6 native harness."]
     if case.allowed_tools:
         lines.extend(
             [
-                "如果需要使用工具，只能一次调用一个工具，并且必须严格输出：<tool>{...}</tool>",
-                "tool name 只能是以下四个之一：read、exec、write、edit。",
-                "不要把 \"read|exec|write|edit\" 当成字面字符串写进 name。",
-                "read 示例：<tool>{\"name\":\"read\",\"arguments\":{\"path\":\"fixtures/a.txt\"}}</tool>",
-                "exec 示例：<tool>{\"name\":\"exec\",\"arguments\":{\"command\":\"sh fixtures/check.sh\"}}</tool>",
-                "write 示例：<tool>{\"name\":\"write\",\"arguments\":{\"path\":\"fixtures/out.json\",\"content\":\"{}\"}}</tool>",
-                "edit 示例：<tool>{\"name\":\"edit\",\"arguments\":{\"path\":\"fixtures/a.txt\",\"edits\":[{\"oldText\":\"old\",\"newText\":\"new\"}]}}</tool>",
-                "除 <tool>...</tool> 以外不要输出任何多余文字。",
-                "如果已经可以回答，就直接输出最终答案本身，不要包裹 markdown，不要解释，不要加标签。",
-                "不要输出 assistant:、final-answer: 这类标签。",
-                "不要用 exec 只是为了打印或 echo 最终答案；最终答案必须直接作为 assistant 文本返回。",
-                "read/write/edit/exec 的 arguments 必须使用正确字段；如果收到工具结果后还需要继续，就再次输出新的 <tool>{...}</tool>。",
-                "可用工具仅限: " + ", ".join(case.allowed_tools) + "。",
+                "When you need a tool, call exactly one tool at a time and output only: <tool>{...}</tool>.",
+                "The tool name must be one of: read, exec, write, edit.",
+                "Do not write the literal string \"read|exec|write|edit\" as the tool name.",
+                "read example: <tool>{\"name\":\"read\",\"arguments\":{\"path\":\"fixtures/a.txt\"}}</tool>",
+                "exec example: <tool>{\"name\":\"exec\",\"arguments\":{\"command\":\"sh fixtures/check.sh\"}}</tool>",
+                "write example: <tool>{\"name\":\"write\",\"arguments\":{\"path\":\"fixtures/out.json\",\"content\":\"{}\"}}</tool>",
+                "edit example: <tool>{\"name\":\"edit\",\"arguments\":{\"path\":\"fixtures/a.txt\",\"edits\":[{\"oldText\":\"old\",\"newText\":\"new\"}]}}</tool>",
+                "Do not output any extra text outside <tool>...</tool> when calling a tool.",
+                "If you can answer, output the final answer directly: no markdown wrapper, no explanation, no extra label.",
+                "Do not output labels such as assistant: or final-answer:.",
+                "Do not use exec only to print or echo the final answer; final answers must be returned as assistant text.",
+                "Tool arguments must use the correct fields. If a tool result means you need another step, output another <tool>{...}</tool>.",
+                "Allowed tools: " + ", ".join(case.allowed_tools) + ".",
             ]
         )
     else:
         lines.extend(
             [
-                "本题不允许使用任何工具。",
-                "不要输出 <tool>...</tool>。",
-                "不要只回答 `read`、`exec`、`write`、`edit` 这些工具名。",
-                "如果题目要求命令或方案，就直接输出给用户可执行的纯文本命令；如果题目要求结果，就直接输出结果本身。",
-                "不要包裹 markdown，不要解释，不要加标签，除非题面明确要求固定标签格式。",
+                "No tools are allowed for this case.",
+                "Do not output <tool>...</tool>.",
+                "Do not answer with only the tool names `read`, `exec`, `write`, or `edit`.",
+                "If the prompt asks for commands or a plan, output the plain-text commands or plan directly.",
+                "If the prompt asks for a result, output only the result itself.",
+                "Do not wrap the answer in markdown, explain, or add labels unless the prompt explicitly asks for fixed labels.",
             ]
         )
     if case.max_tool_calls is not None:
-        lines.append(f"工具调用总数不得超过 {case.max_tool_calls} 次。")
+        lines.append(f"Do not exceed {case.max_tool_calls} total tool calls.")
     if case.max_turns:
-        lines.append(f"最多回复 {case.max_turns} 次。")
+        lines.append(f"Do not exceed {case.max_turns} assistant turns.")
     if case.allowed_tools:
         lines.extend(
             [
-                "多轮示例1：",
+                "Multi-turn example 1:",
                 "<tool>{\"name\":\"read\",\"arguments\":{\"path\":\"fixtures/a.txt\"}}</tool>",
-                "收到 TOOL_RESULT 后，如果已得到答案，直接输出 final-answer",
-                "多轮示例2：",
+                "After receiving TOOL_RESULT, output the final answer directly if you have it.",
+                "Multi-turn example 2:",
                 "<tool>{\"name\":\"exec\",\"arguments\":{\"command\":\"sh fixtures/check.sh\"}}</tool>",
-                "收到 TOOL_RESULT 后，如果成功，直接输出 PASS",
+                "After receiving TOOL_RESULT, output PASS directly if the check succeeded.",
             ]
         )
     return "\n".join(lines)
@@ -508,7 +509,7 @@ def run_case(case: CaseSpec, case_dir: Path, suite_context: Any = None) -> dict[
                     messages.append({"role": "user", "content": observation})
                     continue
                 if not cleaned and not nudged_final:
-                    messages.append({"role": "user", "content": "你刚才没有输出有效答案。现在只输出最终答案本身，不要输出 </think> 或任何标签。"})
+                    messages.append({"role": "user", "content": "You did not output a valid answer. Now output only the final answer itself, with no </think> and no labels."})
                     nudged_final = True
                     continue
                 assistant_texts.append(cleaned)

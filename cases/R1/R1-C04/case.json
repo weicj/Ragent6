@@ -2,8 +2,8 @@
   "case_id": "R1-C04",
   "dimension_id": "R1",
   "audit_tier": "discriminative",
-  "title": "读取表格生成报告并验证",
-  "objective": "读取 CSV 与策略文件，生成 JSON 工件并运行校验脚本。",
+  "title": "Table report with verification",
+  "objective": "Read a CSV and policy file, generate a JSON artifact, and run the verification script.",
   "prompt_file": "prompt.txt",
   "checker": "artifact_verification",
   "fixtures": [

@@ -2,8 +2,8 @@
   "case_id": "R6-C08",
   "dimension_id": "R6",
   "audit_tier": "discriminative",
-  "title": "按策略筛选最终 target",
-  "objective": "必须按文件里的策略筛选候选项，而不是取最后出现值。",
+  "title": "Policy-filtered final target",
+  "objective": "Filter candidates by file-defined policy instead of selecting the last seen value.",
   "prompt_file": "prompt.txt",
   "checker": "latest_value",
   "fixtures": [

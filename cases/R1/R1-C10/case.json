@@ -2,8 +2,8 @@
   "case_id": "R1-C10",
   "dimension_id": "R1",
   "audit_tier": "frontier",
-  "title": "传递配置构建",
-  "objective": "根据间接引用构建目标配置，而不是取表面默认值。",
+  "title": "Transitive configuration build",
+  "objective": "Build the target configuration through indirect references instead of using the surface default.",
   "prompt_file": "prompt.txt",
   "checker": "artifact_verification",
   "fixtures": [

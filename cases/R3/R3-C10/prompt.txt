@@ -1,1 +1,1 @@
-只输出两行命令：先检查 9042 端口，再查看对应 pid 的命令行。
+Output exactly two command lines: first check port 9042, then inspect the command line for the corresponding pid.

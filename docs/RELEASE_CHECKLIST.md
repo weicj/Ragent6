@@ -13,15 +13,15 @@ Use this checklist before publishing a Ragent6 release or leaderboard.
 
 ```bash
 python3 -m compileall -q ragent6 scripts
-python3 scripts/run_eval.py --manifest manifests/ragent6.json --adapter mock --out results/mock-1.0.0
-python3 scripts/release_audit.py --manifest manifests/ragent6.json --suite-version 1.0.0
+python3 scripts/run_eval.py --manifest manifests/ragent6.json --adapter mock --out results/mock-1.1.0
+python3 scripts/release_audit.py --manifest manifests/ragent6.json --suite-version 1.1.0
 python3 scripts/score_results.py --metadata examples/model_metadata.example.json
 ```
 
 Expected mock result:
 
 ```text
-Ragent6 1.0.0: 60/60 (invalid=0)
+Ragent6 1.1.0: 60/60 (invalid=0)
 ```
 
 ## Score Tables

@@ -2,7 +2,7 @@
 
 This repository is the clean, publishable Ragent6 benchmark line.
 
-- Current stable version: `1.0.0`.
+- Current stable version: `1.1.0`.
 - Default manifest: `manifests/ragent6.json`.
 - Do not reintroduce historical experiment manifests or abandoned suite names into this repository.
 - Primary score is deterministic partial score, weighted to 100.

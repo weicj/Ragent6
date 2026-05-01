@@ -1,1 +1,1 @@
-读取 `fixtures/orders.csv`、`fixtures/adjustments.csv` 和 `fixtures/rules.txt`，只计算 `status=settled` 且没有被 reversal 覆盖的订单净额。写入 `fixtures/settlement.json`，最终只回答 `SETTLED`。
+Read `fixtures/orders.csv`, `fixtures/adjustments.csv`, and `fixtures/rules.txt`. Compute only the net amount for orders with `status=settled` that are not covered by a reversal. Write `fixtures/settlement.json` and reply only `SETTLED`.

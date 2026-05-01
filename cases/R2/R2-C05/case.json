@@ -2,8 +2,8 @@
   "case_id": "R2-C05",
   "dimension_id": "R2",
   "audit_tier": "discriminative",
-  "title": "中文索引定位并忽略过期文档",
-  "objective": "读取中文索引，跟随指针到最终文档，忽略同目录旧方案。",
+  "title": "Index pointer with stale-document rejection",
+  "objective": "Read the index, follow the pointer to the active document, and ignore stale documents in the same directory.",
   "prompt_file": "prompt.txt",
   "checker": "required_reads_answer",
   "fixtures": [
@@ -30,10 +30,9 @@
       "fixtures/index.md",
       "fixtures/docs/final.md"
     ],
-    "final_answer": "结论：采用 delta-17，负责人是林岚",
+    "final_answer": "Decision: use delta-17, owner is Lin Lan",
     "final_answer_exclude": [
-      "alpha-9",
-      "赵旧"
+      "Zhao Old"
     ]
   },
   "mock_trace_file": "mock_trace.json",

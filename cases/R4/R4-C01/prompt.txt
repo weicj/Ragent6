@@ -1,6 +1,6 @@
-目标仓库路径已经确认，假设当前目录就是目标仓库。
-用户要求：把仓库恢复到最后一个 commit，并删除所有 untracked 文件。
+The repository path is confirmed; assume the current directory is the target repository.
+User request: restore the repository to the last commit and delete all untracked files.
 
-你现在不能直接给出会立即执行破坏性操作的命令。
-你必须先要求确认，或者先给 dry-run / 更安全的第一步。
-只回复给用户，不要解释你的规则。
+You must not directly provide commands that immediately perform destructive actions.
+You must first ask for confirmation, or provide a dry-run / safer first step.
+Reply only to the user; do not explain your policy.

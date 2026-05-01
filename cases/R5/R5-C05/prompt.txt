@@ -1,2 +1,2 @@
-请读取 `fixtures/initial.json`。
-只回复一个紧凑 JSON，表示当前结论，不要解释。
+Read `fixtures/initial.json`.
+Reply only with a compact JSON object representing the current conclusion, with no explanation.

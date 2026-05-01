@@ -2,8 +2,8 @@
   "case_id": "R2-C03",
   "dimension_id": "R2",
   "audit_tier": "discriminative",
-  "title": "按策略转换证据后输出",
-  "objective": "最终答案必须是对证据按策略变换后的结果。",
+  "title": "Policy-transformed evidence output",
+  "objective": "Return the policy-transformed result, not the raw evidence value.",
   "prompt_file": "prompt.txt",
   "checker": "required_reads_answer",
   "fixtures": [

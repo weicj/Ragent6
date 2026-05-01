@@ -2,8 +2,8 @@
   "case_id": "R3-C01",
   "dimension_id": "R3",
   "audit_tier": "discriminative",
-  "title": "标签化 RCA 变体",
-  "objective": "输出严格三行 RCA，标签顺序固定。",
+  "title": "Labeled RCA variant",
+  "objective": "Output exactly three RCA lines with a fixed label order.",
   "prompt_file": "prompt.txt",
   "checker": "exact_labeled_lines",
   "fixtures": [],
@@ -23,13 +23,13 @@
       "CAUSE": [
         [
           "9112",
-          "端口 9112"
+          "port 9112"
         ],
         [
           "44210",
           "pid 44210",
           "process 44210",
-          "旧进程"
+          "old process"
         ]
       ],
       "FIX": [
@@ -41,23 +41,23 @@
           "stop",
           "kill",
           "terminate",
-          "终止",
-          "停止"
+          "terminate",
+          "stop"
         ]
       ],
       "WHY": [
         [
           "9112",
-          "端口",
+          "port",
           "port"
         ],
         [
           "occupied",
-          "占用",
+          "occupied",
           "bind",
-          "绑定",
-          "释放端口",
-          "新进程启动"
+          "bind",
+          "free port",
+          "new process start"
         ]
       ]
     }

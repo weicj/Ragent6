@@ -52,7 +52,7 @@ def resolve_case_path(manifest_path: Path, case_rel: str) -> Path:
 def build_summary_dimension_ids(manifest: Any, manifest_path: Path) -> list[str]:
     """Map case results onto the public summary dimensions.
 
-    Ragent6 1.0.0 reports a stable R1-R6 surface where each block contains
+    Ragent6 1.1.0 reports a stable R1-R6 surface where each block contains
     10 cases. If a custom manifest omits public dimension labels, fall back to
     the case-level dimension IDs.
     """

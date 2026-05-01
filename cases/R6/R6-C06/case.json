@@ -2,8 +2,8 @@
   "case_id": "R6-C06",
   "dimension_id": "R6",
   "audit_tier": "frontier",
-  "title": "双诱饵因果链",
-  "objective": "识别根因而不是两个表面诱饵。",
+  "title": "Two-decoy causal chain",
+  "objective": "Identify the root cause instead of the two surface decoys.",
   "prompt_file": "prompt.txt",
   "checker": "exact_labeled_lines",
   "fixtures": [],
@@ -23,41 +23,41 @@
       "CAUSE": [
         [
           "token",
-          "令牌"
+          "token"
         ],
         [
           "expired",
-          "过期"
+          "expired"
         ]
       ],
       "FIX": [
         [
           "refresh",
-          "刷新",
+          "refresh",
           "renew",
-          "重新获取"
+          "reacquire"
         ],
         [
           "token",
-          "令牌"
+          "token"
         ]
       ],
       "WHY": [
         [
           "cpu",
           "timeout",
-          "超时"
+          "timeout"
         ],
         [
           "downstream",
           "symptom",
-          "表象",
-          "症状",
-          "无法解决",
-          "根本",
-          "资源消耗",
-          "请求堆积",
-          "重试风暴"
+          "symptom",
+          "symptom",
+          "cannot solve",
+          "root cause",
+          "resource exhaustion",
+          "request backlog",
+          "retry storm"
         ]
       ]
     }

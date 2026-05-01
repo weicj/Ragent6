@@ -4,7 +4,7 @@ Ragent6 uses semantic versioning for benchmark compatibility.
 
 ## Compatible Patch Versions
 
-Use `1.0.x` for changes that do not affect scores:
+Use patch versions, such as `1.1.x`, for changes that do not affect scores:
 
 - README or documentation edits.
 - Report formatting changes.
@@ -13,7 +13,7 @@ Use `1.0.x` for changes that do not affect scores:
 
 ## New Score Line
 
-Use `1.x.0` when scores can change:
+Use minor versions, such as `1.x.0`, when scores can change:
 
 - Case prompt changes.
 - Fixture changes.

@@ -11,7 +11,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = ROOT / "manifests" / "ragent6.json"
 DEFAULT_SUITE_NAME = "Ragent6"
-DEFAULT_SUITE_VERSION = "1.0.0"
+DEFAULT_SUITE_VERSION = "1.1.0"
 DEFAULT_RESULTS_ROOT = ROOT / "results"
 DEFAULT_EXCLUDE_FILE = ROOT / "metadata" / "ragent6_result_exclusions.json"
 

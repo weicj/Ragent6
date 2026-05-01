@@ -2,8 +2,8 @@
   "case_id": "R5-C05",
   "dimension_id": "R5",
   "audit_tier": "discriminative",
-  "title": "新证据覆盖旧结论并保留未变字段",
-  "objective": "在同一 session 中，后续新证据必须逐轮覆盖嵌套字段、保留未变字段、执行条件补丁与 unset 语义，并忽略 revision 回退的旧补丁",
+  "title": "New evidence overrides old conclusions",
+  "objective": "Across one session, later evidence must update nested fields, preserve unchanged fields, apply conditional patches and unset semantics, and ignore revision rollbacks.",
   "prompt_file": "prompt.txt",
   "checker": "state_update_override",
   "fixtures": [

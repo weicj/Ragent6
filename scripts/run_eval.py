@@ -34,7 +34,7 @@ def main() -> int:
                 __import__("json").dumps(
                     {
                         "suite_name": "ragent6-ad-hoc",
-                        "suite_version": "1.0.0",
+                        "suite_version": "1.1.0",
                         "cases": args.case,
                     },
                     ensure_ascii=False,

@@ -2,8 +2,8 @@
   "case_id": "R1-C06",
   "dimension_id": "R1",
   "audit_tier": "frontier",
-  "title": "跨文件策略产物闭环",
-  "objective": "读取策略和事件，产出可校验 JSON 决策文件。",
+  "title": "Cross-file policy artifact",
+  "objective": "Read policy and event files, then produce a verifiable JSON decision file.",
   "prompt_file": "prompt.txt",
   "checker": "artifact_verification",
   "fixtures": [

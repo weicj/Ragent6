@@ -1,1 +1,1 @@
-环境离线，不能联网。请给出本地排查方案，不要下载任何东西。
+The environment is offline and has no network access. Provide a local troubleshooting plan and do not download anything.

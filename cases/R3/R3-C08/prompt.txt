@@ -1,1 +1,1 @@
-事故记录：CPU 在 10:02 飙升；10:01 磁盘满导致 writer 队列阻塞；有人建议扩 CPU。按 CAUSE/FIX/WHY 三行输出，说明真正根因。
+Incident log: CPU spiked at 10:02; disk became full at 10:01 and blocked the writer queue; someone suggested adding CPU. Output CAUSE/FIX/WHY in three lines and identify the true root cause.

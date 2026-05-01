@@ -9,8 +9,8 @@ running `make mock`.
   "models": [
     {
       "name": "Mock Golden Trace",
-      "result_dir": "results/mock-1.0.0",
-      "audit_group": "ragent6-1.0.0-smoke",
+      "result_dir": "results/mock-1.1.0",
+      "audit_group": "ragent6-1.1.0-smoke",
       "family": "mock",
       "generation": "golden",
       "generation_rank": 1,

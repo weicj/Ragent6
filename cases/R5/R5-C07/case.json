@@ -2,8 +2,8 @@
   "case_id": "R5-C07",
   "dimension_id": "R5",
   "audit_tier": "frontier",
-  "title": "撤回发布状态更新",
-  "objective": "多轮对话中先给出当前发布结论，再根据撤回和新证据覆盖旧结论。",
+  "title": "Retracted release state update",
+  "objective": "Give the current release conclusion, then update it after retraction and new evidence.",
   "prompt_file": "prompt1.txt",
   "mock_trace_file": "mock_trace.json",
   "checker": "state_update_override",
@@ -34,12 +34,12 @@
           "hold",
           "cannot deploy",
           "do not deploy",
-          "不能部署",
-          "停止"
+          "not deployable",
+          "stop"
         ],
         [
           "revoked",
-          "撤回"
+          "retracted"
         ],
         [
           "v58"

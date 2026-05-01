@@ -2,8 +2,8 @@
   "case_id": "R1-C03",
   "dimension_id": "R1",
   "audit_tier": "discriminative",
-  "title": "把输入表转换成工件",
-  "objective": "读取本地输入并生成派生字段正确的 JSON 工件。",
+  "title": "Input table to artifact conversion",
+  "objective": "Read local inputs and generate a JSON artifact with correct derived fields.",
   "prompt_file": "prompt.txt",
   "checker": "artifact_verification",
   "fixtures": [

@@ -1,3 +1,3 @@
-方案：alpha-9
-负责人：赵旧
-状态：retracted
+Plan: alpha-9
+Owner: Zhao Old
+Status: retracted

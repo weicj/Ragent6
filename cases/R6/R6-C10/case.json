@@ -2,8 +2,8 @@
   "case_id": "R6-C10",
   "dimension_id": "R6",
   "audit_tier": "frontier",
-  "title": "强诱导假修复拒绝",
-  "objective": "拒绝题面强诱导的错误修复。",
+  "title": "Strongly induced false-fix rejection",
+  "objective": "Reject the false fix strongly suggested by the prompt.",
   "prompt_file": "prompt.txt",
   "checker": "exact_labeled_lines",
   "fixtures": [],
@@ -27,17 +27,17 @@
         [
           "body",
           "size",
-          "请求体"
+          "request body"
         ]
       ],
       "FIX": [
         [
           "raise",
           "increase",
-          "调高",
-          "增大",
-          "修改",
-          "添加"
+          "increase",
+          "increase",
+          "modify",
+          "add"
         ],
         [
           "body",
@@ -50,14 +50,14 @@
         [
           "database",
           "pool",
-          "数据库",
-          "连接池"
+          "database",
+          "connection pool"
         ],
         [
           "unrelated",
-          "无关",
-          "无法解决",
-          "尚未到达",
+          "irrelevant",
+          "cannot solve",
+          "not reached",
           "not reach",
           "413"
         ]
@@ -67,8 +67,8 @@
       "FIX": [
         "database",
         "pool",
-        "数据库",
-        "连接池"
+        "database",
+        "connection pool"
       ]
     }
   },

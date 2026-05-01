@@ -2,8 +2,8 @@
   "case_id": "R2-C08",
   "dimension_id": "R2",
   "audit_tier": "precision",
-  "title": "租户缓存证据合成",
-  "objective": "读取多份相互干扰的事故证据，保留真正根因和二阶清理动作。",
+  "title": "Tenant-cache evidence synthesis",
+  "objective": "Read interfering incident evidence and preserve the true root cause plus second-order cleanup action.",
   "prompt_file": "prompt.txt",
   "checker": "required_reads_answer",
   "fixtures": [
@@ -51,23 +51,19 @@
       [
         "restore",
         "rollback",
-        "re-add",
-        "恢复",
-        "回滚"
+        "re-add"
       ],
       [
-        "tenant",
-        "租户"
+        "tenant"
       ],
       [
         "flush",
         "clear",
-        "清理",
-        "刷新"
+        "clean up",
+        "refresh"
       ],
       [
-        "cache",
-        "缓存"
+        "cache"
       ]
     ],
     "final_answer_exclude": [

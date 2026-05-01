@@ -1,1 +1,1 @@
-`fixtures/index.txt` 指向当前环境，环境文件再指向 profile。按链路读取并写出 `fixtures/runtime.json`，必须包含最终 `endpoint`。不要使用 default profile。最终只回答 `BUILT`。
+`fixtures/index.txt` points to the current environment, and the environment file points to a profile. Follow the chain and write `fixtures/runtime.json`; it must contain the final `endpoint`. Do not use the default profile. Reply only `BUILT`.

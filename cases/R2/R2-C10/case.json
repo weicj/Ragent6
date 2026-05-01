@@ -2,8 +2,8 @@
   "case_id": "R2-C10",
   "dimension_id": "R2",
   "audit_tier": "frontier",
-  "title": "能力矩阵选择",
-  "objective": "按约束筛选候选工具组合。",
+  "title": "Capability matrix selection",
+  "objective": "Select the candidate tool combination that satisfies all constraints.",
   "prompt_file": "prompt.txt",
   "checker": "required_reads_answer",
   "fixtures": [

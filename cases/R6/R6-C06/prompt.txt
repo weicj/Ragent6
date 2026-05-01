@@ -1,1 +1,1 @@
-日志：09:00 token 过期；09:01 API 401；09:02 retry storm；09:03 CPU 高；建议加 CPU 或加 timeout。按 CAUSE/FIX/WHY 三行输出。
+Log: token expired at 09:00; API returned 401 at 09:01; retry storm began at 09:02; CPU was high at 09:03; suggestions include adding CPU or increasing timeout. Output CAUSE/FIX/WHY in three lines.

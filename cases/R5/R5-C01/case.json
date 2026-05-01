@@ -2,8 +2,8 @@
   "case_id": "R5-C01",
   "dimension_id": "R5",
   "audit_tier": "foundational",
-  "title": "ENOENT 自救",
-  "objective": "读错路径后，能够切换到正确路径并完成任务",
+  "title": "ENOENT recovery",
+  "objective": "After reading a wrong path, recover by switching to the correct file and complete the task.",
   "prompt_file": "prompt.txt",
   "checker": "enoent_recovery",
   "fixtures": [

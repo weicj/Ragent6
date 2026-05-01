@@ -1,1 +1,1 @@
-读取 `fixtures/policy.txt` 和 `fixtures/events.log`。按策略选出唯一 live canary target，写入 `fixtures/decision.json`，内容必须是 JSON：`target`、`reason` 两个键。然后用本地命令验证 JSON 可解析。最终只回答 `OK`。
+Read `fixtures/policy.txt` and `fixtures/events.log`. Select the unique live canary target under the policy and write `fixtures/decision.json` as JSON with exactly the keys `target` and `reason`. Then verify locally that the JSON is parseable. Reply only `OK`.

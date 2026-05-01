@@ -2,8 +2,8 @@
   "case_id": "R5-C02",
   "dimension_id": "R5",
   "audit_tier": "discriminative",
-  "title": "测试失败后的修复恢复",
-  "objective": "读取失败代码，修复后重新运行校验脚本通过。",
+  "title": "Recovery after failing test",
+  "objective": "Read failing code, fix it, and rerun the verification script successfully.",
   "prompt_file": "prompt.txt",
   "checker": "pytest_fix",
   "fixtures": [

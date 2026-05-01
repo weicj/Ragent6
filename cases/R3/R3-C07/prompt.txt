@@ -1,6 +1,6 @@
-有一个最小改动需要输出为 unified diff：
-- 文件：`app.py`
-- 旧行：`print(\"helo\")`
-- 新行：`print(\"hello\")`
+A minimal change must be output as a unified diff:
+- File: `app.py`
+- Old line: `print("helo")`
+- New line: `print("hello")`
 
-只输出 unified diff，不要 markdown。
+Output only the unified diff, with no markdown.

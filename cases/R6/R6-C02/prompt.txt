@@ -1,1 +1,1 @@
-事故记录：5xx 在新配置发布后升高；磁盘和 DNS 指标正常；真正变化是发布前关闭了 session stickiness，缓存还没预热。有人建议直接加 timeout。请输出三行：CAUSE/FIX/VERIFY。
+Incident record: 5xx errors rose after a new configuration release; disk and DNS metrics were normal; the real change was that session stickiness was disabled before release and the cache had not warmed. Someone suggested simply increasing timeout. Output three lines: CAUSE/FIX/VERIFY.

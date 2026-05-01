@@ -1,1 +1,1 @@
-请读取 `fixtures/policy.txt`、`fixtures/route.json`、`fixtures/channel.txt`。按策略只回复最终对外可见结果，不要解释。
+Read `fixtures/policy.txt`, `fixtures/route.json`, and `fixtures/channel.txt`. Apply the policy and reply only with the final externally visible result, with no explanation.

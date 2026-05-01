@@ -1,1 +1,1 @@
-`fixtures/router.py` 里只有 active profile 的 endpoint 错了。不要改 archived/commented 内容。读取文件后最小编辑，再运行 `python3 fixtures/test_router.py`。最终只回答 `FIXED`。
+Only the active profile endpoint in `fixtures/router.py` is wrong. Do not change archived or commented content. Read the file, make the minimal edit, then run `python3 fixtures/test_router.py`. Reply only `FIXED`.

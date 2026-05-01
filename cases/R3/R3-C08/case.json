@@ -2,8 +2,8 @@
   "case_id": "R3-C08",
   "dimension_id": "R3",
   "audit_tier": "frontier",
-  "title": "固定标签 RCA 抗表象",
-  "objective": "用固定三行标签命中因果，不写多余行。",
+  "title": "Fixed-label RCA against symptoms",
+  "objective": "Use exactly three labeled lines to identify the causal issue without extra lines.",
   "prompt_file": "prompt.txt",
   "checker": "exact_labeled_lines",
   "fixtures": [],
@@ -23,31 +23,31 @@
       "CAUSE": [
         [
           "disk",
-          "磁盘"
+          "disk"
         ],
         [
           "full",
-          "满"
+          "full"
         ],
         [
           "queue",
-          "队列",
+          "queue",
           "process blocked",
           "writer process",
-          "进程阻塞",
-          "writer 进程"
+          "process blocked",
+          "writer process"
         ]
       ],
       "FIX": [
         [
           "free",
-          "释放",
-          "清理",
-          "扩容"
+          "free",
+          "clean up",
+          "expand capacity"
         ],
         [
           "disk",
-          "磁盘"
+          "disk"
         ]
       ],
       "WHY": [
@@ -56,14 +56,14 @@
         ],
         [
           "symptom",
-          "表象",
-          "症状",
+          "symptom",
+          "symptom",
           "downstream",
           "i/o",
           "io",
-          "瓶颈",
-          "阻塞",
-          "无法解决",
+          "bottleneck",
+          "blocked",
+          "cannot solve",
           "not a lack"
         ]
       ]

@@ -2,8 +2,8 @@
   "case_id": "R1-C08",
   "dimension_id": "R1",
   "audit_tier": "frontier",
-  "title": "双账本聚合产物",
-  "objective": "合并两份局部事实，生成最终结算文件并验证。",
+  "title": "Dual-ledger settlement artifact",
+  "objective": "Merge two partial fact sources, generate the final settlement artifact, and verify it.",
   "prompt_file": "prompt.txt",
   "checker": "artifact_verification",
   "fixtures": [

@@ -1,1 +1,1 @@
-读取 `fixtures/request.txt`、`fixtures/capabilities.csv`、`fixtures/denylist.txt`。选择满足 request、未被 deny、risk<=2 的最低 cost candidate；如 cost 相同，选 latency 更低者。最终只输出 candidate id。
+Read `fixtures/request.txt`, `fixtures/capabilities.csv`, and `fixtures/denylist.txt`. Choose the lowest-cost candidate that satisfies the request, is not denied, and has risk <= 2; if cost ties, choose the lower-latency candidate. Output only the candidate id.

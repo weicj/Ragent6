@@ -2,8 +2,8 @@
   "case_id": "R6-C04",
   "dimension_id": "R6",
   "audit_tier": "ceiling",
-  "title": "反事实事故根因链",
-  "objective": "在多重表象和反事实中定位真正必要根因。",
+  "title": "Counterfactual incident root-cause chain",
+  "objective": "Use symptoms and counterfactuals to identify the necessary root cause.",
   "prompt_file": "prompt.txt",
   "checker": "exact_labeled_lines",
   "fixtures": [],
@@ -35,7 +35,6 @@
       "FIX": [
         [
           "tenant",
-          "回滚",
           "rollback"
         ],
         [
@@ -45,39 +44,33 @@
         ],
         [
           "invalidate",
-          "清理",
+          "clean up",
           "flush",
-          "失效",
           "restore",
-          "修复",
-          "回滚",
+          "fix",
           "rollback"
         ]
       ],
       "WHY": [
         [
           "database",
-          "db",
-          "数据库"
+          "db"
         ],
         [
           "downstream",
           "secondary",
-          "表象",
-          "症状",
-          "反事实"
+          "symptom",
+          "counterfactual"
         ],
         [
           "collision",
           "cross-tenant",
-          "污染",
-          "串租户",
-          "缺少",
+          "pollution",
+          "missing",
           "tenant",
           "cache hit",
           "hit rate",
-          "命中率",
-          "雪崩"
+          "collapse"
         ]
       ]
     }

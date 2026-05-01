@@ -2,8 +2,8 @@
   "case_id": "R2-C02",
   "dimension_id": "R2",
   "audit_tier": "discriminative",
-  "title": "三源证据优先级",
-  "objective": "必须综合 policy、primary、override 三源后得出最终答案。",
+  "title": "Three-source evidence priority",
+  "objective": "Combine policy, primary, and override evidence to derive the final answer.",
   "prompt_file": "prompt.txt",
   "checker": "required_reads_answer",
   "fixtures": [

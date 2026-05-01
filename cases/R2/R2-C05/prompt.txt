@@ -1,1 +1,1 @@
-请根据 `fixtures/index.md` 找到当前有效方案。注意同目录有旧文档，最终只输出一句：`结论：采用 ...，负责人是 ...`。
+Use `fixtures/index.md` to find the currently active plan. There is a stale document in the same directory. Output exactly one sentence in this form: `Decision: use ..., owner is ...`.

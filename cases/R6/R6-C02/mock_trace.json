@@ -1,6 +1,6 @@
 {
   "case_id": "R6-C02",
-  "config_path": "mock://ragent6-1.0.0",
+  "config_path": "mock://ragent6-1.1.0",
   "returncode": 0,
   "stdout": "",
   "stderr": "",

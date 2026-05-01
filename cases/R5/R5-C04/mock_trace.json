@@ -8,8 +8,8 @@
   "tool_results": [],
   "assistant_texts": [
     "owner=ops region=us flags=dark,beta note=none",
-    "owner=ops region=eu flags=beta note=中文确认",
-    "owner=core region=eu flags=beta,canary note=中文确认",
+    "owner=ops region=eu flags=beta note=confirmed",
+    "owner=core region=eu flags=beta,canary note=confirmed",
     "owner=core region=ap flags=canary note=final"
   ],
   "events_count": 6,

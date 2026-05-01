@@ -1,6 +1,6 @@
 {
   "case_id": "R2-C05",
-  "config_path": "mock://ragent6-1.0.0",
+  "config_path": "mock://ragent6-1.1.0",
   "returncode": 0,
   "stdout": "",
   "stderr": "",
@@ -33,12 +33,12 @@
     }
   ],
   "assistant_texts": [
-    "结论：采用 delta-17，负责人是林岚"
+    "Decision: use delta-17, owner is Lin Lan"
   ],
   "events_count": 3,
   "assistant_message_count": 1,
   "user_message_count": 1,
-  "final_answer": "结论：采用 delta-17，负责人是林岚",
+  "final_answer": "Decision: use delta-17, owner is Lin Lan",
   "session_path": "",
   "aborted": false,
   "turn_runs": [],

@@ -2,20 +2,20 @@
 
 Ragent6 is a deterministic, local benchmark for agent-capable language models. It tests whether a model can operate inside a weak tool harness, read evidence, write or edit files, run local checks, obey safety boundaries, recover from errors, and solve multi-constraint reasoning tasks.
 
-Current stable version: `1.0.0`.
+Current stable version: `1.1.0`.
 
 ## What It Measures
 
-Ragent6 1.0.0 contains 60 cases across 6 public dimensions. Each dimension has 10 cases.
+Ragent6 1.1.0 contains 60 cases across 6 public dimensions. Each dimension has 10 cases.
 
 | Dimension | Name | Weight | What It Tests |
 | --- | --- | ---: | --- |
-| R1 | 任务闭环 | 20 | Complete task execution from goal understanding to artifact and verification. |
-| R2 | 证据取用 | 18 | Evidence retrieval, precedence, long-context lookup, and grounded answers. |
-| R3 | 格式规范 | 12 | Machine-consumable JSON, diffs, command plans, and labeled outputs. |
-| R4 | 安全边界 | 16 | Refusal or guarding of dangerous actions, offline constraints, dry-run behavior, and scope control. |
-| R5 | 错误恢复 | 14 | Multi-turn correction, stale evidence handling, invalid-output repair, and state updates. |
-| R6 | 复杂推理 | 20 | Causal chains, counterfactuals, decoys, policy selection, and deep state tracking. |
+| R1 | Task Closure | 20 | Complete task execution from goal understanding to artifact and verification. |
+| R2 | Evidence Use | 18 | Evidence retrieval, precedence, long-context lookup, and grounded answers. |
+| R3 | Format Control | 12 | Machine-consumable JSON, diffs, command plans, and labeled outputs. |
+| R4 | Safety Boundary | 16 | Refusal or guarding of dangerous actions, offline constraints, dry-run behavior, and scope control. |
+| R5 | Error Recovery | 14 | Multi-turn correction, stale evidence handling, invalid-output repair, and state updates. |
+| R6 | Complex Reasoning | 20 | Causal chains, counterfactuals, decoys, policy selection, and deep state tracking. |
 
 ## Scoring
 
@@ -35,13 +35,13 @@ cd Ragent6
 python3 scripts/run_eval.py \
   --manifest manifests/ragent6.json \
   --adapter mock \
-  --out results/mock-1.0.0
+  --out results/mock-1.1.0
 ```
 
 Expected result:
 
 ```text
-Ragent6 1.0.0: 60/60 (invalid=0)
+Ragent6 1.1.0: 60/60 (invalid=0)
 ```
 
 ## Run A Local Model
@@ -92,7 +92,7 @@ python3 scripts/score_results.py \
 ```bash
 python3 scripts/release_audit.py \
   --manifest manifests/ragent6.json \
-  --suite-version 1.0.0
+  --suite-version 1.1.0
 ```
 
 ## Documentation
@@ -104,8 +104,8 @@ python3 scripts/release_audit.py \
 
 ## Versioning
 
-- `1.0.x`: documentation, reporting, or harness fixes that do not change scores.
-- `1.x.0`: case, checker, scorer, weight, or dimension changes that can change scores.
+- Patch versions, such as `1.1.x`: documentation, reporting, or harness fixes that do not change scores.
+- Minor versions, such as `1.x.0`: case, checker, scorer, weight, or dimension changes that can change scores.
 - `2.0.0`: major methodology redesign.
 
-Historical beta/rc experiments are intentionally not included in this clean repository. Their only lineage is preserved inside `docs/case_map.json`.
+Earlier experimental branches are intentionally not included in this clean repository. Their only lineage is preserved inside `docs/case_map.json`.

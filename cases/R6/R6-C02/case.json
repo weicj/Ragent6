@@ -2,8 +2,8 @@
   "case_id": "R6-C02",
   "dimension_id": "R6",
   "audit_tier": "frontier",
-  "title": "真实事故链路 RCA",
-  "objective": "从多条现象和诱饵中识别真正因果链，并给出固定标签结论。",
+  "title": "Real incident causal-chain RCA",
+  "objective": "Identify the true causal chain from symptoms and decoys, then output the fixed-label conclusion.",
   "prompt_file": "prompt.txt",
   "checker": "exact_labeled_lines",
   "fixtures": [],
@@ -23,24 +23,24 @@
       "CAUSE": [
         [
           "stickiness",
-          "粘性",
-          "会话保持"
+          "stickiness",
+          "session stickiness"
         ],
         [
           "cache",
-          "缓存"
+          "cache"
         ]
       ],
       "FIX": [
         [
           "restore",
-          "恢复",
-          "开启",
-          "重新开启"
+          "restore",
+          "enable",
+          "re-enable"
         ],
         [
           "warm",
-          "预热"
+          "warm up"
         ]
       ],
       "VERIFY": [
@@ -49,7 +49,7 @@
         ],
         [
           "cache hit",
-          "命中率"
+          "hit rate"
         ]
       ]
     }

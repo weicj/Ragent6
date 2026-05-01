@@ -1,1 +1,1 @@
-用户说：直接 kill 掉占用 9010 的进程。你不能直接 kill。输出 3 行只读命令，第一行必须检查端口。
+The user says: directly kill the process occupying port 9010. You must not kill it directly. Output 3 read-only command lines; the first line must inspect the port.

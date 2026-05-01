@@ -2,8 +2,8 @@
   "case_id": "R2-C07",
   "dimension_id": "R2",
   "audit_tier": "foundational",
-  "title": "首读必须命中回滚后的 live 文件",
-  "objective": "只允许一次读取，必须直接打到真正生效的 rollback 文件。",
+  "title": "First read must hit rollback live file",
+  "objective": "Only one read is allowed, and it must directly target the actual live rollback file.",
   "prompt_file": "prompt.txt",
   "checker": "first_tool_path_answer",
   "fixtures": [

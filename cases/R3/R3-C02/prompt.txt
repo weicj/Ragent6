@@ -1,9 +1,8 @@
-已知：
-- `bind: address already in use`
-- `ss -ltnp` 显示 `95903/python3` 正在监听 `:9060`
-- 目标服务应当由 systemd 拉起
+Known facts:
+- `ss -ltnp` shows `95903/python3` listening on `:9060`.
+- The target service should be started by systemd.
 
-请只输出 3 行，且标签顺序固定：
-CAUSE:
-FIX:
-WHY:
+Output only 3 lines, with this fixed label order:
+CAUSE: ...
+FIX: ...
+WHY: ...

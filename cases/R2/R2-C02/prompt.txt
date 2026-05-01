@@ -1,1 +1,1 @@
-请读取 `fixtures/channel.txt`、`fixtures/policy.txt`、`fixtures/primary.json`、`fixtures/override.json`，只回复最终 `channel:target`，不要解释。
+Read `fixtures/channel.txt`, `fixtures/policy.txt`, `fixtures/primary.json`, and `fixtures/override.json`. Reply only with the final `channel:target`, with no explanation.

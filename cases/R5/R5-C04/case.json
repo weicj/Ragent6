@@ -1,8 +1,8 @@
 {
   "case_id": "R5-C04",
   "dimension_id": "R5",
-  "title": "Bilingual state priority",
-  "objective": "Track bilingual updates and avoid restoring explicitly removed values.",
+  "title": "State priority with field removal",
+  "objective": "Track updates across turns and avoid restoring explicitly removed values.",
   "checker": "state_update_override",
   "allowed_tools": [],
   "runner_mode": "multi_turn",
@@ -39,7 +39,7 @@
           "flags=beta"
         ],
         [
-          "note=中文确认"
+          "note=confirmed"
         ]
       ],
       [
@@ -53,7 +53,7 @@
           "flags=beta,canary"
         ],
         [
-          "note=中文确认"
+          "note=confirmed"
         ]
       ],
       [

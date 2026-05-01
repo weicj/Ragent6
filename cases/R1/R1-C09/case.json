@@ -2,8 +2,8 @@
   "case_id": "R1-C09",
   "dimension_id": "R1",
   "audit_tier": "frontier",
-  "title": "重复键最小修复",
-  "objective": "只修复生效块，不误改注释和历史块。",
+  "title": "Minimal duplicate-key fix",
+  "objective": "Fix only the active block without modifying archived or commented content.",
   "prompt_file": "prompt.txt",
   "checker": "pytest_fix",
   "fixtures": [

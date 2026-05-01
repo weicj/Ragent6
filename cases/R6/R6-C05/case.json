@@ -2,8 +2,8 @@
   "case_id": "R6-C05",
   "dimension_id": "R6",
   "audit_tier": "frontier",
-  "title": "反事实缓存事故 RCA",
-  "objective": "在多个诱饵和反事实中识别真正因果链，拒绝表面修复。",
+  "title": "Counterfactual cache incident RCA",
+  "objective": "Identify the true causal chain across decoys and counterfactuals, and reject symptom-level fixes.",
   "prompt_file": "prompt.txt",
   "mock_trace_file": "mock_trace.json",
   "checker": "exact_labeled_lines",
@@ -53,8 +53,8 @@
           "irrelevant",
           "would not have occurred",
           "would not occur",
-          "不会",
-          "无关"
+          "will not",
+          "irrelevant"
         ]
       ],
       "FIX": [

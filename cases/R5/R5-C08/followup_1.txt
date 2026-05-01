@@ -1,1 +1,1 @@
-现在读取 `fixtures/latest.txt`。只有当 latest 的 epoch 更大时才覆盖旧结论；只输出 active 值。
+Now read `fixtures/latest.txt`. Override the old conclusion only if latest has a larger epoch; output only the active value.

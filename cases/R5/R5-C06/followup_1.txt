@@ -1,1 +1,1 @@
-用户更正：不是 api，是 `worker`，而且先不要重启，只做只读检查。只输出当前动作。
+User correction: not api, it is `worker`; also do not restart yet, perform only read-only checks. Output only the current action.

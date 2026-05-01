@@ -2,8 +2,8 @@
   "case_id": "R6-C09",
   "dimension_id": "R6",
   "audit_tier": "ceiling",
-  "title": "深层状态机噪声追踪",
-  "objective": "跨阶段追踪 active shard、route 和 rollback 标记。",
+  "title": "Deep state-machine noise tracking",
+  "objective": "Track active shard, route, and rollback flags across phases.",
   "prompt_file": "prompt.txt",
   "checker": "required_reads_answer",
   "fixtures": [

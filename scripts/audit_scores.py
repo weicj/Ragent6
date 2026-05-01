@@ -112,7 +112,7 @@ def expected_pairs(runs: list[ModelRun]) -> list[tuple[str, ModelRun, ModelRun]]
             if bigger.precision_rank != smaller.precision_rank:
                 continue
             if bigger.size_rank > smaller.size_rank:
-                pairs.append(("规模优先", bigger, smaller))
+                pairs.append(("size_priority", bigger, smaller))
 
     for higher in runs:
         for lower in runs:
@@ -120,7 +120,7 @@ def expected_pairs(runs: list[ModelRun]) -> list[tuple[str, ModelRun, ModelRun]]
                 continue
             if higher.precision_group and higher.precision_group == lower.precision_group:
                 if higher.precision_rank > lower.precision_rank:
-                    pairs.append(("精度优先", higher, lower))
+                    pairs.append(("precision_priority", higher, lower))
 
     originals = [r for r in runs if r.original]
     for newer in originals:
@@ -132,7 +132,7 @@ def expected_pairs(runs: list[ModelRun]) -> list[tuple[str, ModelRun, ModelRun]]
             if newer.size_rank != older.size_rank or newer.precision_rank != older.precision_rank:
                 continue
             if newer.generation_rank > older.generation_rank:
-                pairs.append(("代差优先", newer, older))
+                pairs.append(("generation_priority", newer, older))
 
     dense = [r for r in runs if r.original and r.arch == "dense"]
     moe = [r for r in runs if r.original and r.arch == "moe"]
@@ -145,7 +145,7 @@ def expected_pairs(runs: list[ModelRun]) -> list[tuple[str, ModelRun, ModelRun]]
             if d.precision_rank != m.precision_rank:
                 continue
             if d.size_rank >= m.size_rank:
-                pairs.append(("稠密优先", d, m))
+                pairs.append(("dense_priority", d, m))
 
     seen: set[tuple[str, str, str]] = set()
     out: list[tuple[str, ModelRun, ModelRun]] = []
@@ -300,7 +300,7 @@ def score_distribution(runs: list[ModelRun]) -> dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Ragent6 audit over deterministic partial scores.")
     parser.add_argument("--partial-json", type=Path, default=ROOT / "results" / "ragent6_scores.json")
-    parser.add_argument("--suite", default="ragent6_1_0_0")
+    parser.add_argument("--suite", default="ragent6_1_1_0")
     parser.add_argument("--manifest", type=Path, default=ROOT / "manifests" / "ragent6.json")
     parser.add_argument("--score-tolerance", type=float, default=1.0)
     parser.add_argument("--case-epsilon", type=float, default=0.05)

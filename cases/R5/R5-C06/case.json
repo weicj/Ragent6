@@ -2,8 +2,8 @@
   "case_id": "R5-C06",
   "dimension_id": "R5",
   "audit_tier": "ceiling",
-  "title": "人类纠正后的意图更新",
-  "objective": "在用户纠正自己表达后更新意图，不抓住旧说法。",
+  "title": "Human correction intent update",
+  "objective": "Update intent after the user corrects themselves instead of clinging to the earlier wording.",
   "prompt_file": "prompt.txt",
   "checker": "state_update_override",
   "fixtures": [],
@@ -31,16 +31,16 @@
       [
         [
           "worker",
-          "检查",
-          "只读"
+          "check",
+          "read-only"
         ]
       ],
       [
         [
           "stale",
-          "手工进程",
-          "停止建议",
-          "建议"
+          "manual process",
+          "stop recommendation",
+          "advise"
         ]
       ]
     ]

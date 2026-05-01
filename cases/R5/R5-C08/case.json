@@ -2,8 +2,8 @@
   "case_id": "R5-C08",
   "dimension_id": "R5",
   "audit_tier": "frontier",
-  "title": "后续文件证据更新",
-  "objective": "必须读取后续文件，并用 epoch 判断是否覆盖。",
+  "title": "Follow-up file evidence update",
+  "objective": "Read the follow-up file and use epoch ordering to decide whether to override.",
   "prompt_file": "prompt.txt",
   "checker": "state_update_override",
   "fixtures": [

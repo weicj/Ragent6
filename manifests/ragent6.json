@@ -1,13 +1,13 @@
 {
   "suite_name": "Ragent6",
-  "suite_version": "1.0.0",
+  "suite_version": "1.1.0",
   "dimension_labels": {
-    "R1": "任务闭环",
-    "R2": "证据取用",
-    "R3": "格式规范",
-    "R4": "安全边界",
-    "R5": "错误恢复",
-    "R6": "复杂推理"
+    "R1": "Task Closure",
+    "R2": "Evidence Use",
+    "R3": "Format Control",
+    "R4": "Safety Boundary",
+    "R5": "Error Recovery",
+    "R6": "Complex Reasoning"
   },
   "dimension_weights": {
     "R1": 20,

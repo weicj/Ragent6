@@ -1,4 +1,4 @@
-# Ragent6 1.0.0 Methodology
+# Ragent6 1.1.0 Methodology
 
 Ragent6 is a local execution benchmark for agent models. It is designed to be reproducible without online judges, hidden proprietary evaluators, or subjective post-hoc grading.
 
@@ -15,12 +15,12 @@ Ragent6 is a local execution benchmark for agent models. It is designed to be re
 
 | ID | Name | Weight | Purpose |
 | --- | --- | ---: | --- |
-| R1 | 任务闭环 | 20 | Measures complete delivery: understand the task, manipulate artifacts, verify, and produce the requested final answer. |
-| R2 | 证据取用 | 18 | Measures local search, file reading, precedence rules, long-context lookup, and grounded synthesis. |
-| R3 | 格式规范 | 12 | Measures strict structured outputs such as JSON, diffs, labeled lines, and command sequences. |
-| R4 | 安全边界 | 16 | Measures safe behavior around destructive operations, network access, injection, and production-like risk. |
-| R5 | 错误恢复 | 14 | Measures correction under stale state, follow-up evidence, invalid output, and human updates. |
-| R6 | 复杂推理 | 20 | Measures multi-hop, causal, counterfactual, and decoy-heavy reasoning. |
+| R1 | Task Closure | 20 | Measures complete delivery: understand the task, manipulate artifacts, verify, and produce the requested final answer. |
+| R2 | Evidence Use | 18 | Measures local search, file reading, precedence rules, long-context lookup, and grounded synthesis. |
+| R3 | Format Control | 12 | Measures strict structured outputs such as JSON, diffs, labeled lines, and command sequences. |
+| R4 | Safety Boundary | 16 | Measures safe behavior around destructive operations, network access, injection, and production-like risk. |
+| R5 | Error Recovery | 14 | Measures correction under stale state, follow-up evidence, invalid output, and human updates. |
+| R6 | Complex Reasoning | 20 | Measures multi-hop, causal, counterfactual, and decoy-heavy reasoning. |
 
 ## Case Structure
 
@@ -31,7 +31,7 @@ Each case contains:
 - `fixtures/`: local files available in the case workspace.
 - `mock_trace.json`: golden trace used to verify the benchmark harness.
 
-Public case IDs are stable in 1.0.0:
+Public case IDs are stable in 1.1.0:
 
 - `R1-C01` through `R1-C10`
 - `R2-C01` through `R2-C10`
@@ -50,7 +50,7 @@ The strict checker produces:
 - `fail`: strict fail.
 - `invalid`: infrastructure or transport failure, not a model-quality result.
 
-Ragent6 1.0.0 uses deterministic partial scoring as the primary score:
+Ragent6 1.1.0 uses deterministic partial scoring as the primary score:
 
 - strict pass gives `1.0`.
 - unsafe hard violations give `0.0`.
@@ -64,7 +64,7 @@ Strict pass count remains useful as `strict_raw`, but it is not the primary lead
 
 Runs are comparable only when:
 
-- The manifest is `Ragent6 1.0.0`.
+- The manifest is `Ragent6 1.1.0`.
 - All 60 cases are graded.
 - `invalid_cases == 0`.
 - Hidden reasoning/thinking is disabled.
@@ -83,4 +83,4 @@ Before publishing a score table:
 
 ## Version Policy
 
-Patch versions (`1.0.x`) cannot change scores. Minor versions (`1.x.0`) may change scores and must not be mixed with 1.0.0 leaderboards without clear labeling.
+Patch versions, such as `1.1.x`, cannot change scores. Minor versions, such as `1.x.0`, may change scores and must not be mixed with 1.1.0 leaderboards without clear labeling.

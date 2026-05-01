@@ -1,4 +1,4 @@
-又来了一条补丁：请读取 `fixtures/final_patch.json`。
-只有当 `only_if_mode` 与你当前结论里的 `flags.mode` 一致时，才应用该补丁。
-如果补丁里有 `unset`，应用后把这些字段从最终 JSON 中删除。
-请输出最终完整紧凑 JSON，未变化的字段必须保留，不要解释。
+Another patch arrived: read `fixtures/final_patch.json`.
+Apply it only if `only_if_mode` matches the current `flags.mode` in your conclusion.
+If the patch contains `unset`, remove those fields from the final JSON after applying it.
+Output the final complete compact JSON; unchanged fields must be preserved. Do not explain.

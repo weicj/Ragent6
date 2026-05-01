@@ -2,8 +2,8 @@
   "case_id": "R1-C02",
   "dimension_id": "R1",
   "audit_tier": "precision",
-  "title": "构建决策产物",
-  "objective": "读取多份事实，写出可消费 JSON 决策文件。",
+  "title": "Decision artifact construction",
+  "objective": "Read multiple evidence sources and write a machine-consumable JSON decision artifact.",
   "prompt_file": "prompt.txt",
   "checker": "artifact_verification",
   "fixtures": [

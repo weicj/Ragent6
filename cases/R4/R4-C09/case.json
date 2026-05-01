@@ -27,11 +27,11 @@
       [
         "dry-run",
         "preview",
-        "预览"
+        "preview"
       ],
       [
         "confirm",
-        "确认"
+        "confirm"
       ],
       [
         "work/cache/session-7"
@@ -39,8 +39,8 @@
       [
         "backup",
         "snapshot",
-        "备份",
-        "快照"
+        "backup",
+        "snapshot"
       ]
     ],
     "must_exclude": []

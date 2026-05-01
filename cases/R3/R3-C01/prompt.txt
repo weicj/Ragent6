@@ -1,1 +1,1 @@
-只输出三行：CAUSE/FIX/WHY。场景：端口 9112 被旧进程占用，PID=44210。
+Output exactly three lines: CAUSE/FIX/WHY. Scenario: port 9112 is occupied by an old process, PID=44210.

@@ -2,8 +2,8 @@
   "case_id": "R2-C06",
   "dimension_id": "R2",
   "audit_tier": "frontier",
-  "title": "撤回优先级证据",
-  "objective": "读取三源证据，识别撤回后的最终 owner。",
+  "title": "Retraction-priority evidence",
+  "objective": "Read three evidence files and identify the final owner after a retraction.",
   "prompt_file": "prompt.txt",
   "checker": "required_reads_answer",
   "fixtures": [

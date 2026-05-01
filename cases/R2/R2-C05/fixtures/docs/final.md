@@ -1,3 +1,3 @@
-方案：delta-17
-负责人：林岚
-状态：active
+Plan: delta-17
+Owner: Lin Lan
+Status: active

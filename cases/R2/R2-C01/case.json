@@ -2,8 +2,8 @@
   "case_id": "R2-C01",
   "dimension_id": "R2",
   "audit_tier": "precision",
-  "title": "本地搜索后定位最终 owner",
-  "objective": "先搜索索引，再读取真实证据，避免被 decoy 文档干扰。",
+  "title": "Search then identify final owner",
+  "objective": "Search the local index first, then read the real evidence and avoid decoy documents.",
   "prompt_file": "prompt.txt",
   "checker": "search_grounded_answer",
   "fixtures": [
