@@ -128,18 +128,16 @@ python3 scripts/score_results.py \
 | 20 | Qwen3.5 | 9B | A3 i1 | IQ4_NL | 54.7 | 19/60 |
 | 21 | Qwen3.5 | 4B | OpenResearchTools | Q4_K_M | 52.1 | 19/60 |
 | 22 | Gemma 4 | E2B | Unsloth IT | Q4_K_M | 49.6 | 18/60 |
-| 23 | OpenNemo Cascade2 | 30B A3B | i1 | Q5_K_M | 46.3 | 15/60 |
-| 24 | Qwen3 | 8B | Unsloth IT | Q4_K_M | 45.6 | 18/60 |
-| 25 | Gemma 3n | E4B | Unsloth IT | Q4_K_M | 43.7 | 14/60 |
-| 26 | Qwen3 | 4B | Unsloth IT | Q4_K_M | 40.3 | 14/60 |
-| 27 | Nemotron Cascade2 | 30B A3B | base | Q5_K_M | 39.9 | 14/60 |
-| 28 | Gemma 4 | E4B | Gemopus Preview | IQ4_XS | 39.2 | 11/60 |
-| 29 | Qwen3.5 | 2B | Unsloth IT | Q4_K_M | 36.6 | 10/60 |
-| 30 | Gemma 3n | E2B | Unsloth IT | Q4_K_M | 35.7 | 8/60 |
-| 31 | Qwen3.5 | 2B | AaryanK | Q4_K_M | 34.2 | 8/60 |
-| 32 | Squeez | 2B | i1 | Q4_K_M | 30.5 | 7/60 |
-| 33 | LFM2.5 | 350M | base | Q5_K_M | 20.7 | 2/60 |
-| 34 | LFM2.5 | 1.2B | Instruct | Q4_K_M | 18.5 | 4/60 |
+| 23 | Qwen3 | 8B | Unsloth IT | Q4_K_M | 45.6 | 18/60 |
+| 24 | Gemma 3n | E4B | Unsloth IT | Q4_K_M | 43.7 | 14/60 |
+| 25 | Qwen3 | 4B | Unsloth IT | Q4_K_M | 40.3 | 14/60 |
+| 26 | Gemma 4 | E4B | Gemopus Preview | IQ4_XS | 39.2 | 11/60 |
+| 27 | Qwen3.5 | 2B | Unsloth IT | Q4_K_M | 36.6 | 10/60 |
+| 28 | Gemma 3n | E2B | Unsloth IT | Q4_K_M | 35.7 | 8/60 |
+| 29 | Qwen3.5 | 2B | AaryanK | Q4_K_M | 34.2 | 8/60 |
+| 30 | Squeez | 2B | i1 | Q4_K_M | 30.5 | 7/60 |
+| 31 | LFM2.5 | 350M | base | Q5_K_M | 20.7 | 2/60 |
+| 32 | LFM2.5 | 1.2B | Instruct | Q4_K_M | 18.5 | 4/60 |
 
 ## 发布前审计
 
