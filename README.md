@@ -103,42 +103,42 @@ python3 scripts/score_results.py \
 
 ## zh-CN Reference Scores
 
-The table below is the current local `zh-CN` reference panel, run with the no-thinking native harness. `Score` is the deterministic partial weighted score out of 100, and `Passes` is the auxiliary strict `x/60` pass count. These scores are for the Chinese locale only and must not be mixed with the `en-US` leaderboard.
+The table below is the current local `zh-CN` reference panel, run with the no-thinking native harness. `Score` is the deterministic partial weighted score out of 100, `Passes` is the auxiliary strict `x/60` pass count, and each R1-R6 column is a 10-point partial dimension score. These scores are for the Chinese locale only and must not be mixed with the `en-US` leaderboard.
 
-| Rank | Base | Size | Variant | Quant | Score | Passes |
-| ---: | --- | --- | --- | --- | ---: | --- |
-| 1 | Qwen3.6 | 27B | Qwopus Abliterated | Q4_K_M | 92.3 | 51/60 |
-| 2 | Qwen3.6 | 27B | Qwopus Preview | Q4_K_M | 89.4 | 48/60 |
-| 3 | Qwen3.6 | 27B | Unsloth IT | Q4_K_M | 87.4 | 49/60 |
-| 4 | Qwen3.6 | 27B | Carnice V2 | Q4_K_M | 86.4 | 43/60 |
-| 5 | Qwen3.6 | 35B A3B | Unsloth IT | Q4_K_M | 79.9 | 38/60 |
-| 6 | Qwen3.5 | 27B | Unsloth IT | Q4_K_M | 76.7 | 37/60 |
-| 7 | Qwen3.6 | 35B A3B | Hauhau | IQ4_XS | 76.6 | 37/60 |
-| 8 | Gemma 4 | 31B | Unsloth IT | Q4_K_M | 74.7 | 37/60 |
-| 9 | Gemma 4 | 26B A4B | Gemopus Preview | Q4_K_M | 72.1 | 34/60 |
-| 10 | Qwen3.5 | 9B | CoPaw Flash | Q4_K_M | 67.7 | 30/60 |
-| 11 | Gemma 4 | 26B A4B | Unsloth IT | Q4_K_M | 67.2 | 30/60 |
-| 12 | Qwen3.5 | 35B A3B | Unsloth IT | Q4_K_M | 63.2 | 28/60 |
-| 13 | Gemma 4 | E4B | Hauhau | Q5_K_M | 61.8 | 27/60 |
-| 14 | Gemma 4 | E4B | Unsloth IT | Q5_K_M | 61.5 | 28/60 |
-| 15 | Qwen3.5 | 9B | Carnice | Q4_K_M | 58.6 | 23/60 |
-| 16 | Qwen3.5 | 13B | Heretic | IQ4_XS | 58.4 | 23/60 |
-| 17 | Qwen3.5 | 18B | Qwopus GLM | Q4_K_M | 57.2 | 27/60 |
-| 18 | Qwen3.5 | 9B | Unsloth IT | Q4_K_M | 56.8 | 24/60 |
-| 19 | Qwen3.5 | 9B | Qwopus v3 | Q4_K_M | 56.6 | 25/60 |
-| 20 | Qwen3.5 | 9B | A3 i1 | IQ4_NL | 54.7 | 19/60 |
-| 21 | Qwen3.5 | 4B | OpenResearchTools | Q4_K_M | 52.1 | 19/60 |
-| 22 | Gemma 4 | E2B | Unsloth IT | Q4_K_M | 49.6 | 18/60 |
-| 23 | Qwen3 | 8B | Unsloth IT | Q4_K_M | 45.6 | 18/60 |
-| 24 | Gemma 3n | E4B | Unsloth IT | Q4_K_M | 43.7 | 14/60 |
-| 25 | Qwen3 | 4B | Unsloth IT | Q4_K_M | 40.3 | 14/60 |
-| 26 | Gemma 4 | E4B | Gemopus Preview | IQ4_XS | 39.2 | 11/60 |
-| 27 | Qwen3.5 | 2B | Unsloth IT | Q4_K_M | 36.6 | 10/60 |
-| 28 | Gemma 3n | E2B | Unsloth IT | Q4_K_M | 35.7 | 8/60 |
-| 29 | Qwen3.5 | 2B | AaryanK | Q4_K_M | 34.2 | 8/60 |
-| 30 | Squeez | 2B | i1 | Q4_K_M | 30.5 | 7/60 |
-| 31 | LFM2.5 | 350M | base | Q5_K_M | 20.7 | 2/60 |
-| 32 | LFM2.5 | 1.2B | Instruct | Q4_K_M | 18.5 | 4/60 |
+| Rank | Base | Size | Variant | Quant | Score | Passes | R1 Closure | R2 Evidence | R3 Format | R4 Safety | R5 Recovery | R6 Reasoning |
+| ---: | --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | Qwen3.6 | 27B | Qwopus Abliterated | Q4_K_M | 92.3 | 51/60 | 9.1 | 7.8 | 9.5 | 9.8 | 9.7 | 9.9 |
+| 2 | Qwen3.6 | 27B | Qwopus Preview | Q4_K_M | 89.4 | 48/60 | 9.1 | 7.4 | 9.7 | 8.9 | 9.3 | 9.5 |
+| 3 | Qwen3.6 | 27B | Unsloth IT | Q4_K_M | 87.4 | 49/60 | 9.1 | 7.8 | 9.7 | 8.9 | 9.3 | 8.2 |
+| 4 | Qwen3.6 | 27B | Carnice V2 | Q4_K_M | 86.4 | 43/60 | 9.1 | 7.4 | 9.1 | 9.8 | 8.2 | 8.4 |
+| 5 | Qwen3.6 | 35B A3B | Unsloth IT | Q4_K_M | 79.9 | 38/60 | 8.1 | 6.8 | 7.8 | 8.8 | 8.6 | 8.1 |
+| 6 | Qwen3.5 | 27B | Unsloth IT | Q4_K_M | 76.7 | 37/60 | 8.3 | 5.3 | 9.4 | 7.7 | 8.6 | 7.5 |
+| 7 | Qwen3.6 | 35B A3B | Hauhau | IQ4_XS | 76.6 | 37/60 | 8.1 | 6.9 | 9.1 | 5.1 | 8.8 | 8.3 |
+| 8 | Gemma 4 | 31B | Unsloth IT | Q4_K_M | 74.7 | 37/60 | 8.3 | 8.1 | 9.0 | 6.3 | 9.3 | 4.8 |
+| 9 | Gemma 4 | 26B A4B | Gemopus Preview | Q4_K_M | 72.1 | 34/60 | 8.3 | 7.2 | 8.2 | 5.7 | 8.9 | 5.5 |
+| 10 | Qwen3.5 | 9B | CoPaw Flash | Q4_K_M | 67.7 | 30/60 | 5.1 | 4.7 | 8.7 | 6.6 | 8.2 | 8.3 |
+| 11 | Gemma 4 | 26B A4B | Unsloth IT | Q4_K_M | 67.2 | 30/60 | 8.3 | 6.1 | 8.4 | 4.9 | 8.9 | 4.5 |
+| 12 | Qwen3.5 | 35B A3B | Unsloth IT | Q4_K_M | 63.2 | 28/60 | 4.0 | 3.6 | 9.1 | 7.2 | 7.0 | 8.3 |
+| 13 | Gemma 4 | E4B | Hauhau | Q5_K_M | 61.8 | 27/60 | 6.6 | 5.0 | 7.7 | 6.3 | 7.6 | 4.9 |
+| 14 | Gemma 4 | E4B | Unsloth IT | Q5_K_M | 61.5 | 28/60 | 5.7 | 6.2 | 7.3 | 6.1 | 7.7 | 4.9 |
+| 15 | Qwen3.5 | 9B | Carnice | Q4_K_M | 58.6 | 23/60 | 4.9 | 4.6 | 8.4 | 6.8 | 6.5 | 5.3 |
+| 16 | Qwen3.5 | 13B | Heretic | IQ4_XS | 58.4 | 23/60 | 4.8 | 4.7 | 7.5 | 6.1 | 7.5 | 5.5 |
+| 17 | Qwen3.5 | 18B | Qwopus GLM | Q4_K_M | 57.2 | 27/60 | 4.0 | 3.5 | 9.7 | 4.8 | 6.8 | 7.0 |
+| 18 | Qwen3.5 | 9B | Unsloth IT | Q4_K_M | 56.8 | 24/60 | 5.1 | 3.3 | 8.2 | 6.3 | 8.1 | 4.7 |
+| 19 | Qwen3.5 | 9B | Qwopus v3 | Q4_K_M | 56.6 | 25/60 | 2.8 | 5.7 | 8.5 | 5.5 | 6.7 | 6.1 |
+| 20 | Qwen3.5 | 9B | A3 i1 | IQ4_NL | 54.7 | 19/60 | 4.1 | 4.7 | 6.5 | 7.3 | 6.6 | 4.5 |
+| 21 | Qwen3.5 | 4B | OpenResearchTools | Q4_K_M | 52.1 | 19/60 | 2.3 | 4.1 | 7.5 | 3.2 | 7.3 | 7.8 |
+| 22 | Gemma 4 | E2B | Unsloth IT | Q4_K_M | 49.6 | 18/60 | 3.3 | 4.4 | 6.1 | 4.5 | 6.5 | 5.8 |
+| 23 | Qwen3 | 8B | Unsloth IT | Q4_K_M | 45.6 | 18/60 | 4.0 | 4.0 | 8.8 | 2.5 | 6.8 | 3.2 |
+| 24 | Gemma 3n | E4B | Unsloth IT | Q4_K_M | 43.7 | 14/60 | 1.4 | 3.2 | 5.7 | 7.2 | 5.6 | 4.5 |
+| 25 | Qwen3 | 4B | Unsloth IT | Q4_K_M | 40.3 | 14/60 | 4.0 | 3.7 | 7.1 | 2.1 | 6.3 | 2.5 |
+| 26 | Gemma 4 | E4B | Gemopus Preview | IQ4_XS | 39.2 | 11/60 | 1.7 | 2.8 | 6.1 | 5.2 | 5.2 | 3.9 |
+| 27 | Qwen3.5 | 2B | Unsloth IT | Q4_K_M | 36.6 | 10/60 | 2.5 | 3.9 | 5.1 | 4.1 | 5.2 | 2.4 |
+| 28 | Gemma 3n | E2B | Unsloth IT | Q4_K_M | 35.7 | 8/60 | 1.3 | 3.4 | 6.8 | 4.3 | 5.6 | 2.1 |
+| 29 | Qwen3.5 | 2B | AaryanK | Q4_K_M | 34.2 | 8/60 | 2.5 | 2.8 | 5.2 | 4.7 | 5.5 | 1.3 |
+| 30 | Squeez | 2B | i1 | Q4_K_M | 30.5 | 7/60 | 2.0 | 2.6 | 5.5 | 4.0 | 4.6 | 1.3 |
+| 31 | LFM2.5 | 350M | base | Q5_K_M | 20.7 | 2/60 | 1.0 | 1.7 | 3.3 | 2.9 | 4.1 | 0.7 |
+| 32 | LFM2.5 | 1.2B | Instruct | Q4_K_M | 18.5 | 4/60 | 0.7 | 1.3 | 2.9 | 3.0 | 3.7 | 0.7 |
 
 ## Audit Release Assets
 
