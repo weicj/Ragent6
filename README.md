@@ -8,14 +8,9 @@ Ragent6 is a deterministic, local benchmark for agent-capable language models. I
 
 Current release version: `0.2.0`.
 
-Status: `0.2.0` is the active pre-1.0 public score line. Earlier `1.0.0` and `1.1.0` labels were promoted too early and should be treated as historical calibration score lines, not stable public releases.
+Status: `0.2.0` is the current public benchmark release.
 
-Ragent6 now has two locale score lines under the same methodology:
-
-- `en-US`: international default, English prompts and English harness instructions.
-- `zh-CN`: Chinese local benchmark line, Chinese prompts and Chinese harness instructions.
-
-Do not mix `en-US` and `zh-CN` results in the same leaderboard.
+Ragent6 provides English and Chinese prompt sets under the same methodology.
 
 ## What It Measures
 
@@ -101,9 +96,9 @@ python3 scripts/score_results.py \
   --report reports/ragent6_scores.md
 ```
 
-## zh-CN Reference Scores
+## Reference Scores
 
-The table below is the current local `zh-CN` reference panel, run with the no-thinking native harness. `Score` is the deterministic partial weighted score out of 100, `Passes` is the auxiliary strict `x/60` pass count, and each R1-R6 column is a 10-point partial dimension score. These scores are for the Chinese locale only and must not be mixed with the `en-US` leaderboard.
+The table below is a local reference panel, run with the no-thinking native harness. `Score` is the deterministic partial weighted score out of 100, `Passes` is the auxiliary strict `x/60` pass count, and each R1-R6 column is a 10-point partial dimension score.
 
 | Rank | Base | Size | Variant | Quant | Score | Passes | R1 Closure | R2 Evidence | R3 Format | R4 Safety | R5 Recovery | R6 Reasoning |
 | ---: | --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -140,6 +135,8 @@ The table below is the current local `zh-CN` reference panel, run with the no-th
 | 31 | LFM2.5 | 350M | base | Q5_K_M | 20.7 | 2/60 | 1.0 | 1.7 | 3.3 | 2.9 | 4.1 | 0.7 |
 | 32 | LFM2.5 | 1.2B | Instruct | Q4_K_M | 18.5 | 4/60 | 0.7 | 1.3 | 2.9 | 3.0 | 3.7 | 0.7 |
 
+Note: the reference scores above were measured with the `zh-CN` Chinese benchmark form.
+
 ## Audit Release Assets
 
 ```bash
@@ -153,7 +150,7 @@ python3 scripts/release_audit.py \
 
 - `METHODOLOGY.md`: scoring policy and reproducibility rules.
 - `docs/CASES.md`: public 60-case catalog.
-- `docs/LOCALES.md`: locale score-line policy.
+- `docs/LOCALES.md`: prompt set policy.
 - `docs/VERSIONING.md`: compatibility and version bump rules.
 - `docs/RELEASE_CHECKLIST.md`: validation checklist before publishing results.
 - `results/by-model/README.md`: recommended local layout for per-model result archives.
@@ -161,8 +158,7 @@ python3 scripts/release_audit.py \
 ## Versioning
 
 - Patch versions: documentation, reporting, or harness fixes that do not change scores.
-- New score lines: case, checker, scorer, weight, locale prompt, or dimension changes that can change scores.
-- Locale score lines: same suite version but different `locale`; results are not directly comparable across locales.
-- `1.0.0`: reserved for the first frozen public release.
+- New benchmark versions: case, checker, scorer, weight, prompt set, or dimension changes that can change scores.
+- Ragent6 public versioning starts at `0.2.0`.
 
-Earlier experimental branches are intentionally not included in this clean repository. Their only lineage is preserved inside `docs/case_map.json`.
+Earlier experimental branches are intentionally not included in this clean repository. Case lineage is preserved inside `docs/case_map.json`.

@@ -2,14 +2,14 @@
 
 Ragent6 is a local execution benchmark for agent models. It is designed to be reproducible without online judges, hidden proprietary evaluators, or subjective post-hoc grading.
 
-Ragent6 `0.2.0` is the active pre-1.0 public score line. Earlier `1.0.0` and `1.1.0` labels were promoted too early and are now treated only as historical calibration score lines, not stable public releases.
+Ragent6 `0.2.0` is the first public benchmark release.
 
-`0.2.0` defines two locale score lines under one methodology:
+`0.2.0` defines two prompt sets under one methodology:
 
-- `en-US`: English prompts and English harness instructions for international use.
-- `zh-CN`: Chinese prompts and Chinese harness instructions for Chinese local Agent scenarios.
+- `en-US`
+- `zh-CN`
 
-The two locales share case IDs, fixtures, expected semantics, checker logic, dimensions, and weights. Their scores must still be reported separately because prompt language can change model behavior.
+The two prompt sets share case IDs, fixtures, expected semantics, checker logic, dimensions, and weights. Score reports should state which prompt set was used.
 
 ## Core Principles
 
@@ -40,7 +40,7 @@ Each case contains:
 - `fixtures/`: local files available in the case workspace.
 - `mock_trace.json`: golden trace used to verify the benchmark harness.
 
-Public case IDs in this score line are:
+Public case IDs in this release are:
 
 - `R1-C01` through `R1-C10`
 - `R2-C01` through `R2-C10`
@@ -93,6 +93,4 @@ Before publishing a score table:
 
 ## Version Policy
 
-Use `0.x.y` score-line versions while the benchmark remains pre-1.0. Patch changes that cannot affect scores may stay within the same score line; any change to cases, fixtures, checkers, partial scoring, dimensions, weights, locale prompts, or tool protocol creates a new score line and must not be mixed with earlier score tables without explicit labels.
-
-Reserve `1.0.0` for the first version whose methodology, case set, scoring policy, audit gates, and bridge calibration have all been frozen for public release.
+Ragent6 public versioning starts at `0.2.0`. Patch changes that cannot affect scores may stay within the same release line. Any change to cases, fixtures, checkers, partial scoring, dimensions, weights, prompt sets, or tool protocol must create a new benchmark version and be reported with that version label.

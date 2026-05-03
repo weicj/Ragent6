@@ -31,7 +31,7 @@ Ragent6 0.2.0 zh-CN: 60/60 (invalid=0)
 ## Score Tables
 
 - Include only full 60-case runs with `invalid_cases == 0`.
-- Keep `en-US` and `zh-CN` score tables separate.
+- State the prompt set used for each score table.
 - Disable hidden thinking/reasoning modes for comparable local model runs.
 - Publish `partial_weighted` as the primary score and `strict_raw` as the auxiliary pass count.
-- Do not mix scores from different score lines or different locales in one leaderboard.
+- Do not mix scores from different benchmark versions in one leaderboard.
