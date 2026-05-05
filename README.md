@@ -8,9 +8,9 @@ Ragent6 is a deterministic, local benchmark for agent-capable language models. I
 
 Current release version: `0.2.0`.
 
-Status: `0.2.0` is the current public benchmark release.
+Status: `0.2.0` is the first public benchmark release. The current cleaned Chinese prompt-set release is `zh-CN 0.2.1`.
 
-Ragent6 provides English and Chinese prompt sets under the same methodology.
+Ragent6 provides English and Chinese prompt sets under the same methodology. The default `en-US` line remains `0.2.0`; the current cleaned `zh-CN` line is `0.2.1`.
 
 ## What It Measures
 
@@ -135,7 +135,7 @@ The table below is a local reference panel, run with the no-thinking native harn
 | 31 | LFM2.5 | 350M | base | Q5_K_M | 20.7 | 2/60 | 1.0 | 1.7 | 3.3 | 2.9 | 4.1 | 0.7 |
 | 32 | LFM2.5 | 1.2B | Instruct | Q4_K_M | 18.5 | 4/60 | 0.7 | 1.3 | 2.9 | 3.0 | 3.7 | 0.7 |
 
-Note: the reference scores above were measured with the `zh-CN` Chinese benchmark form.
+Note: the reference scores above were measured with the historical `zh-CN 0.2.0` Chinese benchmark form. Rerun before publishing a `zh-CN 0.2.1` leaderboard.
 
 ## Audit Release Assets
 

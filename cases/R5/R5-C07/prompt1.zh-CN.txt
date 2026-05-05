@@ -1,4 +1,4 @@
-State update 1:
-Current rollout owner is search-runtime. Candidate build is v58. The status says canary is allowed.
+状态更新 1：
+当前 rollout owner 是 search-runtime。候选 build 是 v58。状态显示允许 canary。
 
-Reply with one concise sentence containing owner, build, and action.
+回复一句简洁的话，包含 owner、build 和 action。

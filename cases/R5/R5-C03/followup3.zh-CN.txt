@@ -1,1 +1,1 @@
-Rollback: route=green is withdrawn. route=blue is active; reject=green; include reason=rollback.
+回滚：route=green 已撤回。route=blue 为 active；reject=green；包含 reason=rollback。

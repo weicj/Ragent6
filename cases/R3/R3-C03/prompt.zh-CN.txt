@@ -1,9 +1,9 @@
-Output JSON only, with no markdown fence and no extra keys.
+只输出 JSON，不要 markdown 代码块，不要额外字段。
 
-Incident notes:
-- probe-2026-04-18 and canary-b both point to router-v42.
-- cache flush and db restart are decoys and must be rejected.
-- the next step must be a dry-run owned by platform.
+事故记录：
+- probe-2026-04-18 和 canary-b 都指向 router-v42。
+- cache flush 和 db restart 是干扰项，必须拒绝。
+- 下一步必须是由 platform 负责的 dry-run。
 
-Required schema:
+必需 schema：
 decision, target, evidence, reject, next.

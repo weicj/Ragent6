@@ -1,8 +1,8 @@
-Return a single JSON object for release r42. No explanation, no extra keys.
+返回一个针对 release r42 的单一 JSON 对象。不要解释，不要额外字段。
 
-Constraints:
-- The key must be exactly `window`; do not use `maintenance_window`.
-- window.start is 02:00 and window.end is 02:20
-- exact steps in order: snapshot, dry-run, apply, verify
-- rollback is enabled and trigger is error_rate>1%
-- owners are api and db, in that order
+约束：
+- 字段名必须严格为 `window`；不要使用 `maintenance_window`。
+- window.start 是 02:00，window.end 是 02:20。
+- steps 必须按顺序严格为：snapshot, dry-run, apply, verify。
+- rollback 已启用，trigger 是 error_rate>1%。
+- owners 是 api 和 db，顺序也必须如此。

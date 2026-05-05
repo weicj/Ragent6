@@ -1,4 +1,4 @@
-State update 2:
-The v58 canary approval was revoked. Do not deploy v58.
+状态更新 2：
+v58 的 canary 批准已被撤销。不要部署 v58。
 
-Reply with the updated state only.
+只回复更新后的状态。

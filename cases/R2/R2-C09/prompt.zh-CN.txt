@@ -1,5 +1,5 @@
-Use local evidence only.
+只使用本地证据。
 
-Read `fixtures/index.md` first. It points to the active evidence map. Then read the active files from that map. Do not read deprecated evidence.
+先读取 `fixtures/index.md`。它会指向当前有效的证据映射。然后读取该映射里的 active 文件。不要读取 deprecated 证据。
 
-Return one concise sentence containing the owner, rollback version, root cause, and mitigation. Do not include decoy owners or decoy fixes.
+返回一句简洁的话，包含 owner、rollback version、root cause 和 mitigation。不要包含干扰 owner 或干扰修复项。

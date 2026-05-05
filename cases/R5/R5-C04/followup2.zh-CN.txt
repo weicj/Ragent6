@@ -1,1 +1,1 @@
-English update: owner becomes core, add canary flag, keep region and note. Do not restore dark.
+英文更新：owner 改为 core，添加 canary flag，保持 region 和 note 不变。不要恢复 dark。

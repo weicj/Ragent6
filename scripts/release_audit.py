@@ -15,6 +15,7 @@ DEFAULT_SUITE_VERSION = "0.2.0"
 DEFAULT_LOCALE = "en-US"
 DEFAULT_RESULTS_ROOT = ROOT / "results"
 DEFAULT_EXCLUDE_FILE = ROOT / "metadata" / "ragent6_result_exclusions.json"
+CJK_RE = re.compile(r"[\u4e00-\u9fff]")
 
 
 EXCLUDE_RESULT_NAME_RE = re.compile(
@@ -54,6 +55,42 @@ def resolve_case_path(manifest_path: Path, case_rel: str) -> Path:
         if candidate.exists():
             return candidate
     return candidates[-1]
+
+
+def normalized_text(text: str) -> str:
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def validate_localized_prompt_content(
+    case_id: str,
+    locale: str,
+    base_file: Path,
+    localized_file: Path,
+) -> list[str]:
+    errors: list[str] = []
+    if locale != "zh-CN":
+        return errors
+
+    localized_text = localized_file.read_text(encoding="utf-8")
+    if not CJK_RE.search(localized_text):
+        errors.append(f"{case_id} localized zh-CN prompt has no CJK text: {localized_file.name}")
+
+    localized_normalized = normalized_text(localized_text)
+    comparison_files = [base_file]
+    en_us_file = base_file.with_name(f"{base_file.stem}.en-US{base_file.suffix}")
+    if en_us_file != base_file and en_us_file.is_file():
+        comparison_files.append(en_us_file)
+
+    for comparison_file in comparison_files:
+        if not comparison_file.is_file():
+            continue
+        comparison_text = normalized_text(comparison_file.read_text(encoding="utf-8"))
+        if localized_normalized == comparison_text:
+            errors.append(
+                f"{case_id} localized zh-CN prompt matches {comparison_file.name}: {localized_file.name}"
+            )
+            break
+    return errors
 
 
 def manifest_public_blocks(manifest: dict[str, Any]) -> list[dict[str, Any]]:
@@ -146,6 +183,8 @@ def validate_manifest(
             localized_prompt = prompt_file.with_name(f"{prompt_file.stem}.{locale}{prompt_file.suffix}")
             if not localized_prompt.is_file():
                 errors.append(f"{case_id} localized prompt file not found for {locale}: {localized_prompt.name}")
+            else:
+                errors.extend(validate_localized_prompt_content(case_id, locale, prompt_file, localized_prompt))
 
         for followup in case.get("followup_prompt_files") or []:
             followup_file = case_path.parent / str(followup)
@@ -156,6 +195,8 @@ def validate_manifest(
                 localized_followup = followup_file.with_name(f"{followup_file.stem}.{locale}{followup_file.suffix}")
                 if not localized_followup.is_file():
                     errors.append(f"{case_id} localized followup file not found for {locale}: {localized_followup.name}")
+                else:
+                    errors.extend(validate_localized_prompt_content(case_id, locale, followup_file, localized_followup))
 
         mock_trace_file = case.get("mock_trace_file")
         if mock_trace_file and not (case_path.parent / str(mock_trace_file)).is_file():

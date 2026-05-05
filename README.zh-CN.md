@@ -6,15 +6,15 @@
 
 Ragent6 是一个面向 Agent 模型的本地确定性测评基准。它测试模型在弱工具环境中是否能够读证据、写文件、修改代码、执行本地检查、遵守安全边界、从错误中恢复，并完成多约束推理任务。
 
-当前发布版本：`0.2.0`。
+当前发布版本：英文 `0.2.0`；中文 prompt set `0.2.1`。
 
-状态：`0.2.0` 是当前公开测评版本。
+状态：`0.2.0` 是首个公开测评版本；`zh-CN 0.2.1` 是清理英文残留后的中文题面版本。
 
 说明：Ragent6 在同一方法论、case ID、fixtures 和 checker 下提供英文和中文两套 prompt。
 
 ## 测什么
 
-Ragent6 `0.2.0` 一共 60 题，分为 6 个公开维度，每个维度 10 题。
+Ragent6 当前公开线一共 60 题，分为 6 个公开维度，每个维度 10 题。
 
 | 维度 | 英文名称 | 中文说明 | 权重 | 测试重点 |
 | --- | --- | --- | ---: | --- |
@@ -45,15 +45,15 @@ Ragent6 输出两个核心指标：
 ```bash
 cd Ragent6
 python3 scripts/run_eval.py \
-  --manifest manifests/ragent6_0_2_0_zh_CN.json \
+  --manifest manifests/ragent6_0_2_1_zh_CN.json \
   --adapter mock \
-  --out results/mock-0.2.0-zh-CN
+  --out results/mock-0.2.1-zh-CN
 ```
 
 预期输出：
 
 ```text
-Ragent6 0.2.0 zh-CN: 60/60 (invalid=0)
+Ragent6 0.2.1 zh-CN: 60/60 (invalid=0)
 ```
 
 ## 测本地模型
@@ -76,9 +76,9 @@ export RAGENT6_MAX_TOKENS=2048
 export RAGENT6_AGENT_TIMEOUT=180
 
 python3 scripts/run_eval.py \
-  --manifest manifests/ragent6_0_2_0_zh_CN.json \
+  --manifest manifests/ragent6_0_2_1_zh_CN.json \
   --adapter native_local \
-  --out results/by-model/local-model/0.2.0/zh-CN/run-001
+  --out results/by-model/local-model/0.2.1/zh-CN/run-001
 ```
 
 native harness 在题目允许时只暴露四个极简工具：
@@ -102,7 +102,7 @@ python3 scripts/score_results.py \
 
 ## 实测参考成绩
 
-下面是当前已完成的本地实测面板，使用 no-thinking native harness；总分为 deterministic partial 加权分，满分 100；通过项为 strict `x/60`。维度列为各维度 partial 子分，每项满分 10。
+下面是已经完成的 `zh-CN 0.2.0` 本地实测面板，使用 no-thinking native harness；总分为 deterministic partial 加权分，满分 100；通过项为 strict `x/60`。维度列为各维度 partial 子分，每项满分 10。`zh-CN 0.2.1` 清理了中文题面中的英文残留，发布新榜单前应重新跑分。
 
 | 排名 | 底座 | 参数量 | 变体 | 量化 | 总分 | 通过项 | 任务闭环 | 证据取用 | 格式规范 | 安全边界 | 错误恢复 | 复杂推理 |
 | ---: | --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -139,20 +139,20 @@ python3 scripts/score_results.py \
 | 31 | LFM2.5 | 350M | base | Q5_K_M | 20.7 | 2/60 | 1.0 | 1.7 | 3.3 | 2.9 | 4.1 | 0.7 |
 | 32 | LFM2.5 | 1.2B | Instruct | Q4_K_M | 18.5 | 4/60 | 0.7 | 1.3 | 2.9 | 3.0 | 3.7 | 0.7 |
 
-注：以上参考成绩使用 `zh-CN` 中文表单测试。
+注：以上参考成绩使用历史 `zh-CN 0.2.0` 中文表单测试，不应与 `zh-CN 0.2.1` 新结果混榜。
 
 ## 发布前审计
 
 ```bash
 python3 scripts/release_audit.py \
-  --manifest manifests/ragent6_0_2_0_zh_CN.json \
-  --suite-version 0.2.0 \
+  --manifest manifests/ragent6_0_2_1_zh_CN.json \
+  --suite-version 0.2.1 \
   --locale zh-CN
 ```
 
 发布榜单前应确认：
 
-- 使用 `Ragent6 0.2.0` manifest，并明确 `locale`。
+- 使用对应的 `Ragent6` manifest，并明确 `suite_version` 与 `locale`。
 - 每个模型都完成 60 题。
 - `invalid_cases == 0`。
 - 关闭 hidden thinking/reasoning。

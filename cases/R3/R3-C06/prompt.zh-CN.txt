@@ -1,14 +1,14 @@
-Return only one JSON object. Markdown JSON fence is allowed, but no prose and no extra keys.
+只返回一个 JSON 对象。允许使用 markdown JSON 代码块，但不要解释文字，不要额外字段。
 
-Incident facts:
-- rollout removed tenant_id from an auth cache key;
-- cross-tenant permissions appeared after the rollout;
-- timeout and DB restart were suggested, but DB metrics are normal;
-- polluted cache entries must be cleared after the key is fixed.
+事故事实：
+- rollout 从 auth cache key 中移除了 tenant_id；
+- rollout 之后出现了跨租户权限问题；
+- 有人建议 timeout 和 DB restart，但 DB 指标正常；
+- 修复 key 之后必须清理受污染的 cache entries。
 
-Required object:
+必需对象：
 - root: "tenantless-cache-key"
-- actions: exactly ["restore-tenant-key", "flush-affected-cache", "verify-tenant-isolation"]
+- actions: 严格为 ["restore-tenant-key", "flush-affected-cache", "verify-tenant-isolation"]
 - reject.timeout: boolean true
 - reject.db_restart: boolean true
 - guards.dry_run: boolean true

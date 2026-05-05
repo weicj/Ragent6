@@ -1,1 +1,1 @@
-Update: limit=35, mode=safe, owner=beta. Keep route and reject.
+更新：limit=35，mode=safe，owner=beta。保持 route 和 reject 不变。

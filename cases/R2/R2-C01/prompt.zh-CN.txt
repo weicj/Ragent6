@@ -1,2 +1,2 @@
-Use local tools to find the current policy and ticket evidence. Do not use archived decoys.
-Return exactly: `owner=<OWNER> escalation=<COLOR>`.
+使用本地工具查找当前策略和工单证据。不要使用归档的干扰证据。
+严格返回：`owner=<OWNER> escalation=<COLOR>`。

@@ -1,5 +1,5 @@
-Use local evidence only.
+只使用本地证据。
 
-Read the active index and the shards it points to. Do not use retired evidence.
+读取 active index 以及它指向的分片。不要使用已退役的证据。
 
-Return one concise sentence containing the owner, rollback version, and root cause.
+返回一句简洁的话，包含 owner、rollback version 和 root cause。

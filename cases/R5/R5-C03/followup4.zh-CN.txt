@@ -1,1 +1,1 @@
-Final adjustment: only limit changes to 40 and reason becomes capacity. Keep every other latest field.
+最终调整：只有 limit 改为 40，reason 改为 capacity。保持其他所有最新字段不变。

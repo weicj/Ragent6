@@ -1,7 +1,7 @@
-Read exactly these four fixture files:
+严格读取以下四个 fixture 文件：
 - `fixtures/timeline.txt`
 - `fixtures/metrics.txt`
 - `fixtures/diff.txt`
 - `fixtures/runbook.txt`
-Identify the real root cause and the complete required remediation.
-Output exactly: `root=<ROOT> action=<ACTION>`.
+识别真正根因和完整的必要修复动作。
+严格输出：`root=<ROOT> action=<ACTION>`。

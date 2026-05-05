@@ -1,1 +1,1 @@
-Read exactly these files: `fixtures/policy.txt`, `fixtures/window-1.txt`, `fixtures/window-2.txt`, and `fixtures/stale.txt`. A severity triggers only if both current windows cross the threshold. Return exactly `incident=<ID> severity=<SEV> owner=<OWNER> cause=<CAUSE> reject=<REJECT>`.
+严格读取这些文件：`fixtures/policy.txt`、`fixtures/window-1.txt`、`fixtures/window-2.txt` 和 `fixtures/stale.txt`。只有两个当前窗口都越过阈值时才触发 severity。严格返回 `incident=<ID> severity=<SEV> owner=<OWNER> cause=<CAUSE> reject=<REJECT>`。

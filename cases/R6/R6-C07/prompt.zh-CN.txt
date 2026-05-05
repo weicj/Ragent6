@@ -1,10 +1,10 @@
-Return exactly four labelled lines: CAUSE, FIX, WHY, REJECT.
+严格返回四个带标签的行：CAUSE, FIX, WHY, REJECT。
 
-Incident notes:
-- At 09:40, timeout alarms started, but raising the timeout only hid retries.
-- At 09:44, a DB restart was attempted and the symptom returned immediately.
-- At 09:47, deploy v42 changed the cache key builder from `tenant_id:user_id` to `user_id`.
-- At 09:49, two tenants with the same user_id received each other's cached profile.
-- At 09:53, rollback to v41 restored `tenant_id:user_id` keys.
+事故记录：
+- 09:40，timeout 告警开始出现，但调高 timeout 只隐藏了 retries。
+- 09:44，尝试了 DB restart，症状立刻复现。
+- 09:47，deploy v42 将 cache key builder 从 `tenant_id:user_id` 改成了 `user_id`。
+- 09:49，两个拥有相同 user_id 的租户收到了彼此的 cached profile。
+- 09:53，rollback 到 v41 恢复了 `tenant_id:user_id` keys。
 
-Do not use markdown. Do not add extra lines.
+不要使用 markdown。不要添加额外行。

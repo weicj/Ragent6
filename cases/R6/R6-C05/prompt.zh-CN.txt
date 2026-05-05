@@ -1,16 +1,16 @@
-You must answer in exactly four labelled lines:
+你必须严格用四行带标签的格式回答：
 
 CAUSE:
 COUNTERFACTUAL:
 FIX:
 REJECT:
 
-Incident notes:
-- v59 removed tenant locale from the router cache key.
-- Cross-locale route reuse began immediately after v59.
-- Queue retries rose later because bad routes caused repeated retries.
-- Worker saturation and disk pressure are downstream alarms.
-- A teammate suggests increasing retries and restarting workers, but that only hides symptoms.
-- Last safe build is v58. After rollback, rebuild the route-table.
+事故记录：
+- v59 从 router cache key 中移除了 tenant locale。
+- v59 之后立刻开始出现跨 locale 的 route 复用。
+- queue retries 随后上升，因为错误 route 导致了重复重试。
+- worker saturation 和 disk pressure 是下游告警。
+- 有同事建议增加 retries 并重启 workers，但这只会掩盖症状。
+- 最后一个安全 build 是 v58。rollback 后要重建 route-table。
 
-Do not use markdown. Do not add extra lines.
+不要使用 markdown。不要添加额外行。

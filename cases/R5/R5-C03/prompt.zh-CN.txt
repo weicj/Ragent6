@@ -1,1 +1,1 @@
-State v1: route=blue limit=20 mode=observe owner=alpha reject=none. Every answer must include all fields.
+状态 v1：route=blue limit=20 mode=observe owner=alpha reject=none。每次回答都必须包含所有字段。

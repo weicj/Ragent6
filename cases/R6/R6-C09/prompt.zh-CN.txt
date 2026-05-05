@@ -1,1 +1,1 @@
-读取 `fixtures/phase1.txt`、`fixtures/phase2.txt`、`fixtures/phase3.txt`、`fixtures/phase4.txt` 四个 phase。规则：dry-run 和 shadow 不生效；当前 active shard 的最后一个 live 且 rollback=false 的 route 才有效。最终只输出 `<shard>:<route>`。
+读取 `fixtures/phase1.txt`、`fixtures/phase2.txt`、`fixtures/phase3.txt`、`fixtures/phase4.txt` 四个 phase。规则：dry-run 和 shadow 不生效；当前 active shard 中最后一个 live 且 rollback=false 的 route 才有效。最终只输出 `<shard>:<route>`。

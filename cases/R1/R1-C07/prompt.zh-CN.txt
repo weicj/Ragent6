@@ -1,8 +1,8 @@
-`fixtures/project/billing.py` has a rounding bug in discount calculation.
+`fixtures/project/billing.py` 的折扣计算存在舍入 bug。
 
-First read `fixtures/project/billing.py` and `fixtures/project/test_billing.py`.
-Make the smallest implementation-only fix. Do not edit the test.
-Run `python3 fixtures/project/test_billing.py`.
+先读取 `fixtures/project/billing.py` 和 `fixtures/project/test_billing.py`。
+只做最小实现修复，不要修改测试。
+运行 `python3 fixtures/project/test_billing.py`。
 
-Final answer must be exactly:
+最终答案必须严格为：
 PASS

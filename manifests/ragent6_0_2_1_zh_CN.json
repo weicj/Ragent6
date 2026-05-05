@@ -1,6 +1,6 @@
 {
   "suite_name": "Ragent6",
-  "suite_version": "0.2.0",
+  "suite_version": "0.2.1",
   "dimension_labels": {
     "R1": "任务闭环",
     "R2": "证据取用",

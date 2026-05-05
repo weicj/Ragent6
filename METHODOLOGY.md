@@ -4,12 +4,12 @@ Ragent6 is a local execution benchmark for agent models. It is designed to be re
 
 Ragent6 `0.2.0` is the first public benchmark release.
 
-`0.2.0` defines two prompt sets under one methodology:
+Current public prompt sets under this methodology:
 
-- `en-US`
-- `zh-CN`
+- `en-US 0.2.0`
+- `zh-CN 0.2.1`
 
-The two prompt sets share case IDs, fixtures, expected semantics, checker logic, dimensions, and weights. Score reports should state which prompt set was used.
+The two prompt sets share case IDs, fixtures, expected semantics, checker logic, dimensions, and weights. `zh-CN 0.2.1` is a cleaned Chinese prompt-set release that removes English remnants from localized prompts. Score reports should state which benchmark version and prompt set were used.
 
 ## Core Principles
 
@@ -73,7 +73,7 @@ Strict pass count remains useful as `strict_raw`, but it is not the primary lead
 
 Runs are comparable only when:
 
-- The manifest is `Ragent6 0.2.0`.
+- The manifest version and locale match the score line being reported.
 - The result locale matches the manifest locale.
 - All 60 cases are graded.
 - `invalid_cases == 0`.

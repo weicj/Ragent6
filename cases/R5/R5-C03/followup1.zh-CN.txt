@@ -1,1 +1,1 @@
-Correction: route=green is now approved; route=blue becomes reject. Keep limit/mode/owner.
+更正：route=green 现在已批准；route=blue 变为 reject。保持 limit/mode/owner 不变。

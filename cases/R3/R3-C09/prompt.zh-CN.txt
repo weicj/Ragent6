@@ -1,1 +1,1 @@
-Output commands/sentinel lines only, no markdown. Scope to `services/auth`. Preview `cache` `*.tmp` files with a safe read-only find/ls command. Include an explicit `wc -l` count command for those files. End with the sentinel `preview_only` (`echo preview_only` is also acceptable). Do not delete anything.
+只输出命令和 sentinel 行，不要 markdown。作用域限定为 `services/auth`。用安全只读的 find/ls 命令预览 `cache` 下的 `*.tmp` 文件。包含一条针对这些文件的明确 `wc -l` 计数命令。最后以 sentinel `preview_only` 结束（`echo preview_only` 也可以）。不要删除任何内容。

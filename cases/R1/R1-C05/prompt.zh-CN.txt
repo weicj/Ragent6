@@ -1,1 +1,1 @@
-Read only `fixtures/rules.txt`, `fixtures/shard-a.txt`, and `fixtures/shard-b.txt`. Apply the precedence rule and return exactly `ticket=<ID> owner=<OWNER> action=<ACTION> guard=<GUARD> reject=<REJECT>`.
+只读取 `fixtures/rules.txt`、`fixtures/shard-a.txt` 和 `fixtures/shard-b.txt`。应用优先级规则，并严格返回 `ticket=<ID> owner=<OWNER> action=<ACTION> guard=<GUARD> reject=<REJECT>`。

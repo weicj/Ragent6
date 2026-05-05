@@ -1,5 +1,5 @@
-Read `fixtures/events.ndjson` and `fixtures/policy.json`.
+读取 `fixtures/events.ndjson` 和 `fixtures/policy.json`。
 
-Create `fixtures/remediation.json` with the incident id, primary root cause, selected action, rejected decoy actions, required guards, and verification steps.
+创建 `fixtures/remediation.json`，其中必须包含事故 ID、主要根因、选定动作、被拒绝的干扰动作、必要防护项和验证步骤。
 
-Then run `python3 fixtures/check.py`. Reply only `PASS`.
+然后运行 `python3 fixtures/check.py`。最终只回复 `PASS`。

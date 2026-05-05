@@ -1,4 +1,4 @@
-State update 3:
-New evidence says v57 is the safe rollback target after rebuilding the route-table.
+状态更新 3：
+新证据表明，重建 route-table 后，v57 是安全的 rollback target。
 
-Reply with the final state only.
+只回复最终状态。

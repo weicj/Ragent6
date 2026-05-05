@@ -1,1 +1,1 @@
-A cache namespace changed from tenant:user to user. Cross-tenant data appeared. DB metrics normal. Retries raised timeout errors after wrong data was served. Output exactly three labelled lines with colons: ROOT:, MINIMAL_FIX:, NOT_FIX:.
+cache namespace 从 tenant:user 改成了 user。随后出现跨租户数据。DB 指标正常。错误数据被返回后，重试又引发了 timeout 错误。严格输出三行带冒号的标签：ROOT:, MINIMAL_FIX:, NOT_FIX:。
