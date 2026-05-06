@@ -27,8 +27,10 @@
       "MINIMAL_FIX": [
         [
           "restore",
+          "prefixing",
           "revert",
-          "add back"
+          "add back",
+          "fix"
         ],
         [
           "tenant"

@@ -19,7 +19,8 @@
     "allow_markdown_fence": false,
     "required_line_groups": [
       [
-        "git status --short"
+        "git status --short",
+        "git status -s"
       ],
       [
         "find services/auth/cache"

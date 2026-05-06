@@ -7,9 +7,9 @@ Ragent6 `0.2.0` is the first public benchmark release.
 Current public prompt sets under this methodology:
 
 - `en-US 0.2.0`
-- `zh-CN 0.2.1`
+- `zh-CN 0.2.2`
 
-The two prompt sets share case IDs, fixtures, expected semantics, checker logic, dimensions, and weights. `zh-CN 0.2.1` is a cleaned Chinese prompt-set release that removes English remnants from localized prompts. Score reports should state which benchmark version and prompt set were used.
+The two prompt sets share case IDs, fixtures, dimensions, and weights. `zh-CN 0.2.2` is a Chinese adaptation release that keeps the task set stable while updating Chinese prompts, native-harness tool guidance, and deterministic checker equivalence rules for Chinese outputs. Score reports should state which benchmark version and prompt set were used.
 
 ## Core Principles
 

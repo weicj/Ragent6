@@ -9,9 +9,11 @@ The first public Ragent6 benchmark release is `0.2.0`.
 Current public manifests:
 
 - `en-US 0.2.0`: `manifests/ragent6_0_2_0_en_US.json`
-- `zh-CN 0.2.1`: `manifests/ragent6_0_2_1_zh_CN.json`
+- `zh-CN 0.2.2`: `manifests/ragent6_0_2_2_zh_CN.json`
 
-`zh-CN 0.2.1` cleans English remnants from the Chinese prompt files. It keeps the same methodology, case IDs, fixtures, expected semantics, checkers, dimensions, and weights as `0.2.0`, but it is still a new benchmark version because prompt-set changes can affect scores.
+`zh-CN 0.2.1` cleaned English remnants from the Chinese prompt files.
+
+`zh-CN 0.2.2` continues the Chinese line with prompt, native-harness, and checker-equivalence adaptations for Chinese local runs. It keeps the same methodology, case IDs, fixtures, dimensions, and weights as `0.2.0`, but it is a new benchmark version because these changes can affect scores.
 
 Score reports should state which benchmark version and prompt set were used.
 

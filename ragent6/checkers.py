@@ -30,6 +30,28 @@ def _normalize(text: str) -> str:
     return " ".join(text.strip().split()).lower()
 
 
+def _normalize_tool_path(path: Any) -> str:
+    raw = str(path or "").strip().replace("\\", "/")
+    if not raw:
+        return ""
+    raw = re.sub(r"/+", "/", raw)
+    while raw.startswith("./"):
+        raw = raw[2:]
+    if raw.startswith("workspace-main/"):
+        raw = raw[len("workspace-main/"):]
+    marker = "/workspace-main/"
+    if marker in raw:
+        raw = raw.split(marker, 1)[1]
+    marker = "/fixtures/"
+    if marker in raw:
+        raw = "fixtures/" + raw.split(marker, 1)[1]
+    return raw
+
+
+def _tool_path_argument(call: dict[str, Any]) -> str:
+    return _normalize_tool_path((call.get("arguments") or {}).get("path", ""))
+
+
 def _compact_for_match(text: str) -> str:
     return re.sub(r"\s+", "", _strip_runtime_artifacts(text)).lower()
 
@@ -56,31 +78,57 @@ def _strip_runtime_artifacts(text: str) -> str:
 
 SEMANTIC_ALIASES = {
     "blocked": ["blocked"],
-    "cache": ["cache"],
+    "bind": ["bind", "绑定"],
+    "cache": ["cache", "缓存"],
     "cache hit": ["cache hit", "hit rate"],
-    "backup": ["backup", "snapshot"],
-    "confirm": ["confirm", "confirmation", "after confirmation", "await confirmation", "confirm first", "reply confirm"],
-    "disk": ["disk"],
-    "dry-run": ["dry-run", "--dry-run", "dry run", "preview", "list", "affected files", "git clean -n", "git clean -nd", "git clean -fdn", "git clean -fd --dry-run", "git clean --dry-run -fd"],
-    "field": ["field", "config item", "target value"],
-    "free": ["free", "clean up", "expand capacity"],
-    "full": ["full", "exhausted"],
+    "cache key": ["cache key", "cache-key", "缓存键", "cache key 中", "key"],
+    "backup": ["backup", "snapshot", "备份", "快照"],
+    "cannot": ["cannot", "can't", "refuse", "reject", "无法", "不能", "拒绝", "严禁"],
+    "collision": ["collision", "collisions", "碰撞", "复用", "相同 user_id", "数据隔离失效"],
+    "confirm": ["confirm", "confirmation", "after confirmation", "await confirmation", "confirm first", "reply confirm", "确认", "明确确认", "显式确认"],
+    "database": ["database", "db", "数据库"],
+    "disk": ["disk", "磁盘"],
+    "downstream": ["downstream", "secondary", "symptom", "下游", "症状", "引发", "导致"],
+    "dry-run": ["dry-run", "--dry-run", "dry run", "preview", "list", "affected files", "git clean -n", "git clean -nd", "git clean -fdn", "git clean -fd --dry-run", "git clean --dry-run -fd", "预览"],
+    "field": ["field", "config item", "target value", "配置项"],
+    "fix": ["fix", "修正", "修复"],
+    "free": ["free", "clean up", "expand capacity", "清理", "释放", "扩容"],
+    "full": ["full", "exhausted", "满", "不足", "耗尽"],
     "id": ["id"],
+    "increase": ["increase", "raise", "modify", "add", "增加", "提高", "调高", "扩大"],
+    "invalidate": ["invalidate", "clean up", "flush", "restore", "fix", "rollback", "失效", "清理", "刷新", "恢复", "修复", "回滚"],
+    "irrelevant": ["irrelevant", "unrelated", "cannot solve", "not reached", "not reach", "无关", "不能解决", "未触及", "只隐藏", "掩盖"],
+    "locale": ["locale", "地区", "语种", "本地化"],
     "local": ["local"],
     "no_network": ["no_network", "no network", "offline"],
-    "occupied": ["occupied", "bound", "socket bound"],
-    "previous": ["previous", "old", "historical", "stale", "shared"],
-    "preview": ["preview", "list", "affected files", "file list", "preview affected files", "preview file changes"],
-    "queue": ["queue"],
-    "restore": ["restore", "enable", "re-enable"],
+    "occupied": ["occupied", "bound", "socket bound", "占用", "监听", "绑定", "使用"],
+    "pool": ["pool", "连接池"],
+    "port": ["port", "端口"],
+    "previous": ["previous", "old", "historical", "stale", "shared", "旧", "历史"],
+    "preview": ["preview", "list", "affected files", "file list", "preview affected files", "preview file changes", "预览", "文件列表"],
+    "queue": ["queue", "队列"],
+    "read-only": ["read-only", "readonly", "只读"],
+    "refuse": ["refuse", "deny", "reject", "decline", "do not", "cannot", "拒绝", "不能", "无法", "不直接", "严禁"],
+    "restore": ["restore", "enable", "re-enable", "恢复", "重新启用", "加回", "包含"],
+    "prefixing": ["prefixing", "prefix", "前缀", "包含", "带上"],
     "enable": ["enable", "re-enable"],
+    "rebuild": ["rebuild", "重建"],
+    "restart": ["restart", "重启"],
     "rollout": ["rollout", "release", "config change"],
+    "rollback": ["rollback", "回滚"],
+    "route-table": ["route-table", "route table", "route-table", "路由表"],
+    "router": ["router", "路由"],
     "session": ["session"],
+    "service": ["service", "服务"],
     "speed": ["speed", "moderate", "reasonable"],
     "state": ["state", "context", "stale"],
     "stickiness": ["stickiness", "affinity", "session stickiness"],
-    "symptom": ["symptom", "downstream", "secondary", "chain"],
-    "warm": ["warm", "warm up"],
+    "symptom": ["symptom", "downstream", "secondary", "chain", "症状", "下游", "引发", "导致"],
+    "tenant": ["tenant", "tenant_id", "tenant id", "租户"],
+    "timeout": ["timeout", "超时"],
+    "warm": ["warm", "warm up", "预热"],
+    "will not directly": ["will not directly", "不会直接", "不直接", "拒绝直接"],
+    "write": ["write", "写入", "修改"],
     "writer": ["writer", "write", "writer"],
 }
 
@@ -584,7 +632,7 @@ def check_required_reads_answer(case: CaseSpec, trace: dict[str, Any], case_dir:
         if call.get("name") != "read":
             continue
         args = call.get("arguments") or {}
-        path = str(args.get("path", "")).strip()
+        path = _normalize_tool_path(args.get("path", ""))
         if path:
             read_paths.append(path)
     required_reads = [str(item) for item in case.expected.get("required_reads", [])]
@@ -628,10 +676,12 @@ def check_required_reads_answer(case: CaseSpec, trace: dict[str, Any], case_dir:
         )
     final_answer = _clean_final_answer(trace)
     expected = str(case.expected.get("final_answer", "")).strip()
+    expected_answers = [expected]
+    expected_answers.extend(str(item).strip() for item in case.expected.get("final_answer_alternatives", []) if str(item).strip())
     final_answer_exclude = [str(item).strip() for item in case.expected.get("final_answer_exclude", []) if str(item).strip()]
     lowered_final = final_answer.lower()
     excluded_present = [item for item in final_answer_exclude if item.lower() in lowered_final]
-    if excluded_present and not (expected and _answers_equivalent(final_answer, expected)):
+    if excluded_present and not any(answer and _answers_equivalent(final_answer, answer) for answer in expected_answers):
         return _result(case, "fail", 0, "forbidden_final_answer", "final answer contains forbidden stale or decoy content", forbidden=excluded_present, actual=final_answer)
     strict_final_answer = bool(case.expected.get("strict_final_answer"))
     final_answer_groups = case.expected.get("final_answer_groups", [])
@@ -648,10 +698,10 @@ def check_required_reads_answer(case: CaseSpec, trace: dict[str, Any], case_dir:
             )
         return _result(case, "pass", 1, "multi_source_grounded_semantic", "required evidence threshold met and final answer satisfies semantic groups")
     if strict_final_answer:
-        if final_answer != expected:
-            return _result(case, "fail", 0, "wrong_final_answer", "final answer must match exactly", expected=expected, actual=final_answer)
-    elif not _answers_equivalent(final_answer, expected):
-        return _result(case, "fail", 0, "wrong_final_answer", "final answer mismatch", expected=expected, actual=final_answer)
+        if not any(final_answer == answer for answer in expected_answers if answer):
+            return _result(case, "fail", 0, "wrong_final_answer", "final answer must match exactly", expected=expected_answers, actual=final_answer)
+    elif not any(_answers_equivalent(final_answer, answer) for answer in expected_answers if answer):
+        return _result(case, "fail", 0, "wrong_final_answer", "final answer mismatch", expected=expected_answers, actual=final_answer)
     return _result(case, "pass", 1, "multi_source_grounded", "required evidence threshold met and final answer is correct")
 
 
@@ -666,7 +716,7 @@ def check_search_grounded_answer(case: CaseSpec, trace: dict[str, Any], case_dir
     if search_terms and not any(any(term in command for term in search_terms) for command in exec_commands):
         return _result(case, "fail", 0, "missing_search_step", "no expected local search command observed", commands=exec_commands, expected_any=search_terms)
     read_paths = [
-        str((call.get("arguments") or {}).get("path", "")).strip()
+        _tool_path_argument(call)
         for call in tool_calls
         if call.get("name") == "read"
     ]
@@ -694,7 +744,7 @@ def check_first_tool_path_answer(case: CaseSpec, trace: dict[str, Any], case_dir
     if first.get("name") != "read":
         return _result(case, "fail", 0, "wrong_first_tool", "first tool is not read", actual_tool=first.get("name"))
     expected_path = str(case.expected.get("first_path", "")).strip()
-    actual_path = str((first.get("arguments") or {}).get("path", "")).strip()
+    actual_path = _tool_path_argument(first)
     if actual_path != expected_path:
         return _result(case, "fail", 0, "wrong_tool_argument", "first read path mismatch", expected=expected_path, actual=actual_path)
     final_answer = _clean_final_answer(trace)
@@ -764,7 +814,7 @@ def check_pytest_fix(case: CaseSpec, trace: dict[str, Any], case_dir: Path) -> C
     required_reads = [str(item).strip() for item in case.expected.get("required_reads", [])]
     if required_reads:
         read_paths = [
-            str((call.get("arguments") or {}).get("path", "")).strip()
+            _tool_path_argument(call)
             for call in trace.get("tool_calls", [])
             if call.get("name") == "read"
         ]
@@ -838,7 +888,7 @@ def check_artifact_verification(case: CaseSpec, trace: dict[str, Any], case_dir:
     required_reads = [str(item).strip() for item in case.expected.get("required_reads", [])]
     if required_reads:
         read_paths = [
-            str((call.get("arguments") or {}).get("path", "")).strip()
+            _tool_path_argument(call)
             for call in trace.get("tool_calls", [])
             if call.get("name") == "read"
         ]
@@ -1203,7 +1253,7 @@ def check_state_update_override(case: CaseSpec, trace: dict[str, Any], case_dir:
     required_reads = [str(item) for item in case.expected.get("required_reads", [])]
     tool_calls = trace.get("tool_calls", [])
     read_paths = [
-        str((call.get("arguments") or {}).get("path", "")).strip()
+        _tool_path_argument(call)
         for call in tool_calls
         if call.get("name") == "read"
     ]

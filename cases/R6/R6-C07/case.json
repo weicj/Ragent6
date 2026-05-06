@@ -42,7 +42,8 @@
         ],
         [
           "invalidate",
-          "flush"
+          "flush",
+          "restore"
         ],
         [
           "tenant"

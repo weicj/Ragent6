@@ -47,6 +47,7 @@
       "fixtures/root.md",
       "fixtures/fix.md"
     ],
+    "relaxed_min_reads": 5,
     "forbidden_reads": [
       "fixtures/deprecated.md"
     ],

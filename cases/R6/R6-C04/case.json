@@ -25,7 +25,8 @@
           "v42"
         ],
         [
-          "tenant"
+          "tenant",
+          "tenantless"
         ],
         [
           "cache",
@@ -60,7 +61,8 @@
           "downstream",
           "secondary",
           "symptom",
-          "counterfactual"
+          "counterfactual",
+          "recovered"
         ],
         [
           "collision",

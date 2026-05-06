@@ -15,9 +15,9 @@ Use this checklist before publishing a Ragent6 score table or candidate leaderbo
 ```bash
 python3 -m compileall -q ragent6 scripts
 python3 scripts/run_eval.py --manifest manifests/ragent6_0_2_0_en_US.json --adapter mock --out results/mock-0.2.0-en-US
-python3 scripts/run_eval.py --manifest manifests/ragent6_0_2_1_zh_CN.json --adapter mock --out results/mock-0.2.1-zh-CN
+python3 scripts/run_eval.py --manifest manifests/ragent6_0_2_2_zh_CN.json --adapter mock --out results/mock-0.2.2-zh-CN
 python3 scripts/release_audit.py --manifest manifests/ragent6_0_2_0_en_US.json --suite-version 0.2.0 --locale en-US
-python3 scripts/release_audit.py --manifest manifests/ragent6_0_2_1_zh_CN.json --suite-version 0.2.1 --locale zh-CN
+python3 scripts/release_audit.py --manifest manifests/ragent6_0_2_2_zh_CN.json --suite-version 0.2.2 --locale zh-CN
 python3 scripts/score_results.py --metadata examples/model_metadata.example.json
 ```
 
@@ -25,7 +25,7 @@ Expected mock result:
 
 ```text
 Ragent6 0.2.0 en-US: 60/60 (invalid=0)
-Ragent6 0.2.1 zh-CN: 60/60 (invalid=0)
+Ragent6 0.2.2 zh-CN: 60/60 (invalid=0)
 ```
 
 ## Score Tables

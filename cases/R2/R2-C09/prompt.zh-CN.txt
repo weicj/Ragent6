@@ -1,5 +1,5 @@
 只使用本地证据。
 
-先读取 `fixtures/index.md`。它会指向当前有效的证据映射。然后读取该映射里的 active 文件。不要读取 deprecated 证据。
+先读取 `fixtures/index.md`。它会指向当前有效的证据映射。然后读取该映射里的所有 active 文件，包括 build/version 证据。不要读取 deprecated 证据。
 
 返回一句简洁的话，包含 owner、rollback version、root cause 和 mitigation。不要包含干扰 owner 或干扰修复项。

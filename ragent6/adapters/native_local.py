@@ -45,23 +45,35 @@ def _system_prompt(case: CaseSpec) -> str:
 def _system_prompt_en(case: CaseSpec) -> str:
     lines = ["You are running inside the Ragent6 native harness."]
     if case.allowed_tools:
+        allowed = ", ".join(case.allowed_tools)
         lines.extend(
             [
                 "When you need a tool, call exactly one tool at a time and output only: <tool>{...}</tool>.",
-                "The tool name must be one of: read, exec, write, edit.",
+                "The tool name must be one of the allowed tools for this case: " + allowed + ".",
                 "Do not write the literal string \"read|exec|write|edit\" as the tool name.",
-                "read example: <tool>{\"name\":\"read\",\"arguments\":{\"path\":\"fixtures/a.txt\"}}</tool>",
-                "exec example: <tool>{\"name\":\"exec\",\"arguments\":{\"command\":\"sh fixtures/check.sh\"}}</tool>",
-                "write example: <tool>{\"name\":\"write\",\"arguments\":{\"path\":\"fixtures/out.json\",\"content\":\"{}\"}}</tool>",
-                "edit example: <tool>{\"name\":\"edit\",\"arguments\":{\"path\":\"fixtures/a.txt\",\"edits\":[{\"oldText\":\"old\",\"newText\":\"new\"}]}}</tool>",
                 "Do not output any extra text outside <tool>...</tool> when calling a tool.",
                 "If you can answer, output the final answer directly: no markdown wrapper, no explanation, no extra label.",
                 "Do not output labels such as assistant: or final-answer:.",
                 "Do not use exec only to print or echo the final answer; final answers must be returned as assistant text.",
                 "Tool arguments must use the correct fields. If a tool result means you need another step, output another <tool>{...}</tool>.",
-                "Allowed tools: " + ", ".join(case.allowed_tools) + ".",
+                "All paths are relative to the workspace root. A reference like docs/a.md inside fixtures should be read as fixtures/docs/a.md.",
+                "Use exact file paths from the prompt or the WORKSPACE_FILES list. If read returns ENOENT, do not repeat the same missing path.",
+                "When a verification command succeeds or prints OK/PASS, stop using tools and return the requested final answer.",
+                "Allowed tools: " + allowed + ".",
             ]
         )
+        if "read" in case.allowed_tools and "exec" in case.allowed_tools and any(tool in case.allowed_tools for tool in ("write", "edit")):
+            lines.append("If the prompt names a local verifier such as fixtures/check.py or fixtures/check.sh, read that verifier before writing whenever the required file schema is ambiguous.")
+        if case.expected.get("search_command_any") and "exec" in case.allowed_tools:
+            lines.append("This case requires a local search step. Use exec with rg, grep, or find before reading the matching files.")
+        if "read" in case.allowed_tools:
+            lines.append("read example: <tool>{\"name\":\"read\",\"arguments\":{\"path\":\"fixtures/a.txt\"}}</tool>")
+        if "exec" in case.allowed_tools:
+            lines.append("exec example: <tool>{\"name\":\"exec\",\"arguments\":{\"command\":\"sh fixtures/check.sh\"}}</tool>")
+        if "write" in case.allowed_tools:
+            lines.append("write example: <tool>{\"name\":\"write\",\"arguments\":{\"path\":\"fixtures/out.json\",\"content\":\"{}\"}}</tool>")
+        if "edit" in case.allowed_tools:
+            lines.append("edit example: <tool>{\"name\":\"edit\",\"arguments\":{\"path\":\"fixtures/a.txt\",\"edits\":[{\"oldText\":\"old\",\"newText\":\"new\"}]}}</tool>")
     else:
         lines.extend(
             [
@@ -94,23 +106,35 @@ def _system_prompt_en(case: CaseSpec) -> str:
 def _system_prompt_zh(case: CaseSpec) -> str:
     lines = ["你正在 Ragent6 native harness 中运行。"]
     if case.allowed_tools:
+        allowed = "、".join(case.allowed_tools)
         lines.extend(
             [
                 "需要使用工具时，一次只调用一个工具，并且只输出：<tool>{...}</tool>。",
-                "工具名必须是 read、exec、write、edit 之一。",
+                "工具名只能是本题允许的工具：" + allowed + "。",
                 "不要把字面字符串 \"read|exec|write|edit\" 当作工具名输出。",
-                "read 示例：<tool>{\"name\":\"read\",\"arguments\":{\"path\":\"fixtures/a.txt\"}}</tool>",
-                "exec 示例：<tool>{\"name\":\"exec\",\"arguments\":{\"command\":\"sh fixtures/check.sh\"}}</tool>",
-                "write 示例：<tool>{\"name\":\"write\",\"arguments\":{\"path\":\"fixtures/out.json\",\"content\":\"{}\"}}</tool>",
-                "edit 示例：<tool>{\"name\":\"edit\",\"arguments\":{\"path\":\"fixtures/a.txt\",\"edits\":[{\"oldText\":\"old\",\"newText\":\"new\"}]}}</tool>",
                 "调用工具时，不要在 <tool>...</tool> 外输出任何额外文字。",
                 "如果已经可以回答，直接输出最终答案：不要 markdown 包裹，不要解释，不要额外标签。",
                 "不要输出 assistant: 或 final-answer: 这类标签。",
                 "不要只为了打印最终答案而使用 exec 或 echo；最终答案必须作为 assistant 文本返回。",
                 "工具参数必须使用正确字段。如果工具结果表示还需要下一步，就继续输出另一个 <tool>{...}</tool>。",
-                "允许的工具：" + ", ".join(case.allowed_tools) + "。",
+                "所有路径都相对工作区根目录；fixtures 内文档引用的 docs/a.md 应按 fixtures/docs/a.md 读取。",
+                "优先使用题目或 WORKSPACE_FILES 中出现的精确路径。如果 read 返回 ENOENT，不要重复读取同一个不存在路径。",
+                "如果验证命令成功或输出 OK/PASS，立即停止调用工具并返回题目要求的最终答案。",
+                "允许的工具：" + "、".join(case.allowed_tools) + "。",
             ]
         )
+        if "read" in case.allowed_tools and "exec" in case.allowed_tools and any(tool in case.allowed_tools for tool in ("write", "edit")):
+            lines.append("如果题目提到本地验证脚本（如 fixtures/check.py 或 fixtures/check.sh），且文件 schema 不完全明确，应先 read 验证脚本，再写入文件。")
+        if case.expected.get("search_command_any") and "exec" in case.allowed_tools:
+            lines.append("本题要求本地搜索步骤。读取匹配文件前，先用 exec 调用 rg、grep 或 find。")
+        if "read" in case.allowed_tools:
+            lines.append("read 示例：<tool>{\"name\":\"read\",\"arguments\":{\"path\":\"fixtures/a.txt\"}}</tool>")
+        if "exec" in case.allowed_tools:
+            lines.append("exec 示例：<tool>{\"name\":\"exec\",\"arguments\":{\"command\":\"sh fixtures/check.sh\"}}</tool>")
+        if "write" in case.allowed_tools:
+            lines.append("write 示例：<tool>{\"name\":\"write\",\"arguments\":{\"path\":\"fixtures/out.json\",\"content\":\"{}\"}}</tool>")
+        if "edit" in case.allowed_tools:
+            lines.append("edit 示例：<tool>{\"name\":\"edit\",\"arguments\":{\"path\":\"fixtures/a.txt\",\"edits\":[{\"oldText\":\"old\",\"newText\":\"new\"}]}}</tool>")
     else:
         lines.extend(
             [
@@ -364,6 +388,98 @@ def _read_tool(path: Path) -> tuple[str, dict[str, Any]]:
         )
 
 
+def _workspace_file_list(workspace_main: Path) -> list[str]:
+    files: list[str] = []
+    for path in sorted(workspace_main.rglob("*")):
+        if path.is_file():
+            files.append(path.relative_to(workspace_main).as_posix())
+    return files
+
+
+def _format_workspace_files(workspace_main: Path) -> str:
+    files = _workspace_file_list(workspace_main)
+    if not files:
+        return "WORKSPACE_FILES: (none)"
+    return "WORKSPACE_FILES:\n" + "\n".join(f"- {path}" for path in files)
+
+
+def _similar_fixture_paths(requested: str, available: list[str]) -> list[str]:
+    normalized = str(requested or "").strip().replace("\\", "/")
+    basename = Path(normalized).name
+    matches = []
+    if basename:
+        matches.extend(path for path in available if Path(path).name == basename)
+    if normalized and not normalized.startswith("fixtures/"):
+        prefixed = "fixtures/" + normalized.lstrip("/")
+        matches.extend(path for path in available if path == prefixed)
+    if normalized.startswith("fixtures/"):
+        unprefixed = normalized[len("fixtures/"):]
+        matches.extend(path for path in available if path.endswith("/" + unprefixed))
+    seen = set()
+    out = []
+    for path in matches:
+        if path in seen:
+            continue
+        seen.add(path)
+        out.append(path)
+    return out[:8]
+
+
+def _augment_tool_feedback(
+    tool_output: str,
+    details: dict[str, Any],
+    call: dict[str, Any],
+    workspace_main: Path,
+    tool_calls: list[dict[str, Any]],
+    case: CaseSpec,
+) -> tuple[str, dict[str, Any]]:
+    name = str(call.get("name", "")).strip()
+    arguments = call.get("arguments") or {}
+    augmented = str(tool_output)
+    extras: dict[str, Any] = {}
+    available = _workspace_file_list(workspace_main)
+
+    if name == "read" and (details or {}).get("status") == "error":
+        requested = str(arguments.get("path", "")).strip()
+        similar = _similar_fixture_paths(requested, available)
+        extras["available_files"] = available
+        if similar:
+            extras["similar_files"] = similar
+        guidance = {
+            "available_files": available,
+            "similar_files": similar,
+            "guidance": "Do not repeat the same missing path. Use one of the available_files paths exactly, or return the best final answer if enough evidence is already available.",
+        }
+        augmented += "\n" + json.dumps(guidance, ensure_ascii=False, indent=2)
+
+    if case.max_tool_calls is not None:
+        remaining_after = int(case.max_tool_calls) - len(tool_calls)
+        extras["remaining_tool_calls"] = max(0, remaining_after)
+        if remaining_after <= 1:
+            augmented += "\n" + json.dumps(
+                {
+                    "remaining_tool_calls": max(0, remaining_after),
+                    "guidance": "Tool budget is nearly exhausted. If you have enough evidence, return the final answer now instead of calling another tool.",
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+
+    if extras:
+        details = dict(details or {})
+        details.update(extras)
+    return augmented, details
+
+
+def _final_answer_nudge(case: CaseSpec, last_tool_output: str = "") -> str:
+    prompt = "Tool budget is exhausted. Output only the requested final answer now. Do not call another tool."
+    if _is_zh(case):
+        prompt = "工具调用预算已经用完。现在只输出题目要求的最终答案，不要再调用工具。"
+    if last_tool_output:
+        prompt += "\nLast TOOL_RESULT:\n" + last_tool_output[-2000:]
+    return prompt
+
+
 def _write_tool(path: Path, content: str) -> tuple[str, dict[str, Any]]:
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -527,17 +643,24 @@ def run_case(case: CaseSpec, case_dir: Path, suite_context: Any = None) -> dict[
     request_error: dict[str, str] | None = None
     started = time.time()
 
-    messages: list[dict[str, str]] = [{"role": "system", "content": _system_prompt(case)}]
+    system_content = _system_prompt(case)
+    if case.allowed_tools:
+        system_content += "\n\n" + _format_workspace_files(workspace_main)
+    messages: list[dict[str, str]] = [{"role": "system", "content": system_content}]
     try:
         for prompt in prompts:
             messages.append({"role": "user", "content": prompt})
             nudged_final = False
+            last_tool_output = ""
             internal_turn_budget = max(1, case.max_turns, (case.max_tool_calls or 0) + 1)
             for _turn in range(internal_turn_budget):
                 remaining = max(5, int(timeout_seconds - (time.time() - started)))
                 if remaining <= 0:
                     aborted = True
                     break
+                if case.max_tool_calls is not None and len(tool_calls) >= case.max_tool_calls and not nudged_final:
+                    messages.append({"role": "user", "content": _final_answer_nudge(case, last_tool_output)})
+                    nudged_final = True
                 try:
                     response_text, meta = _request_chat(base_url, model_id, messages, max_tokens, remaining)
                 except Exception as exc:  # noqa: BLE001
@@ -552,8 +675,17 @@ def run_case(case: CaseSpec, case_dir: Path, suite_context: Any = None) -> dict[
                 turn_runs.append({"prompt": prompt, "raw_response": response_text, "cleaned_response": cleaned, "elapsed_ms": meta["elapsed_ms"]})
                 tool_call = _extract_tool_call(response_text)
                 if tool_call is not None:
+                    if case.max_tool_calls is not None and len(tool_calls) >= case.max_tool_calls:
+                        messages.append({"role": "assistant", "content": response_text})
+                        if not nudged_final:
+                            messages.append({"role": "user", "content": _final_answer_nudge(case, last_tool_output)})
+                            nudged_final = True
+                            continue
+                        break
                     tool_calls.append(tool_call)
                     tool_output, details = _run_tool(tool_call, workspace_main)
+                    tool_output, details = _augment_tool_feedback(tool_output, details, tool_call, workspace_main, tool_calls, case)
+                    last_tool_output = tool_output
                     tool_results.append(
                         {
                             "tool_name": tool_call.get("name"),

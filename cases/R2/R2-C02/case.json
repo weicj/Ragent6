@@ -35,7 +35,10 @@
       "fixtures/primary.json",
       "fixtures/override.json"
     ],
-    "final_answer": "telegram:tg-220011"
+    "final_answer": "telegram:tg-220011",
+    "final_answer_alternatives": [
+      "tg-220011"
+    ]
   },
   "mock_trace_file": "mock_trace.json",
   "legacy_case_id": "D2-C06-three-source-precedence",

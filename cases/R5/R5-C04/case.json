@@ -39,7 +39,8 @@
           "flags=beta"
         ],
         [
-          "note=confirmed"
+          "note=confirmed",
+          "note=中文确认"
         ]
       ],
       [
@@ -53,7 +54,8 @@
           "flags=beta,canary"
         ],
         [
-          "note=confirmed"
+          "note=confirmed",
+          "note=中文确认"
         ]
       ],
       [

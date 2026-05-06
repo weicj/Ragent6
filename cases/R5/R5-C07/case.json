@@ -35,11 +35,13 @@
           "cannot deploy",
           "do not deploy",
           "not deployable",
-          "stop"
+          "stop",
+          "不部署"
         ],
         [
           "revoked",
-          "retracted"
+          "retracted",
+          "撤销"
         ],
         [
           "v58"

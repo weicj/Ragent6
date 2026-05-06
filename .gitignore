@@ -28,3 +28,4 @@ reports/*
 # Local scratch/config.
 tmp/
 local/
+tmp_ragent6_*.json

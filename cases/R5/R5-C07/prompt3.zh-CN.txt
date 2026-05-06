@@ -1,4 +1,4 @@
 状态更新 3：
 新证据表明，重建 route-table 后，v57 是安全的 rollback target。
 
-只回复最终状态。
+只回复最终状态，必须包含 v57、rollback 和 route-table。

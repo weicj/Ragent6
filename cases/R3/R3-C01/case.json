@@ -30,6 +30,10 @@
           "pid 44210",
           "process 44210",
           "old process"
+        ],
+        [
+          "occupied",
+          "占用"
         ]
       ],
       "FIX": [
@@ -40,7 +44,9 @@
         [
           "stop",
           "kill",
+          "杀",
           "terminate",
+          "结束",
           "terminate",
           "stop"
         ]
@@ -54,9 +60,11 @@
         [
           "occupied",
           "occupied",
+          "占用",
           "bind",
           "bind",
           "free port",
+          "释放",
           "new process start"
         ]
       ]

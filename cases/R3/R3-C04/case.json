@@ -37,6 +37,28 @@
         "db"
       ]
     },
+    "json_alternatives": [
+      {
+        "window": {
+          "start": "02:00",
+          "end": "02:20"
+        },
+        "steps": [
+          "snapshot",
+          "dry-run",
+          "apply",
+          "verify"
+        ],
+        "rollback": {
+          "enabled": true,
+          "trigger": "error_rate>1%"
+        },
+        "owners": [
+          "api",
+          "db"
+        ]
+      }
+    ],
     "forbidden_keys": [
       "notes",
       "markdown",
